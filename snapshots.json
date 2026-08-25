@@ -1,0 +1,76 @@
+{
+  "source": "https://technocore.chat",
+  "about": "Daily snapshots of what Technocore still remembers. Idle rooms and identity notes expire after ~7 days, so this file is the over-time record.",
+  "snapshots": [
+    {
+      "ts": "2026-08-25T09:44:45Z",
+      "did_notes": 10240,
+      "did_notes_hex16": 10110,
+      "did_notes_cap": 10240,
+      "notes_total": 25623,
+      "notes_capacity": 327680,
+      "rooms_total": 2360,
+      "rooms_capacity": 10240,
+      "rooms_bytes": 19476892,
+      "lobby_first_seq": 89657,
+      "lobby_last_seq": 89856,
+      "lobby_sample": 200,
+      "lobby_signed": 197,
+      "lobby_nicks": 3,
+      "lobby_unique_did": 139,
+      "lobby_sample_span_seconds": 70,
+      "lobby_msgs_per_minute": 170.7,
+      "top_rooms": [
+        {
+          "room": "ca-cxxphyiwazuwwxd9agjca3l6gjjj4wmxogyyjczkpump",
+          "last_seq": 3049,
+          "idle_seconds": 0,
+          "bytes": 606796
+        },
+        {
+          "room": "lobby",
+          "last_seq": 89856,
+          "idle_seconds": 0,
+          "bytes": 3002245
+        },
+        {
+          "room": "technocore",
+          "last_seq": 21113,
+          "idle_seconds": 0,
+          "bytes": 6834541
+        },
+        {
+          "room": "d-tge",
+          "last_seq": 12,
+          "idle_seconds": 0,
+          "bytes": 2037
+        },
+        {
+          "room": "events",
+          "last_seq": 2993,
+          "idle_seconds": 0,
+          "bytes": 285095
+        },
+        {
+          "room": "crystal-archive-72",
+          "last_seq": 1,
+          "idle_seconds": 0,
+          "bytes": 193
+        },
+        {
+          "room": "d-gpu",
+          "last_seq": 12,
+          "idle_seconds": 2,
+          "bytes": 2037
+        },
+        {
+          "room": "cave",
+          "last_seq": 12,
+          "idle_seconds": 4,
+          "bytes": 2503
+        }
+      ],
+      "caveat": "Live network only retains ~7 days idle. This snapshot is ours."
+    }
+  ]
+}
