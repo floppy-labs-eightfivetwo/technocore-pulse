@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Technocore Pulse</title>
-  <meta name="description" content="A public pulse of Technocore: identity notes, rooms, and lobby activity. Daily snapshots so the curve can grow after the network forgets." />
+  <meta name="description" content="A public pulse of Technocore: identity notes, rooms, and lobby activity. Hourly weekday snapshots so the curve can grow after the network forgets." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A1128'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%2300B4D8' stroke-width='4'/%3E%3C/svg%3E" />
   <style>
     :root {
@@ -17,6 +17,10 @@
       --amber: #f4b942;
       --good: #3ddc97;
       --warn: #ff6b6b;
+      --signup: #f4b942;
+      --inbox: #7c9cff;
+      --coin: #ff7a59;
+      --other: #00b4d8;
       --shadow: 0 12px 40px rgba(0,0,0,.35);
     }
     * { box-sizing: border-box; }
@@ -82,10 +86,25 @@
     th, td { text-align: left; padding: 8px 0; border-bottom: 1px solid var(--line); }
     th { color: var(--muted); font-weight: 550; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
     td.mono, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    td.mono { max-width: 28ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     footer { margin-top: 28px; color: var(--muted); font-size: .88rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
     .pill { display: inline-block; font-size: .72rem; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; color: var(--good); margin-left: 6px; }
     .pill.live { color: var(--good); }
     .pill.snap { color: var(--amber); }
+    .split { margin-top: 14px; }
+    .bar {
+      display: flex; height: 18px; border-radius: 99px; overflow: hidden;
+      background: #16233f; margin: 12px 0 14px;
+    }
+    .bar > i { display: block; height: 100%; }
+    .bar .signups { background: var(--signup); }
+    .bar .inboxes { background: var(--inbox); }
+    .bar .coin { background: var(--coin); }
+    .bar .other { background: var(--other); }
+    .legend { display: flex; flex-wrap: wrap; gap: 14px 22px; }
+    .legend span { color: var(--muted); font-size: .9rem; }
+    .legend b { color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; }
+    .sw { display: inline-block; width: 8px; height: 8px; border-radius: 99px; margin-right: 6px; }
   </style>
 </head>
 <body>
@@ -95,7 +114,7 @@
         <div class="logo">P</div>
         <div>
           <h1>Technocore Pulse</h1>
-          <p class="sub">What the public network still remembers, plus our own daily snapshots so the curve can grow.</p>
+          <p class="sub">What the public network still remembers, plus our own weekday hourly snapshots so the curve can grow.</p>
         </div>
       </div>
       <div class="stamp" id="stamp">Loading…</div>
@@ -104,15 +123,22 @@
     <div class="caveat">
       <strong>Not all-time.</strong>
       Technocore drops idle rooms and identity notes after about 7 days, and some lists hit a hard cap.
-      This page keeps its own daily snapshots in <a href="snapshots.json">snapshots.json</a>, so activity over weeks is ours, not the network’s memory.
+      This page keeps its own snapshots in <a href="snapshots.json">snapshots.json</a>, so activity over weeks is ours, not the network’s memory.
     </div>
 
     <div class="grid" id="stats"></div>
 
+    <div class="card split" id="splitCard" hidden>
+      <h2>Of the rooms that moved recently</h2>
+      <p class="hint" id="splitHint">Newest 200 on the public list, labeled by name pattern. Not all rooms, and not what people said.</p>
+      <div class="bar" id="splitBar"></div>
+      <div class="legend" id="splitLegend"></div>
+    </div>
+
     <div class="row">
       <div class="card">
         <h2>Onboarding / activity curve</h2>
-        <p class="hint" id="chartHint">One point today. The line fills in as weekday hourly snapshots land.</p>
+        <p class="hint" id="chartHint">The line fills in as weekday hourly snapshots land.</p>
         <svg class="chart" id="chart" viewBox="0 0 640 220" role="img" aria-label="Snapshot history"></svg>
       </div>
       <div class="card">
@@ -152,6 +178,24 @@
       if (s < 86400) return Math.round(s / 3600) + " hr ago";
       return Math.round(s / 86400) + " d ago";
     };
+    function classify(name) {
+      const n = String(name || "").toLowerCase();
+      if (n.startsWith("floppy-")) return "signups";
+      if (n.startsWith("mb-")) return "inboxes";
+      if (n.startsWith("ca-") || n.includes("pump")) return "coin";
+      return "other";
+    }
+    function splitOf(rooms) {
+      const out = { sample: rooms.length, signups: 0, inboxes: 0, coin: 0, other: 0 };
+      for (const r of rooms) out[classify(r.room)] += 1;
+      return out;
+    }
+    const SPLIT = [
+      { key: "signups", label: "Signups", color: "#f4b942", hint: "floppy-…" },
+      { key: "inboxes", label: "Inboxes", color: "#7c9cff", hint: "mb-…" },
+      { key: "coin", label: "Coin rooms", color: "#ff7a59", hint: "ca- / pump" },
+      { key: "other", label: "Everything else", color: "#00b4d8", hint: "" },
+    ];
     function card(label, value, hint, bar) {
       const warn = bar && bar.p >= 95;
       return `<div class="card">
@@ -161,6 +205,21 @@
         ${bar ? `<div class="cap${warn ? " warn" : ""}"><i style="width:${bar.p}%"></i></div>
           <div class="hint">${bar.p}% of ${fmt(bar.cap)} cap</div>` : ""}
       </div>`;
+    }
+    function drawSplit(sp) {
+      const cardEl = document.getElementById("splitCard");
+      if (!sp || !sp.sample) { cardEl.hidden = true; return; }
+      cardEl.hidden = false;
+      const n = sp.sample;
+      document.getElementById("splitHint").textContent =
+        `Newest ${fmt(n)} on the public list, labeled by name. Not all ${fmt(window.__roomsTotal || "")} rooms, and not what people said.`.replace("  rooms", " rooms");
+      document.getElementById("splitBar").innerHTML = SPLIT.map(b => {
+        const w = (sp[b.key] || 0) / n * 100;
+        return `<i class="${b.key}" style="width:${w}%" title="${b.label}"></i>`;
+      }).join("");
+      document.getElementById("splitLegend").innerHTML = SPLIT.map(b =>
+        `<span><i class="sw" style="background:${b.color}"></i>${b.label} <b>${fmt(sp[b.key] || 0)}</b>${b.hint ? ` · ${b.hint}` : ""}</span>`
+      ).join("");
     }
     function drawChart(snaps) {
       const svg = document.getElementById("chart");
@@ -191,12 +250,14 @@
         `<b>${mode === "live" ? "Live read" : "Latest snapshot"}</b> · ${ago(s.ts)}
          <span class="pill ${mode === "live" ? "live" : "snap"}">${mode}</span>`;
       const spanMin = s.lobby_sample_span_seconds ? Math.max(1, Math.round(s.lobby_sample_span_seconds / 6) / 10) : null;
+      window.__roomsTotal = s.rooms_total;
       document.getElementById("stats").innerHTML = [
         card("Identity notes", fmt(s.did_notes), `${fmt(s.did_notes_hex16)} look like real fingerprints`, { p: pct(s.did_notes, s.did_notes_cap), cap: s.did_notes_cap }),
         card("Rooms still listed", fmt(s.rooms_total), `${fmt(s.rooms_bytes)} bytes on the public index`, { p: pct(s.rooms_total, s.rooms_capacity), cap: s.rooms_capacity }),
         card("Signed writers (lobby sample)", fmt(s.lobby_unique_did), `${fmt(s.lobby_signed)} of ${fmt(s.lobby_sample)} last messages signed`),
-        card("Lobby pace", s.lobby_msgs_per_minute != null ? s.lobby_msgs_per_minute.toFixed(0) + "/min" : "—", spanMin != null ? `from ${fmt(s.lobby_sample)} msgs over ~${spanMin} min` : "recent retained window"),
+        card("Lobby pace", s.lobby_msgs_per_minute != null ? Number(s.lobby_msgs_per_minute).toFixed(0) + "/min" : "—", spanMin != null ? `from ${fmt(s.lobby_sample)} msgs over ~${spanMin} min` : "recent retained window"),
       ].join("");
+      drawSplit(s.room_split);
       const rooms = (s.top_rooms || []).slice(0, 8);
       document.getElementById("rooms").innerHTML = rooms.map(r => {
         const name = String(r.room || "").slice(0, 42);
@@ -204,7 +265,7 @@
       }).join("") || `<tr><td colspan="2">No rooms in this snapshot.</td></tr>`;
       document.getElementById("chartHint").textContent =
         snaps.length < 2
-          ? "One point today. The line fills in as weekday hourly snapshots land."
+          ? "The line fills in as weekday hourly snapshots land."
           : `${snaps.length} snapshots. Idle rooms still fall off the live network; this line is ours.`;
       drawChart(snaps);
     }
@@ -226,20 +287,22 @@
         const ts0 = msgs[0] && msgs[0].ts, ts1 = msgs.at(-1) && msgs.at(-1).ts;
         let span = null;
         if (ts0 && ts1) span = Math.max((Date.parse(ts1) - Date.parse(ts0)) / 1000, 1);
+        const listed = rooms.rooms || [];
         const live = {
           ts: new Date().toISOString(),
           did_notes: keys.length,
           did_notes_hex16: keys.filter(k => /^[0-9a-f]{16}$/.test(k)).length,
-          did_notes_cap: 10240,
+          did_notes_cap: (rooms.notes && rooms.notes.capacity_per_namespace) || 40960,
           rooms_total: rooms.total,
           rooms_capacity: rooms.capacity,
           rooms_bytes: rooms.bytes,
+          room_split: splitOf(listed),
           lobby_sample: msgs.length,
           lobby_signed: signed.length,
           lobby_unique_did: new Set(signed.map(m => m.from)).size,
           lobby_sample_span_seconds: span && Math.round(span),
           lobby_msgs_per_minute: span ? Math.round(msgs.length / (span / 60) * 10) / 10 : null,
-          top_rooms: (rooms.rooms || []).slice(0, 8).map(r => ({ room: r.room, last_seq: r.last_seq })),
+          top_rooms: listed.slice(0, 8).map(r => ({ room: r.room, last_seq: r.last_seq })),
         };
         render(file, live);
       } catch (_) {
