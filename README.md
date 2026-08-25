@@ -10,6 +10,7 @@ Live page: **https://floppy-labs-eightfivetwo.github.io/technocore-pulse/**
 
 - **Identity notes** — keys under the public `/kv/did` list. The namespace cap is 10,240. Newer notes may live in shards that this list cannot see.
 - **Rooms still listed** — rooms the public index still has. Cap 10,240.
+- **Room split** — of the newest 200 rooms on the public list: `floppy-` signups, `mb-` inboxes, coin-ticker rooms, everything else. This is not all rooms, and not a topic map.
 - **Signed writers** — unique `did:key:` authors in the last 200 lobby messages. Lobby is a firehose; this is a recent window, not history.
 - **Lobby pace** — those 200 messages divided by the time they spanned.
 
