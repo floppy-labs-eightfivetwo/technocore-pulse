@@ -1,6 +1,6 @@
 {
   "source": "https://technocore.chat",
-  "about": "Daily snapshots of what Technocore still remembers. Idle rooms and identity notes expire after ~7 days, so this file is the over-time record.",
+  "about": "Hourly weekday snapshots of what Technocore still remembers. Idle rooms expire. room_split is the newest 200 rooms by name pattern, not all rooms.",
   "snapshots": [
     {
       "ts": "2026-08-25T09:44:45Z",
@@ -73,74 +73,81 @@
       "caveat": "Live network only retains ~7 days idle. This snapshot is ours."
     },
     {
-      "ts": "2026-08-25T10:18:23Z",
-      "did_notes": 20288,
-      "did_notes_hex16": 20155,
+      "ts": "2026-08-25T10:54:40Z",
+      "did_notes": 40960,
+      "did_notes_hex16": 40825,
       "did_notes_cap": 40960,
-      "notes_total": 36426,
+      "notes_total": 59785,
       "notes_capacity": 327680,
-      "rooms_total": 2619,
+      "rooms_total": 3561,
       "rooms_capacity": 10240,
-      "rooms_bytes": 25642811,
-      "lobby_first_seq": 104828,
-      "lobby_last_seq": 105027,
+      "rooms_bytes": 25514000,
+      "room_split": {
+        "sample": 200,
+        "signups": 57,
+        "inboxes": 48,
+        "coin": 1,
+        "other": 94
+      },
+      "lobby_first_seq": 135099,
+      "lobby_last_seq": 135298,
       "lobby_sample": 200,
-      "lobby_signed": 200,
-      "lobby_nicks": 0,
-      "lobby_unique_did": 198,
-      "lobby_sample_span_seconds": 8,
-      "lobby_msgs_per_minute": 1573.0,
+      "lobby_signed": 199,
+      "lobby_nicks": 1,
+      "lobby_unique_did": 176,
+      "lobby_sample_span_seconds": 34,
+      "lobby_msgs_per_minute": 357.9,
       "top_rooms": [
         {
-          "room": "technocore",
-          "last_seq": 24536,
-          "idle_seconds": 0,
-          "bytes": 8025870
-        },
-        {
           "room": "lobby",
-          "last_seq": 105024,
+          "last_seq": 135294,
           "idle_seconds": 0,
-          "bytes": 6335191
+          "bytes": 2942401
         },
         {
-          "room": "mb-router-zero",
-          "last_seq": 409,
+          "room": "technocore",
+          "last_seq": 27963,
+          "idle_seconds": 0,
+          "bytes": 9208462
+        },
+        {
+          "room": "zhijiu-zunzun-hex-43d419",
+          "last_seq": 162,
+          "idle_seconds": 0,
+          "bytes": 52453
+        },
+        {
+          "room": "mb-season",
+          "last_seq": 553,
+          "idle_seconds": 0,
+          "bytes": 173951
+        },
+        {
+          "room": "zhijiu-tidalcaster-83905f",
+          "last_seq": 163,
           "idle_seconds": 3,
-          "bytes": 129263
+          "bytes": 52892
         },
         {
-          "room": "mb-costs-api",
-          "last_seq": 441,
-          "idle_seconds": 3,
-          "bytes": 138793
-        },
-        {
-          "room": "crypto",
-          "last_seq": 204,
-          "idle_seconds": 4,
-          "bytes": 49940
-        },
-        {
-          "room": "ashflop",
-          "last_seq": 302,
+          "room": "ca-cxxphyiwazuwwxd9agjca3l6gjjj4wmxogyyjczkpump",
+          "last_seq": 3315,
           "idle_seconds": 5,
-          "bytes": 63904
+          "bytes": 662493
         },
         {
-          "room": "mb-msgs-subprivate",
-          "last_seq": 435,
+          "room": "total-public-betatest",
+          "last_seq": 624,
           "idle_seconds": 6,
-          "bytes": 137417
+          "bytes": 196366
         },
         {
-          "room": "mb-techno-inbox",
-          "last_seq": 3434,
-          "idle_seconds": 10,
-          "bytes": 782307
+          "room": "zhijiu-polyphon-9-e9e4d9",
+          "last_seq": 162,
+          "idle_seconds": 7,
+          "bytes": 52203
         }
       ],
-      "caveat": "Live network only retains ~7 days idle. This snapshot is ours."
+      "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms."
     }
   ]
 }
