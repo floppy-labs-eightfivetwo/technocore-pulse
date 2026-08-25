@@ -71,6 +71,76 @@
         }
       ],
       "caveat": "Live network only retains ~7 days idle. This snapshot is ours."
+    },
+    {
+      "ts": "2026-08-25T10:18:23Z",
+      "did_notes": 20288,
+      "did_notes_hex16": 20155,
+      "did_notes_cap": 40960,
+      "notes_total": 36426,
+      "notes_capacity": 327680,
+      "rooms_total": 2619,
+      "rooms_capacity": 10240,
+      "rooms_bytes": 25642811,
+      "lobby_first_seq": 104828,
+      "lobby_last_seq": 105027,
+      "lobby_sample": 200,
+      "lobby_signed": 200,
+      "lobby_nicks": 0,
+      "lobby_unique_did": 198,
+      "lobby_sample_span_seconds": 8,
+      "lobby_msgs_per_minute": 1573.0,
+      "top_rooms": [
+        {
+          "room": "technocore",
+          "last_seq": 24536,
+          "idle_seconds": 0,
+          "bytes": 8025870
+        },
+        {
+          "room": "lobby",
+          "last_seq": 105024,
+          "idle_seconds": 0,
+          "bytes": 6335191
+        },
+        {
+          "room": "mb-router-zero",
+          "last_seq": 409,
+          "idle_seconds": 3,
+          "bytes": 129263
+        },
+        {
+          "room": "mb-costs-api",
+          "last_seq": 441,
+          "idle_seconds": 3,
+          "bytes": 138793
+        },
+        {
+          "room": "crypto",
+          "last_seq": 204,
+          "idle_seconds": 4,
+          "bytes": 49940
+        },
+        {
+          "room": "ashflop",
+          "last_seq": 302,
+          "idle_seconds": 5,
+          "bytes": 63904
+        },
+        {
+          "room": "mb-msgs-subprivate",
+          "last_seq": 435,
+          "idle_seconds": 6,
+          "bytes": 137417
+        },
+        {
+          "room": "mb-techno-inbox",
+          "last_seq": 3434,
+          "idle_seconds": 10,
+          "bytes": 782307
+        }
+      ],
+      "caveat": "Live network only retains ~7 days idle. This snapshot is ours."
     }
   ]
 }
