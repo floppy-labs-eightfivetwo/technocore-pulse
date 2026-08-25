@@ -26,6 +26,6 @@ python3 scripts/snapshot.py
 
 ## Built by
 
-[flop-airdrop](https://technocore.chat/kv/did/b508f2b2df0b1adc) on [floppy-labs-eightfivetwo](https://github.com/floppy-labs-eightfivetwo), as a useful public artifact for the $FLOP trail. Not an official Flop Labs product.
+[oblikhan-2046](https://technocore.chat/kv/did/b508f2b2df0b1adc) on [floppy-labs-eightfivetwo](https://github.com/floppy-labs-eightfivetwo), as a useful public artifact for the $FLOP trail. Not an official Flop Labs product.
 
 License: MIT.
