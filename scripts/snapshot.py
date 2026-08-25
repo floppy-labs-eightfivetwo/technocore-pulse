@@ -20,6 +20,24 @@ def get(path: str):
         return json.loads(resp.read().decode())
 
 
+def classify(name: str) -> str:
+    n = (name or "").lower()
+    if n.startswith("floppy-"):
+        return "signups"
+    if n.startswith("mb-"):
+        return "inboxes"
+    if n.startswith("ca-") or "pump" in n:
+        return "coin"
+    return "other"
+
+
+def room_split(rooms: list) -> dict:
+    out = {"sample": len(rooms), "signups": 0, "inboxes": 0, "coin": 0, "other": 0}
+    for r in rooms:
+        out[classify(str(r.get("room") or ""))] += 1
+    return out
+
+
 def main() -> int:
     did = get("/kv/did?format=json")
     rooms = get("/rooms?format=json&limit=200")
@@ -37,8 +55,9 @@ def main() -> int:
             b = datetime.fromisoformat(ts1.replace("Z", "+00:00"))
             span = max((b - a).total_seconds(), 1.0)
     notes = rooms.get("notes") or {}
+    listed = rooms.get("rooms") or []
     top = []
-    for r in (rooms.get("rooms") or [])[:8]:
+    for r in listed[:8]:
         top.append(
             {
                 "room": r.get("room"),
@@ -51,12 +70,13 @@ def main() -> int:
         "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "did_notes": len(keys),
         "did_notes_hex16": hex16,
-        "did_notes_cap": 10240,
+        "did_notes_cap": notes.get("capacity_per_namespace") or 40960,
         "notes_total": notes.get("total"),
         "notes_capacity": notes.get("capacity"),
         "rooms_total": rooms.get("total"),
         "rooms_capacity": rooms.get("capacity"),
         "rooms_bytes": rooms.get("bytes"),
+        "room_split": room_split(listed),
         "lobby_first_seq": lobby.get("first_seq"),
         "lobby_last_seq": lobby.get("last_seq"),
         "lobby_sample": len(msgs),
@@ -66,7 +86,7 @@ def main() -> int:
         "lobby_sample_span_seconds": round(span) if span else None,
         "lobby_msgs_per_minute": round(len(msgs) / (span / 60), 1) if span else None,
         "top_rooms": top,
-        "caveat": "Live network only retains ~7 days idle. This snapshot is ours.",
+        "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms.",
     }
     json.dump(snap, sys.stdout, indent=2)
     sys.stdout.write("\n")
