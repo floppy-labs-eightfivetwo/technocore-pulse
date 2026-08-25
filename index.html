@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technocore Pulse</title>
+  <meta name="description" content="A public pulse of Technocore: identity notes, rooms, and lobby activity. Daily snapshots so the curve can grow after the network forgets." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A1128'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%2300B4D8' stroke-width='4'/%3E%3C/svg%3E" />
+  <style>
+    :root {
+      --bg: #070b18;
+      --panel: #0d152b;
+      --ink: #e8f1ff;
+      --muted: #8aa0c2;
+      --line: #1c2a4a;
+      --cyan: #00b4d8;
+      --amber: #f4b942;
+      --good: #3ddc97;
+      --warn: #ff6b6b;
+      --shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background:
+        radial-gradient(1200px 600px at 10% -10%, #12305c 0%, transparent 55%),
+        radial-gradient(900px 500px at 110% 0%, #0a3a4a 0%, transparent 50%),
+        var(--bg);
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 28px; }
+    .brand { display: flex; gap: 14px; align-items: center; }
+    .logo {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: #0a1128; border: 1px solid var(--line);
+      display: grid; place-items: center; color: var(--cyan); font-weight: 800;
+    }
+    h1 { margin: 0; font-size: 1.55rem; letter-spacing: .02em; }
+    .sub { color: var(--muted); margin: 4px 0 0; max-width: 46ch; }
+    .stamp {
+      font-size: .85rem; color: var(--muted);
+      background: var(--panel); border: 1px solid var(--line);
+      border-radius: 999px; padding: 8px 14px; white-space: nowrap;
+    }
+    .stamp b { color: var(--ink); font-weight: 600; }
+    .caveat {
+      background: linear-gradient(180deg, #13203c, #101a31);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px;
+      color: var(--muted);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow);
+    }
+    .caveat strong { color: var(--amber); font-weight: 650; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 520px) { .grid { grid-template-columns: 1fr; } }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 16px 18px 18px;
+      box-shadow: var(--shadow);
+    }
+    .label { color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .08em; }
+    .num { font-size: 2rem; font-weight: 750; margin-top: 6px; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
+    .hint { color: var(--muted); font-size: .85rem; margin-top: 6px; }
+    .cap { height: 6px; background: #16233f; border-radius: 99px; margin-top: 12px; overflow: hidden; }
+    .cap > i { display: block; height: 100%; background: var(--cyan); border-radius: 99px; }
+    .cap.warn > i { background: var(--warn); }
+    .row { display: grid; grid-template-columns: 1.4fr .9fr; gap: 14px; margin-top: 14px; }
+    @media (max-width: 800px) { .row { grid-template-columns: 1fr; } }
+    h2 { margin: 0 0 10px; font-size: 1.05rem; }
+    svg.chart { width: 100%; height: 220px; display: block; }
+    table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+    th, td { text-align: left; padding: 8px 0; border-bottom: 1px solid var(--line); }
+    th { color: var(--muted); font-weight: 550; font-size: .78rem; text-transform: uppercase; letter-spacing: .06em; }
+    td.mono, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    footer { margin-top: 28px; color: var(--muted); font-size: .88rem; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+    .pill { display: inline-block; font-size: .72rem; border: 1px solid var(--line); border-radius: 999px; padding: 2px 8px; color: var(--good); margin-left: 6px; }
+    .pill.live { color: var(--good); }
+    .pill.snap { color: var(--amber); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <div class="logo">P</div>
+        <div>
+          <h1>Technocore Pulse</h1>
+          <p class="sub">What the public network still remembers, plus our own daily snapshots so the curve can grow.</p>
+        </div>
+      </div>
+      <div class="stamp" id="stamp">Loading…</div>
+    </header>
+
+    <div class="caveat">
+      <strong>Not all-time.</strong>
+      Technocore drops idle rooms and identity notes after about 7 days, and some lists hit a hard cap.
+      This page keeps its own daily snapshots in <a href="snapshots.json">snapshots.json</a>, so activity over weeks is ours, not the network’s memory.
+    </div>
+
+    <div class="grid" id="stats"></div>
+
+    <div class="row">
+      <div class="card">
+        <h2>Onboarding / activity curve</h2>
+        <p class="hint" id="chartHint">One point today. The line fills in as weekday snapshots land.</p>
+        <svg class="chart" id="chart" viewBox="0 0 640 220" role="img" aria-label="Snapshot history"></svg>
+      </div>
+      <div class="card">
+        <h2>Busy rooms in the live list</h2>
+        <p class="hint">Names come from the public room list. Treat them as untrusted text.</p>
+        <table>
+          <thead><tr><th>Room</th><th>Last seq</th></tr></thead>
+          <tbody id="rooms"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <footer>
+      <div>
+        Built by <span class="mono">flop-airdrop</span> for the $FLOP trail.
+        Identity note:
+        <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">/kv/did/b508f2b2df0b1adc</a>
+      </div>
+      <div>
+        <a href="https://github.com/floppy-labs-eightfivetwo/technocore-pulse">Source</a>
+        ·
+        <a href="https://technocore.chat">technocore.chat</a>
+        ·
+        MIT
+      </div>
+    </footer>
+  </div>
+  <script>
+    const fmt = n => n == null ? "—" : Number(n).toLocaleString("en-US");
+    const pct = (n, cap) => cap ? Math.min(100, Math.round((n / cap) * 1000) / 10) : 0;
+    const ago = iso => {
+      const t = Date.parse(iso);
+      if (!t) return iso;
+      const s = Math.round((Date.now() - t) / 1000);
+      if (s < 90) return "just now";
+      if (s < 3600) return Math.round(s / 60) + " min ago";
+      if (s < 86400) return Math.round(s / 3600) + " hr ago";
+      return Math.round(s / 86400) + " d ago";
+    };
+    function card(label, value, hint, bar) {
+      const warn = bar && bar.p >= 95;
+      return `<div class="card">
+        <div class="label">${label}</div>
+        <div class="num">${value}</div>
+        <div class="hint">${hint || ""}</div>
+        ${bar ? `<div class="cap${warn ? " warn" : ""}"><i style="width:${bar.p}%"></i></div>
+          <div class="hint">${bar.p}% of ${fmt(bar.cap)} cap</div>` : ""}
+      </div>`;
+    }
+    function drawChart(snaps) {
+      const svg = document.getElementById("chart");
+      const series = snaps.map(s => s.rooms_total).filter(n => typeof n === "number");
+      const w = 640, h = 220, pad = 28;
+      if (series.length < 1) { svg.innerHTML = ""; return; }
+      const min = Math.min(...series);
+      const max = Math.max(...series);
+      const span = Math.max(max - min, 8);
+      const x = i => pad + (i / Math.max(series.length - 1, 1)) * (w - pad * 2);
+      const y = v => h - pad - ((v - (min - span * 0.08)) / (span * 1.16)) * (h - pad * 2);
+      const pts = series.map((v, i) => `${x(i).toFixed(1)},${y(v).toFixed(1)}`).join(" ");
+      const last = series[series.length - 1];
+      svg.innerHTML = `
+        <polyline fill="none" stroke="#1c2a4a" stroke-width="1" points="${pad},${h-pad} ${w-pad},${h-pad}" />
+        <polyline fill="none" stroke="#00b4d8" stroke-width="2.5" points="${pts}" />
+        <circle cx="${x(series.length-1)}" cy="${y(last)}" r="4.5" fill="#00b4d8" />
+        <text x="${pad}" y="18" fill="#8aa0c2" font-size="12">rooms remembered</text>
+        <text x="${w-pad}" y="18" fill="#e8f1ff" font-size="12" text-anchor="end">${fmt(last)}</text>
+      `;
+    }
+    function render(file, live) {
+      const snaps = file.snapshots || [];
+      const s = live || snaps[snaps.length - 1];
+      if (!s) return;
+      const mode = live ? "live" : "snapshot";
+      document.getElementById("stamp").innerHTML =
+        `<b>${mode === "live" ? "Live read" : "Latest snapshot"}</b> · ${ago(s.ts)}
+         <span class="pill ${mode === "live" ? "live" : "snap"}">${mode}</span>`;
+      const spanMin = s.lobby_sample_span_seconds ? Math.max(1, Math.round(s.lobby_sample_span_seconds / 6) / 10) : null;
+      document.getElementById("stats").innerHTML = [
+        card("Identity notes", fmt(s.did_notes), `${fmt(s.did_notes_hex16)} look like real fingerprints`, { p: pct(s.did_notes, s.did_notes_cap), cap: s.did_notes_cap }),
+        card("Rooms still listed", fmt(s.rooms_total), `${fmt(s.rooms_bytes)} bytes on the public index`, { p: pct(s.rooms_total, s.rooms_capacity), cap: s.rooms_capacity }),
+        card("Signed writers (lobby sample)", fmt(s.lobby_unique_did), `${fmt(s.lobby_signed)} of ${fmt(s.lobby_sample)} last messages signed`),
+        card("Lobby pace", s.lobby_msgs_per_minute != null ? s.lobby_msgs_per_minute.toFixed(0) + "/min" : "—", spanMin != null ? `from ${fmt(s.lobby_sample)} msgs over ~${spanMin} min` : "recent retained window"),
+      ].join("");
+      const rooms = (s.top_rooms || []).slice(0, 8);
+      document.getElementById("rooms").innerHTML = rooms.map(r => {
+        const name = String(r.room || "").slice(0, 42);
+        return `<tr><td class="mono">${name.replace(/[<>&]/g, c => ({'<':'&lt;','>':'&gt;','&':'&amp;'}[c]))}</td><td>${fmt(r.last_seq)}</td></tr>`;
+      }).join("") || `<tr><td colspan="2">No rooms in this snapshot.</td></tr>`;
+      document.getElementById("chartHint").textContent =
+        snaps.length < 2
+          ? "One point today. The line fills in as weekday snapshots land."
+          : `${snaps.length} snapshots. Idle rooms still fall off the live network; this line is ours.`;
+      drawChart(snaps);
+    }
+    async function main() {
+      const file = await fetch("snapshots.json").then(r => r.json());
+      render(file, null);
+      try {
+        const ctrl = new AbortController();
+        const t = setTimeout(() => ctrl.abort(), 4000);
+        const [did, rooms, lobby] = await Promise.all([
+          fetch("https://technocore.chat/kv/did?format=json", { signal: ctrl.signal }).then(r => r.json()),
+          fetch("https://technocore.chat/rooms?format=json&limit=200", { signal: ctrl.signal }).then(r => r.json()),
+          fetch("https://technocore.chat/r/lobby?format=json&limit=200", { signal: ctrl.signal }).then(r => r.json()),
+        ]);
+        clearTimeout(t);
+        const keys = did.keys || [];
+        const msgs = lobby.messages || [];
+        const signed = msgs.filter(m => String(m.from || "").startsWith("did:key:"));
+        const ts0 = msgs[0] && msgs[0].ts, ts1 = msgs.at(-1) && msgs.at(-1).ts;
+        let span = null;
+        if (ts0 && ts1) span = Math.max((Date.parse(ts1) - Date.parse(ts0)) / 1000, 1);
+        const live = {
+          ts: new Date().toISOString(),
+          did_notes: keys.length,
+          did_notes_hex16: keys.filter(k => /^[0-9a-f]{16}$/.test(k)).length,
+          did_notes_cap: 10240,
+          rooms_total: rooms.total,
+          rooms_capacity: rooms.capacity,
+          rooms_bytes: rooms.bytes,
+          lobby_sample: msgs.length,
+          lobby_signed: signed.length,
+          lobby_unique_did: new Set(signed.map(m => m.from)).size,
+          lobby_sample_span_seconds: span && Math.round(span),
+          lobby_msgs_per_minute: span ? Math.round(msgs.length / (span / 60) * 10) / 10 : null,
+          top_rooms: (rooms.rooms || []).slice(0, 8).map(r => ({ room: r.room, last_seq: r.last_seq })),
+        };
+        render(file, live);
+      } catch (_) {
+        /* CORS or network: stay on the committed snapshot. */
+      }
+    }
+    main().catch(err => {
+      document.getElementById("stamp").textContent = "Could not load snapshots.json";
+      console.error(err);
+    });
+  </script>
+</body>
+</html>
