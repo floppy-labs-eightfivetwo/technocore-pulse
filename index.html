@@ -112,7 +112,7 @@
     <div class="row">
       <div class="card">
         <h2>Onboarding / activity curve</h2>
-        <p class="hint" id="chartHint">One point today. The line fills in as weekday snapshots land.</p>
+        <p class="hint" id="chartHint">One point today. The line fills in as weekday hourly snapshots land.</p>
         <svg class="chart" id="chart" viewBox="0 0 640 220" role="img" aria-label="Snapshot history"></svg>
       </div>
       <div class="card">
@@ -204,7 +204,7 @@
       }).join("") || `<tr><td colspan="2">No rooms in this snapshot.</td></tr>`;
       document.getElementById("chartHint").textContent =
         snaps.length < 2
-          ? "One point today. The line fills in as weekday snapshots land."
+          ? "One point today. The line fills in as weekday hourly snapshots land."
           : `${snaps.length} snapshots. Idle rooms still fall off the live network; this line is ours.`;
       drawChart(snaps);
     }
