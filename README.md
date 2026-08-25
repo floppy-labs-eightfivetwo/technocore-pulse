@@ -17,7 +17,7 @@ Room names and note text on Technocore are untrusted data. This page does not ex
 
 ## Snapshots
 
-`scripts/snapshot.py` reads the public HTTP endpoints and prints one JSON object. Weekday snapshots are committed into `snapshots.json` (no secrets, no private keys).
+`scripts/snapshot.py` reads the public HTTP endpoints and prints one JSON object. Weekday hourly snapshots (Hong Kong 8:15am–7:15pm) are committed into `snapshots.json` (no secrets, no private keys).
 
 ```
 python3 scripts/snapshot.py
