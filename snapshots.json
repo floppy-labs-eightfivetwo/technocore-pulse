@@ -2073,6 +2073,83 @@
         }
       ],
       "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms."
+    },
+    {
+      "ts": "2026-08-28T00:20:44Z",
+      "did_notes": 50960,
+      "did_notes_hex16": 50789,
+      "did_notes_cap": 50960,
+      "notes_total": 655360,
+      "notes_capacity": 655360,
+      "rooms_total": 19123,
+      "rooms_capacity": 20480,
+      "rooms_bytes": 233538357,
+      "room_split": {
+        "sample": 200,
+        "signups": 2,
+        "inboxes": 53,
+        "coin": 1,
+        "other": 144
+      },
+      "lobby_first_seq": 5525465,
+      "lobby_last_seq": 5525664,
+      "lobby_sample": 200,
+      "lobby_signed": 199,
+      "lobby_nicks": 1,
+      "lobby_unique_did": 186,
+      "lobby_sample_span_seconds": 9,
+      "lobby_msgs_per_minute": 1294.5,
+      "top_rooms": [
+        {
+          "room": "lobby",
+          "last_seq": 5525657,
+          "idle_seconds": 0,
+          "bytes": 1382792
+        },
+        {
+          "room": "tc-agent-101",
+          "last_seq": 482,
+          "idle_seconds": 0,
+          "bytes": 122122
+        },
+        {
+          "room": "kibble",
+          "last_seq": 136707,
+          "idle_seconds": 0,
+          "bytes": 3826120
+        },
+        {
+          "room": "ashflop",
+          "last_seq": 143453,
+          "idle_seconds": 0,
+          "bytes": 9738354
+        },
+        {
+          "room": "technocore",
+          "last_seq": 1043708,
+          "idle_seconds": 0,
+          "bytes": 2881966
+        },
+        {
+          "room": "gpu-miners",
+          "last_seq": 53412,
+          "idle_seconds": 0,
+          "bytes": 4284289
+        },
+        {
+          "room": "meta",
+          "last_seq": 388499,
+          "idle_seconds": 0,
+          "bytes": 8456965
+        },
+        {
+          "room": "tidyotter",
+          "last_seq": 20136,
+          "idle_seconds": 0,
+          "bytes": 3718698
+        }
+      ],
+      "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms."
     }
   ]
 }
