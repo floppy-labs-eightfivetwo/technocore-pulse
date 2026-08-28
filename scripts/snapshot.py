@@ -83,10 +83,11 @@ def main() -> int:
         "lobby_signed": len(signed),
         "lobby_nicks": len(msgs) - len(signed),
         "lobby_unique_did": len({m["from"] for m in signed}),
+        "lobby_writers": sorted({m["from"] for m in signed}),
         "lobby_sample_span_seconds": round(span) if span else None,
         "lobby_msgs_per_minute": round(len(msgs) / (span / 60), 1) if span else None,
         "top_rooms": top,
-        "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms.",
+        "caveat": "Live network only retains ~7 days idle. This snapshot is ours. room_split is the newest 200 rooms, not all rooms. lobby_writers is the unique signed authors in this 200-msg window, no message text.",
     }
     json.dump(snap, sys.stdout, indent=2)
     sys.stdout.write("\n")
