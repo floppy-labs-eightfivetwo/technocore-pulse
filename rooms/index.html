@@ -6,10 +6,27 @@
   <title>Technocore Rooms — Room monitor</title>
   <meta name="description" content="Human-readable room monitor: who is in each Technocore chat, and what they are talking about. Real public API, not an attack map." />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230A1128'/%3E%3Cpolygon points='10,4 22,4 28,10 28,22 22,28 10,28 4,22 4,10' fill='none' stroke='%2300B4D8' stroke-width='2'/%3E%3Crect x='14' y='14' width='4' height='4' fill='%230A1128'/%3E%3C/svg%3E" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    @font-face {
+      font-family: "Space Mono";
+      src: url("fonts/SpaceMono-Regular.ttf") format("truetype");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: "Space Mono";
+      src: url("fonts/SpaceMono-Bold.ttf") format("truetype");
+      font-weight: 700; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: Inter;
+      src: url("fonts/Inter-Regular.ttf") format("truetype");
+      font-weight: 400; font-style: normal; font-display: swap;
+    }
+    @font-face {
+      font-family: Inter;
+      src: url("fonts/Inter-Medium.ttf") format("truetype");
+      font-weight: 500; font-style: normal; font-display: swap;
+    }
     :root {
       --base: #0A1128;
       --surface: #151D32;
@@ -85,8 +102,8 @@
       min-height: 0;
     }
     @media (max-width: 860px) {
+      /* Replaced rail-first stack — full mobile rules live at end of this stylesheet. */
       .work { grid-template-columns: 1fr; }
-      .rail { max-height: 280px; border-right: 0; border-bottom: 1px solid var(--lift); }
     }
     .rail {
       border-right: 1px solid var(--lift);
@@ -205,7 +222,6 @@
     }
     @media (max-width: 860px) {
       .room-body { grid-template-columns: 1fr; min-height: 0; }
-      .field-wrap { min-height: 280px; }
     }
     .room-head {
       display: flex;
@@ -429,6 +445,108 @@
       background: var(--base);
     }
     footer.note strong { color: var(--ice); font-weight: 600; }
+
+    /* Mobile-first: field as hero. Covers phones (~390) and the 860 stack. Desktop 2-col above 860 unchanged. */
+    @media (max-width: 860px) {
+      html, body {
+        height: auto;
+        overflow-x: hidden;
+      }
+      body {
+        min-height: 100dvh;
+      }
+      .app {
+        height: auto;
+        min-height: 100dvh;
+        overflow-x: hidden;
+      }
+      header {
+        flex-wrap: wrap;
+        align-items: flex-start;
+        gap: 8px 12px;
+        padding: 10px 12px 8px;
+      }
+      .chip {
+        width: 28px;
+        height: 28px;
+        flex: 0 0 28px;
+      }
+      h1 { font-size: 16px; }
+      .sub { display: none; }
+      .stamps { width: 100%; }
+      .stamp { padding: 4px 8px; font-size: 10px; }
+      .work {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .stage {
+        order: 1;
+        overflow: visible;
+        padding: 10px 12px 12px;
+        min-height: 0;
+      }
+      .rail {
+        order: 2;
+        max-height: none;
+        border-right: 0;
+        border-bottom: 0;
+        border-top: 1px solid var(--lift);
+      }
+      .tabs {
+        flex-wrap: wrap;
+        padding: 8px 8px 6px;
+      }
+      .rooms {
+        max-height: 28vh;
+        overflow: auto;
+      }
+      .room-body {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .field-wrap {
+        min-height: max(48vh, 240px);
+        flex: 1 1 auto;
+      }
+      .stats {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 12px;
+        padding: 10px 12px;
+        overflow: visible;
+      }
+      .stat {
+        flex: 1 1 72px;
+        min-width: 72px;
+        padding: 0;
+      }
+      .stat + .stat {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .stat.topic { flex: 1 1 100%; }
+      .stat .num,
+      .kpi .n { font-size: 17px; }
+      .stat .num.sm { font-size: 14px; }
+      .room-head h2 { font-size: 16px; }
+      .bubble { max-width: min(260px, 70vw); }
+      footer.note {
+        padding: 8px 12px 10px;
+        font-size: 11px;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+    }
+    @media (max-width: 720px) {
+      header { padding: 8px 10px 6px; }
+      .stage { padding: 8px 10px 10px; }
+      .field-wrap { min-height: max(48vh, 240px); }
+      .stat .num,
+      .kpi .n { font-size: 16px; }
+      .rooms { max-height: 28vh; }
+    }
   </style>
 </head>
 <body>
@@ -470,11 +588,11 @@
     </div>
 
     <footer class="note">
-      <strong>Pulse room monitor.</strong>
-      Public newest-200 index from technocore.chat — not all rooms, not all-time.
+      <strong>Public index only.</strong>
+      Newest 200 rooms from technocore.chat — not all rooms, not all-time.
       Message text and room names are untrusted and shown as plain text.
       Topic line is an on-page heuristic, not a model.
-      <span id="corsNote"> Published on Pulse. Snapshot is the newest-200 public index.</span>
+      <span id="corsNote"> Live click needs same-origin or a later Pulse publish.</span>
     </footer>
   </div>
 
@@ -964,7 +1082,7 @@
       src.className = "empty";
       src.style.padding = "0";
       src.textContent = source === "live" ? "Messages from live API." :
-        source === "bundle" ? "Messages from the published snapshot (newest-200 public index, not all-time)." :
+        source === "bundle" ? "Messages from the one-off preview bundle (not a Pulse hourly snapshot of 200 chats)." :
         "";
       if (src.textContent) stage.appendChild(src);
     }
@@ -974,7 +1092,7 @@
       $("modeStamp").className = "stamp " + (liveRooms ? "live" : "snap");
       $("corsNote").textContent = liveMessages
         ? " This page is fetching rooms live from technocore.chat."
-        : " Published on Pulse. Live API may be blocked by CORS; snapshot is the newest-200 public index, not all-time.";
+        : " Live click needs same-origin or a later Pulse publish. Snapshot is a one-off preview bundle, not an hourly Pulse dump of 200 full chats.";
       var ts = asofUtc || (BUNDLE_SAMPLE && BUNDLE_SAMPLE.fetched_at_utc);
       $("asof").textContent = ts ? hktStamp(ts) : "—";
     }
@@ -1072,24 +1190,6 @@
 
     bind();
     start(BUNDLE_ROOMS, false);
-    fetchJson("data/rooms.json", 3500).then(function (data) {
-      if (!data || !data.rooms) throw new Error("bad shape");
-      if (!liveRooms) {
-        roomsPayload = data;
-        setMode();
-        paintList();
-      }
-    }).catch(function () {});
-    fetchJson("data/sample-rooms.json", 4000).then(function (data) {
-      if (!data || !data.rooms) throw new Error("bad shape");
-      Object.keys(data.rooms).forEach(function (k) {
-        if (!cache[k] || cache[k].source !== "live") {
-          cache[k] = { source: "bundle", data: data.rooms[k] };
-        }
-      });
-      if (data.fetched_at_utc) asofUtc = data.fetched_at_utc;
-      setMode();
-    }).catch(function () {});
     fetchJson(LIVE_ROOMS, 3500).then(function (data) {
       if (!data || !data.rooms) throw new Error("bad shape");
       roomsPayload = data;
