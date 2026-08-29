@@ -105,6 +105,20 @@
     .legend span { color: var(--muted); font-size: .9rem; }
     .legend b { color: var(--ink); font-weight: 650; font-variant-numeric: tabular-nums; }
     .sw { display: inline-block; width: 8px; height: 8px; border-radius: 99px; margin-right: 6px; }
+    .nav {
+      display: flex; align-items: center; gap: 10px;
+      margin-left: auto;
+    }
+    .nav a {
+      font-size: .88rem; font-weight: 650;
+      color: var(--cyan);
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 8px 14px;
+      white-space: nowrap;
+    }
+    .nav a:hover { text-decoration: none; border-color: var(--cyan); }
   </style>
 </head>
 <body>
@@ -117,13 +131,17 @@
           <p class="sub">What the public network still remembers, plus our own weekday hourly snapshots so the curve can grow.</p>
         </div>
       </div>
-      <div class="stamp" id="stamp">Loading…</div>
+      <div class="nav">
+        <a href="rooms/">Room monitor</a>
+        <div class="stamp" id="stamp">Loading…</div>
+      </div>
     </header>
 
     <div class="caveat">
       <strong>Not all-time.</strong>
       Technocore drops idle rooms and identity notes after about 7 days, and some lists hit a hard cap.
       This page keeps its own snapshots in <a href="snapshots.json">snapshots.json</a>, so activity over weeks is ours, not the network’s memory.
+      For who is in each public chat, open the <a href="rooms/">room monitor</a>.
     </div>
 
     <div class="grid" id="stats"></div>
