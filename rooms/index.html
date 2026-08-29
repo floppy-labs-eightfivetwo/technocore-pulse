@@ -324,6 +324,11 @@
       background: #32D74B;
       clip-path: polygon(30% 0, 70% 0, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0 70%, 0 30%);
       z-index: 1;
+      will-change: transform;
+    }
+    .chip-mark.speaking {
+      filter: drop-shadow(0 0 6px #00B4D8) drop-shadow(0 0 12px rgba(0, 180, 216, 0.55));
+      z-index: 2;
     }
     .chip-mark::after {
       content: "";
@@ -362,6 +367,9 @@
       padding: 10px 12px 8px;
       pointer-events: none;
       z-index: 3;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 280ms ease, transform 280ms ease;
     }
     .bubble .who {
       font-family: "Space Mono", ui-monospace, monospace;
@@ -546,6 +554,11 @@
       .stat .num,
       .kpi .n { font-size: 16px; }
       .rooms { max-height: 28vh; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .chip-mark { will-change: auto; }
+      .chip-mark.speaking { transform: scale(1.15); }
+      .bubble { transition: none; }
     }
   </style>
 </head>
@@ -799,7 +812,7 @@
       var out = [];
       var seen = {};
       scored.forEach(function (x) {
-        if (out.length >= 2) return;
+        if (out.length >= 8) return;
         var a = x.m.from || "";
         if (seen[a]) return;
         seen[a] = 1;
@@ -887,15 +900,141 @@
       }
     }
 
-    var bubbleState = { wrap: null, quotes: [] };
+    var bubbleState = { wrap: null, quotes: [], shown: [], cursor: 0, timer: 0, fadeTimer: 0 };
+    var driftRaf = 0;
+    var driftChips = [];
+    var driftField = null;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    var narrowView = window.matchMedia("(max-width: 720px)");
 
+    function prefersReduce() {
+      return !!(reduceMotion && reduceMotion.matches);
+    }
+    function slotCount() {
+      return narrowView.matches ? 1 : 2;
+    }
+    function findChip(wrap, id) {
+      if (!wrap) return null;
+      var chips = wrap.querySelectorAll(".chip-mark");
+      for (var i = 0; i < chips.length; i++) {
+        if (chips[i].getAttribute("data-id") === id) return chips[i];
+      }
+      return null;
+    }
+    function visualPos(wrap, id) {
+      var fw = wrap.clientWidth || 800;
+      var fh = wrap.clientHeight || 400;
+      var pos = posFor(id);
+      var left = pos.x * fw;
+      var top = pos.y * fh;
+      var chip = findChip(wrap, id);
+      if (chip) {
+        var wr = wrap.getBoundingClientRect();
+        var cr = chip.getBoundingClientRect();
+        left = cr.left - wr.left + cr.width / 2;
+        top = cr.top - wr.top + cr.height / 2;
+      }
+      return { left: left, top: top, fw: fw, fh: fh };
+    }
+    function clearSpeaking(wrap) {
+      if (!wrap) return;
+      wrap.querySelectorAll(".chip-mark.speaking").forEach(function (c) {
+        c.classList.remove("speaking");
+      });
+    }
+    function markSpeaking(wrap, quotes) {
+      clearSpeaking(wrap);
+      (quotes || []).forEach(function (q) {
+        var chip = findChip(wrap, q.from);
+        if (chip) chip.classList.add("speaking");
+      });
+    }
+    function stopDrift() {
+      if (driftRaf) {
+        cancelAnimationFrame(driftRaf);
+        driftRaf = 0;
+      }
+      driftChips = [];
+      driftField = null;
+    }
+    function stopBubbles() {
+      if (bubbleState.timer) {
+        clearTimeout(bubbleState.timer);
+        bubbleState.timer = 0;
+      }
+      if (bubbleState.fadeTimer) {
+        clearTimeout(bubbleState.fadeTimer);
+        bubbleState.fadeTimer = 0;
+      }
+    }
+    function stopMotion() {
+      stopDrift();
+      stopBubbles();
+      bubbleState.wrap = null;
+      bubbleState.quotes = [];
+      bubbleState.shown = [];
+      bubbleState.cursor = 0;
+    }
+    function startDrift(field) {
+      stopDrift();
+      if (!field || prefersReduce()) return;
+      var chips = field.querySelectorAll(".chip-mark");
+      chips.forEach(function (el) {
+        var id = el.getAttribute("data-id") || "";
+        var h = hash32(id);
+        var h2 = hash32(id + "#d");
+        var amp = 8 + ((h % 1000) / 1000) * 10;
+        if (el.classList.contains("hot")) amp += 4;
+        driftChips.push({
+          el: el,
+          amp: amp,
+          period: 6 + ((h2 % 1000) / 1000) * 8,
+          phase: ((h % 10000) / 10000) * Math.PI * 2,
+          phase2: ((h2 % 10000) / 10000) * Math.PI * 2,
+          ratio: 0.67 + ((hash32(id + "#r") % 1000) / 1000) * 0.63
+        });
+      });
+      if (!driftChips.length) return;
+      driftField = field;
+      function tick(now) {
+        if (!driftField || !driftField.isConnected) {
+          stopDrift();
+          return;
+        }
+        var t = now / 1000;
+        driftChips.forEach(function (p) {
+          if (!p.el.isConnected) return;
+          var w = (Math.PI * 2) / p.period;
+          var dx = Math.sin(w * t + p.phase) * p.amp;
+          var dy = Math.sin(w * t * p.ratio + p.phase2) * p.amp * 0.85;
+          var sc = p.el.classList.contains("speaking") ? 1.15 : 1;
+          p.el.style.transform = "translate(" + dx.toFixed(2) + "px," + dy.toFixed(2) + "px) scale(" + sc + ")";
+        });
+        driftRaf = requestAnimationFrame(tick);
+      }
+      driftRaf = requestAnimationFrame(tick);
+    }
+    function takeSlots() {
+      var all = bubbleState.quotes;
+      var n = slotCount();
+      if (!all.length) return [];
+      var take = Math.min(n, all.length);
+      var out = [];
+      var i;
+      for (i = 0; i < take; i++) {
+        out.push(all[(bubbleState.cursor + i) % all.length]);
+      }
+      bubbleState.cursor = (bubbleState.cursor + take) % all.length;
+      return out;
+    }
+    function cycleMs() {
+      return 3200 + Math.floor(Math.random() * 1001);
+    }
     function placeBubbles(wrap, quotes) {
       if (!wrap) return;
       wrap.querySelectorAll(".bubble").forEach(function (n) { n.remove(); });
-      var fw = wrap.clientWidth || 800;
-      var fh = wrap.clientHeight || 400;
-      quotes.slice(0, 2).forEach(function (q) {
-        var pos = posFor(q.from);
+      (quotes || []).forEach(function (q) {
+        var vp = visualPos(wrap, q.from);
         var el = document.createElement("div");
         el.className = "bubble";
         var who = document.createElement("div");
@@ -912,8 +1051,10 @@
         el.appendChild(qt);
         el.appendChild(tail);
         wrap.appendChild(el);
-        var left = pos.x * fw;
-        var top = pos.y * fh;
+        var left = vp.left;
+        var top = vp.top;
+        var fw = vp.fw;
+        var fh = vp.fh;
         var above = top > 120;
         el.classList.add(above ? "above" : "below");
         var bw = el.offsetWidth;
@@ -927,9 +1068,60 @@
         el.style.left = x + "px";
         el.style.top = y + "px";
       });
+      markSpeaking(wrap, quotes);
+    }
+    function showBubbles(wrap, quotes, fadeIn) {
+      placeBubbles(wrap, quotes);
+      if (!wrap) return;
+      if (prefersReduce() || !fadeIn) return;
+      var bubbles = wrap.querySelectorAll(".bubble");
+      bubbles.forEach(function (el) {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(4px)";
+      });
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          bubbles.forEach(function (el) {
+            el.style.opacity = "1";
+            el.style.transform = "translateY(0)";
+          });
+        });
+      });
+    }
+    function scheduleBubbleCycle() {
+      stopBubbles();
+      if (!bubbleState.wrap || !bubbleState.quotes.length) return;
+      bubbleState.timer = setTimeout(function () {
+        var wrap = bubbleState.wrap;
+        if (!wrap || !wrap.isConnected) return;
+        var next = takeSlots();
+        function swap() {
+          bubbleState.shown = next;
+          showBubbles(wrap, next, !prefersReduce());
+          scheduleBubbleCycle();
+        }
+        if (prefersReduce()) {
+          swap();
+          return;
+        }
+        wrap.querySelectorAll(".bubble").forEach(function (b) {
+          b.style.opacity = "0";
+          b.style.transform = "translateY(-4px)";
+        });
+        bubbleState.fadeTimer = setTimeout(swap, 280);
+      }, cycleMs());
+    }
+    function startBubbleCycle() {
+      stopBubbles();
+      if (!bubbleState.wrap || !bubbleState.quotes.length) return;
+      var first = takeSlots();
+      bubbleState.shown = first;
+      showBubbles(bubbleState.wrap, first, !prefersReduce());
+      scheduleBubbleCycle();
     }
 
     function paintStage(roomName, payload, source, error) {
+      stopMotion();
       var stage = $("stage");
       while (stage.firstChild) stage.removeChild(stage.firstChild);
 
@@ -1008,6 +1200,7 @@
           var el = document.createElement("div");
           var isHot = top && a.id === top.id;
           el.className = "chip-mark" + (isHot ? " hot" : "");
+          el.setAttribute("data-id", a.id);
           el.style.left = (pos.x * 100).toFixed(3) + "%";
           el.style.top = (pos.y * 100).toFixed(3) + "%";
           if (!isHot) el.style.background = colorForId(a.id);
@@ -1071,12 +1264,15 @@
       body.appendChild(rail);
       stage.appendChild(body);
 
-      var quotes = error ? [] : pickQuotes(msgs).slice(0, 2);
+      var quotes = error ? [] : pickQuotes(msgs);
       bubbleState.wrap = fieldWrap;
       bubbleState.quotes = quotes;
-      if (quotes.length) {
-        requestAnimationFrame(function () { placeBubbles(fieldWrap, quotes); });
-      }
+      bubbleState.shown = [];
+      bubbleState.cursor = 0;
+      requestAnimationFrame(function () {
+        startDrift(field);
+        if (quotes.length) startBubbleCycle();
+      });
 
       var src = document.createElement("div");
       src.className = "empty";
@@ -1119,6 +1315,7 @@
       if (cache[name] && cache[name].data) {
         paintStage(name, cache[name].data, cache[name].source, null);
       } else {
+        stopMotion();
         var stage = $("stage");
         while (stage.firstChild) stage.removeChild(stage.firstChild);
         var wait = document.createElement("div");
@@ -1183,10 +1380,30 @@
     }
 
     window.addEventListener("resize", function () {
-      if (bubbleState.wrap && bubbleState.quotes.length) {
-        placeBubbles(bubbleState.wrap, bubbleState.quotes);
+      if (bubbleState.wrap && bubbleState.shown.length) {
+        var n = slotCount();
+        if (bubbleState.shown.length !== n && bubbleState.quotes.length) {
+          bubbleState.cursor = 0;
+          bubbleState.shown = takeSlots();
+        }
+        placeBubbles(bubbleState.wrap, bubbleState.shown);
       }
     });
+    if (reduceMotion && reduceMotion.addEventListener) {
+      reduceMotion.addEventListener("change", function () {
+        var field = $("field");
+        if (prefersReduce()) {
+          stopDrift();
+          if (field) {
+            field.querySelectorAll(".chip-mark").forEach(function (el) {
+              el.style.transform = el.classList.contains("speaking") ? "scale(1.15)" : "";
+            });
+          }
+        } else if (field) {
+          startDrift(field);
+        }
+      });
+    }
 
     bind();
     start(BUNDLE_ROOMS, false);
