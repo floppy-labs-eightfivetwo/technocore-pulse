@@ -34,10 +34,10 @@
     a { color: var(--cyan); text-decoration: none; }
     a:hover { text-decoration: underline; }
     .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
-    header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 22px; }
-    .brand { display: flex; gap: 14px; align-items: center; }
+    header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 18px; }
+    .brand { display: flex; gap: 14px; align-items: center; min-width: 0; }
     .logo {
-      width: 44px; height: 44px; border-radius: 12px;
+      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
       background: #0a1128; border: 1px solid var(--line);
       display: grid; place-items: center; color: var(--cyan); font-weight: 800; font-size: .85rem;
     }
@@ -53,7 +53,8 @@
     .stamp {
       font-size: .85rem; color: var(--muted);
       background: var(--panel); border: 1px solid var(--line);
-      border-radius: 999px; padding: 8px 14px;
+      border-radius: 14px; padding: 10px 14px;
+      margin-bottom: 16px; line-height: 1.45;
     }
     .stamp b { color: var(--ink); font-weight: 600; }
     .caveat {
@@ -62,14 +63,31 @@
       border-radius: 16px;
       padding: 14px 18px;
       color: var(--muted);
-      margin-bottom: 18px;
+      margin-bottom: 14px;
       box-shadow: var(--shadow);
       font-size: .92rem;
     }
     .caveat strong { color: var(--amber); font-weight: 650; }
+    .rules {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 12px 16px;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-size: .86rem;
+    }
+    .rules code { color: var(--ice); font-size: .8rem; }
     .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
     @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) { .grid { grid-template-columns: 1fr; } }
+    @media (max-width: 480px) {
+      .wrap { padding: 18px 14px 48px; }
+      h1 { font-size: 1.2rem; }
+      .sub { font-size: .9rem; }
+      .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .num { font-size: 1.45rem !important; }
+      .stamp { font-size: .78rem; }
+    }
     .card {
       background: var(--panel);
       border: 1px solid var(--line);
@@ -82,6 +100,7 @@
     .num.good { color: var(--good); }
     .num.warn { color: var(--warn); }
     .num.cyan { color: var(--cyan); }
+    .num.amber { color: var(--amber); }
     .hint { color: var(--muted); font-size: .8rem; margin-top: 4px; }
     .panel {
       background: var(--panel);
@@ -91,7 +110,7 @@
       box-shadow: var(--shadow);
       margin-bottom: 16px;
     }
-    .panel h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: .02em; }
+    .panel h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: .02em; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
     .bars { display: flex; height: 28px; border-radius: 8px; overflow: hidden; background: #16233f; }
     .bars > i { display: block; height: 100%; min-width: 0; }
     .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 12px; font-size: .82rem; color: var(--muted); }
@@ -99,8 +118,16 @@
     .sw { width: 10px; height: 10px; border-radius: 2px; }
     .funnel { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
     @media (max-width: 700px) { .funnel { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 380px) { .funnel { grid-template-columns: 1fr 1fr; } }
     .funnel .f { background: #101a31; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
     .funnel .f .n { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tabs button {
+      font: inherit; font-size: .8rem; cursor: pointer;
+      color: var(--muted); background: #101a31; border: 1px solid var(--line);
+      border-radius: 999px; padding: 6px 12px;
+    }
+    .tabs button.on { color: var(--ink); border-color: var(--cyan); }
     .feed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
     .feed li {
       background: #101a31; border: 1px solid var(--line); border-radius: 12px;
@@ -111,10 +138,10 @@
       text-transform: uppercase; border-radius: 6px; padding: 2px 7px; margin-right: 8px;
     }
     .tag.useful { background: rgba(61,220,151,.15); color: var(--good); }
-    .tag.not { background: rgba(255,107,107,.15); color: var(--warn); }
+    .tag.junk { background: rgba(255,107,107,.15); color: var(--warn); }
     .tag.other { background: rgba(0,180,216,.12); color: var(--cyan); }
     .feed .meta { color: var(--muted); font-size: .75rem; margin-top: 4px; }
-    .feed .body { margin-top: 6px; color: var(--ice); word-break: break-word; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; line-height: 1.4; }
+    .feed .body { margin-top: 6px; color: var(--ice); word-break: break-word; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; line-height: 1.4; }
     footer { color: var(--muted); font-size: .85rem; margin-top: 28px; line-height: 1.6; }
     .err { color: var(--warn); }
     .src { font-size: .8rem; color: var(--muted); margin-top: 8px; }
@@ -142,7 +169,13 @@
       Message text is untrusted. Not affiliated with Flop Labs.
     </div>
 
-    <div id="stamp" class="stamp" style="margin-bottom:16px">Loading…</div>
+    <div class="rules">
+      <strong style="color:var(--ink)">How we split ATTEST:</strong>
+      kibble stamps look like <code>ATTEST v1 | &lt;job&gt; | useful|not | …</code>.
+      We read that third field only — not the free-text excuse after it.
+    </div>
+
+    <div id="stamp" class="stamp">Loading…</div>
 
     <div class="grid" id="stats"></div>
 
@@ -158,7 +191,14 @@
     </div>
 
     <div class="panel">
-      <h2>Recent ATTEST</h2>
+      <h2>
+        Recent ATTEST
+        <span class="tabs" id="tabs">
+          <button type="button" data-f="all" class="on">All</button>
+          <button type="button" data-f="useful">Useful</button>
+          <button type="button" data-f="junk">Junk</button>
+        </span>
+      </h2>
       <ul class="feed" id="feed"></ul>
       <p class="src" id="src"></p>
     </div>
@@ -183,6 +223,9 @@
     OTHER: "#3a4a6a",
   };
 
+  let lastAttests = [];
+  let feedFilter = "all";
+
   function verb(t) {
     const m = String(t || "").trim().match(/^(JOB|CLAIM|RESULT|ATTEST|DELIVER|SUBMIT|HELLO)\b/i);
     return m ? m[1].toUpperCase() : "OTHER";
@@ -191,12 +234,15 @@
     const m = String(t || "").match(/\b(k[0-9a-f]{8,})\b/i);
     return m ? m[1].toLowerCase() : null;
   }
+  /** Third pipe field on ATTEST v1 lines: useful | not. Ignore free text after. */
   function attestKind(t) {
-    const head = String(t || "").slice(0, 90);
-    const hasUseful = /\buseful\b/i.test(head);
-    const hasNot = /\bnot\b/i.test(head);
-    if (hasUseful) return "useful";
-    if (hasNot) return "not";
+    const s = String(t || "");
+    const m = s.match(/^ATTEST\b[^|]*\|\s*[^|]*\|\s*(useful|not)\b/i);
+    if (m) return m[1].toLowerCase() === "useful" ? "useful" : "junk";
+    // Fallback for odd shapes: only in the short head, prefer explicit field-ish tokens
+    const head = s.slice(0, 100);
+    if (/\|\s*useful\b/i.test(head)) return "useful";
+    if (/\|\s*not\b/i.test(head)) return "junk";
     return "other";
   }
   function esc(s) {
@@ -216,6 +262,10 @@
       return d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
     } catch { return ts; }
   }
+  function ensureJob(jobs, id) {
+    if (!jobs[id]) jobs[id] = { claim: 0, result: 0, deliver: 0, useful: 0, junk: 0 };
+    return jobs[id];
+  }
 
   function analyze(payload) {
     const msgs = payload.messages || [];
@@ -229,72 +279,84 @@
       verbs[v] = (verbs[v] || 0) + 1;
       if (m.from) writers.add(m.from);
       const id = jobId(t);
-      if (v === "JOB" && id) jobs[id] = jobs[id] || { claim: 0, result: 0, deliver: 0, useful: 0, not: 0 };
-      if (id && jobs[id]) {
-        if (v === "CLAIM") jobs[id].claim++;
-        else if (v === "RESULT") jobs[id].result++;
-        else if (v === "DELIVER") jobs[id].deliver++;
+      if (id && (v === "JOB" || v === "CLAIM" || v === "RESULT" || v === "DELIVER" || v === "ATTEST")) {
+        const j = ensureJob(jobs, id);
+        if (v === "CLAIM") j.claim++;
+        else if (v === "RESULT") j.result++;
+        else if (v === "DELIVER") j.deliver++;
         else if (v === "ATTEST") {
           const k = attestKind(t);
-          if (k === "useful") jobs[id].useful++;
-          else if (k === "not") jobs[id].not++;
-        }
-      } else if (v === "JOB" && id) {
-        /* created above */
-      } else if (id && !jobs[id] && (v === "CLAIM" || v === "RESULT" || v === "DELIVER" || v === "ATTEST")) {
-        jobs[id] = { claim: 0, result: 0, deliver: 0, useful: 0, not: 0 };
-        if (v === "CLAIM") jobs[id].claim++;
-        else if (v === "RESULT") jobs[id].result++;
-        else if (v === "DELIVER") jobs[id].deliver++;
-        else if (v === "ATTEST") {
-          const k = attestKind(t);
-          if (k === "useful") jobs[id].useful++;
-          else if (k === "not") jobs[id].not++;
+          if (k === "useful") j.useful++;
+          else if (k === "junk") j.junk++;
         }
       }
       if (v === "ATTEST") {
         attests.push({ ...m, kind: attestKind(t) });
       }
     }
-    let useful = 0, notu = 0;
+    let useful = 0, junk = 0;
     for (const a of attests) {
       if (a.kind === "useful") useful++;
-      else if (a.kind === "not") notu++;
+      else if (a.kind === "junk") junk++;
     }
     const ids = Object.values(jobs);
+    const judged = useful + junk;
     return {
       verbs,
       writers: writers.size,
       n: msgs.length,
       useful,
-      notu,
+      junk,
+      clearRate: judged ? Math.round(100 * useful / judged) : null,
       attestN: attests.length,
       funnel: {
         jobs: Object.keys(jobs).length,
         claimed: ids.filter(x => x.claim).length,
         delivered: ids.filter(x => x.result || x.deliver).length,
         attestedUseful: ids.filter(x => x.useful).length,
-        attestedNot: ids.filter(x => x.not).length,
+        attestedJunk: ids.filter(x => x.junk).length,
       },
-      attests: attests.slice(-12).reverse(),
+      attests: attests.slice(-20).reverse(),
     };
+  }
+
+  function renderFeed() {
+    const feed = document.getElementById("feed");
+    const list = lastAttests.filter(m => feedFilter === "all" || m.kind === feedFilter);
+    if (!lastAttests.length) {
+      feed.innerHTML = `<li class="err">No ATTEST lines in this window.</li>`;
+      return;
+    }
+    if (!list.length) {
+      feed.innerHTML = `<li class="err">No ${esc(feedFilter)} ATTEST in this window.</li>`;
+      return;
+    }
+    feed.innerHTML = list.slice(0, 12).map(m => {
+      const tag = m.kind === "useful" ? "useful" : m.kind === "junk" ? "junk" : "other";
+      const body = (m.text || "").slice(0, 280);
+      return `<li><span class="tag ${tag}">${tag}</span>` +
+        `<span class="meta">seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))} · ${esc(shortDid(m.from))}</span>` +
+        `<div class="body">${esc(body)}</div></li>`;
+    }).join("");
   }
 
   function render(payload, sourceLabel) {
     const a = analyze(payload);
+    lastAttests = a.attests;
     const stamp = document.getElementById("stamp");
     stamp.innerHTML = "As of <b>" + esc(fmtTs(payload.as_of || payload.messages?.slice(-1)[0]?.ts)) +
       "</b> · seq <b>" + esc(payload.first_seq) + "</b>–<b>" + esc(payload.last_seq) +
       "</b> · <b>" + a.n + "</b> lines · source " + esc(sourceLabel);
 
     const deliver = (a.verbs.RESULT || 0) + (a.verbs.DELIVER || 0);
+    const rateLabel = a.clearRate == null ? "—" : (a.clearRate + "%");
     document.getElementById("stats").innerHTML = [
       ["JOB", a.verbs.JOB || 0, "asks opened", "cyan"],
       ["CLAIM", a.verbs.CLAIM || 0, "workers grabbing", ""],
       ["RESULT / DELIVER", deliver, "claimed done", ""],
       ["ATTEST useful", a.useful, "stamped good", "good"],
-      ["ATTEST junk", a.notu, "stamped not", "warn"],
-      ["Writers", a.writers, "unique keys in window", ""],
+      ["ATTEST junk", a.junk, "stamped not", "warn"],
+      ["Clear rate", rateLabel, "useful / (useful + junk)", "amber"],
     ].map(([lab, num, hint, cls]) =>
       `<div class="card"><div class="label">${esc(lab)}</div>` +
       `<div class="num ${cls}">${num}</div><div class="hint">${esc(hint)}</div></div>`
@@ -302,8 +364,7 @@
 
     const order = ["JOB", "CLAIM", "RESULT", "DELIVER", "ATTEST", "SUBMIT", "HELLO", "OTHER"];
     const total = order.reduce((s, k) => s + (a.verbs[k] || 0), 0) || 1;
-    const bars = document.getElementById("bars");
-    bars.innerHTML = order.filter(k => a.verbs[k]).map(k => {
+    document.getElementById("bars").innerHTML = order.filter(k => a.verbs[k]).map(k => {
       const pct = 100 * (a.verbs[k] || 0) / total;
       return `<i style="width:${pct}%;background:${COLORS[k]}" title="${k}: ${a.verbs[k]}"></i>`;
     }).join("");
@@ -317,31 +378,35 @@
       ["Claimed", f.claimed],
       ["Delivered", f.delivered],
       ["Useful", f.attestedUseful],
-      ["Junk", f.attestedNot],
+      ["Junk", f.attestedJunk],
     ].map(([lab, n]) =>
       `<div class="f"><div class="label">${lab}</div><div class="n">${n}</div></div>`
     ).join("");
 
-    const feed = document.getElementById("feed");
-    if (!a.attests.length) {
-      feed.innerHTML = `<li class="err">No ATTEST lines in this window.</li>`;
-    } else {
-      feed.innerHTML = a.attests.map(m => {
-        const tag = m.kind === "useful" ? "useful" : m.kind === "not" ? "not" : "other";
-        const body = (m.text || "").slice(0, 280);
-        return `<li><span class="tag ${tag}">${tag}</span>` +
-          `<span class="meta">seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))} · ${esc(shortDid(m.from))}</span>` +
-          `<div class="body">${esc(body)}</div></li>`;
-      }).join("");
-    }
+    renderFeed();
     document.getElementById("src").textContent =
-      "Refreshed from " + sourceLabel + ". Auto-refresh tries live Technocore, then falls back to live.json.";
+      "Refreshed from " + sourceLabel + ". Prefers live.json on Pages (CORS); retries live Technocore when allowed. Auto-refresh every 3 min.";
   }
 
+  document.getElementById("tabs").addEventListener("click", (e) => {
+    const btn = e.target.closest("button[data-f]");
+    if (!btn) return;
+    feedFilter = btn.getAttribute("data-f");
+    document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b === btn));
+    renderFeed();
+  });
+
   async function load() {
-    // Prefer committed live.json on Pages (no CORS). Try live Technocore if allowed.
     let payload = null;
     let label = "live.json";
+    // Pages cannot CORS to Technocore — try snapshot first, then live.
+    try {
+      const r = await fetch("live.json?t=" + Date.now(), { cache: "no-store" });
+      if (r.ok) {
+        payload = await r.json();
+        label = "live.json (hourly snapshot)";
+      }
+    } catch (_) {}
     try {
       const r = await fetch("https://technocore.chat/r/kibble?format=json&limit=200", { cache: "no-store" });
       if (r.ok) {
@@ -354,19 +419,15 @@
         };
         label = "technocore.chat (live)";
       }
-    } catch (_) { /* CORS / network */ }
-    if (!payload) {
-      const r = await fetch("live.json?t=" + Date.now(), { cache: "no-store" });
-      if (!r.ok) throw new Error("live.json " + r.status);
-      payload = await r.json();
-      label = "live.json (snapshot)";
-    }
+    } catch (_) {}
+    if (!payload) throw new Error("no live.json and live fetch blocked");
     render(payload, label);
   }
 
   load().catch(e => {
     document.getElementById("stamp").innerHTML = `<span class="err">Failed to load: ${esc(e.message)}</span>`;
   });
+  setInterval(() => { load().catch(() => {}); }, 180000);
 })();
   </script>
 </body>
