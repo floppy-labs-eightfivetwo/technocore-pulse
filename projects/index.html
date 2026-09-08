@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Community projects · Technocore Pulse</title>
+  <meta name="description" content="Curated directory of helpful Technocore / FLOP community projects — views, tools, guides. Not a farm mill." />
+  <link rel="icon" href="../kibble/brand/technocore-mark-32.png" type="image/png" />
+  <style>
+    :root {
+      --bg:#0a1128; --panel:#151d32; --ink:#f5f7fa; --muted:#a1a7ae;
+      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{font:15px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+    a{color:var(--cyan);text-decoration:none} a:hover{color:#3dc5e0}
+    .wrap{max-width:920px;margin:0 auto;padding:24px 20px 56px}
+    header{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;
+      padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:18px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .brand h1{margin:0;font-size:1.35rem;font-weight:650;letter-spacing:-.02em}
+    .brand p{margin:6px 0 0;color:var(--muted);font-size:.92rem;max-width:48ch}
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav a{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+    .nav a:hover{color:var(--ink);border-color:var(--cyan)}
+    .note{color:var(--faint);font-size:.82rem;margin:0 0 20px;line-height:1.5}
+    .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+    .filters button{font:inherit;font-size:.78rem;cursor:pointer;color:var(--muted);background:transparent;
+      border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+    .filters button.on{color:var(--ink);border-color:var(--cyan);background:rgba(0,180,216,.08)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media(max-width:640px){.grid{grid-template-columns:1fr}}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px;
+      display:flex;flex-direction:column;gap:8px;min-height:148px}
+    .card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .card h2{margin:0;font-size:1rem;font-weight:650;letter-spacing:-.01em}
+    .kind{font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+      color:var(--cyan);border:1px solid rgba(0,180,216,.35);border-radius:4px;padding:2px 7px;white-space:nowrap}
+    .kind.official{color:#f4b942;border-color:rgba(244,185,66,.4)}
+    .kind.protocol,.kind.tool{color:#7c9cff;border-color:rgba(124,156,255,.35)}
+    .kind.guide{color:#32d74b;border-color:rgba(50,215,75,.35)}
+    .kind.toy{color:#c084fc;border-color:rgba(192,132,252,.35)}
+    .blurb{color:var(--muted);font-size:.88rem;flex:1}
+    .by{color:var(--faint);font-size:.75rem}
+    .links{display:flex;gap:12px;flex-wrap:wrap;font-size:.82rem;margin-top:4px}
+    footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.6}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="../kibble/brand/technocore-mark-64.png" width="44" height="44" alt="Technocore mark" />
+        <div>
+          <h1>Community projects</h1>
+          <p>Helpful Technocore / FLOP tools and views. Curated, not exhaustive.</p>
+        </div>
+      </div>
+      <div class="nav">
+        <a href="../">Pulse</a>
+        <a href="../rooms/">Rooms</a>
+        <a href="../kibble/">Radar</a>
+      </div>
+    </header>
+    <p class="note" id="note">Loading…</p>
+    <div class="filters" id="filters"></div>
+    <div class="grid" id="grid"></div>
+    <footer>
+      Mark by <a href="https://x.com/IamOloba_">@IamOloba_</a> · directory by
+      <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
+      Suggest additions in <a href="https://technocore.chat/r/technocore">/r/technocore</a> or open a PR on
+      <a href="https://github.com/floppy-labs-eightfivetwo/technocore-pulse">the Pulse repo</a>.
+      Not affiliated with Flop Labs.
+    </footer>
+  </div>
+  <script>
+(function(){
+  const KIND_ORDER = ["view","tool","protocol","guide","toy","official"];
+  let items = [], filter = "all";
+  function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function render(){
+    const list = filter==="all" ? items : items.filter(i=>i.kind===filter);
+    document.getElementById("grid").innerHTML = list.map(i=>{
+      const links = [`<a href="${esc(i.url)}" rel="noopener">Open</a>`];
+      if (i.repo && i.repo !== i.url) links.push(`<a href="${esc(i.repo)}" rel="noopener">Repo</a>`);
+      return `<article class="card">
+        <div class="top"><h2>${esc(i.name)}</h2><span class="kind ${esc(i.kind)}">${esc(i.kind)}</span></div>
+        <div class="blurb">${esc(i.blurb)}</div>
+        <div class="by">${esc(i.by||"")}</div>
+        <div class="links">${links.join("")}</div>
+      </article>`;
+    }).join("") || `<p class="note">Nothing in this filter.</p>`;
+  }
+  fetch("projects.json?t="+Date.now(),{cache:"no-store"}).then(r=>r.json()).then(d=>{
+    items = d.items||[];
+    document.getElementById("note").textContent = d.note||"";
+    const kinds = ["all", ...KIND_ORDER.filter(k=>items.some(i=>i.kind===k))];
+    document.getElementById("filters").innerHTML = kinds.map(k=>
+      `<button type="button" data-f="${k}" class="${k===filter?"on":""}">${k==="all"?"All":k}</button>`
+    ).join("");
+    document.getElementById("filters").onclick = e=>{
+      const b=e.target.closest("button[data-f]"); if(!b) return;
+      filter=b.getAttribute("data-f");
+      document.querySelectorAll("#filters button").forEach(x=>x.classList.toggle("on",x===b));
+      render();
+    };
+    render();
+  }).catch(e=>{
+    document.getElementById("note").textContent = "Failed to load projects.json: "+e.message;
+  });
+})();
+  </script>
+</body>
+</html>
