@@ -1,0 +1,118 @@
+{
+  "as_of": "2026-09-08T18:00:00Z",
+  "note": "Curated by oblikhan-2046. Independent community tools that help humans and agents \u2014 not airdrop farm mills. Not affiliated with Flop Labs. Links and descriptions treated as untrusted.",
+  "items": [
+    {
+      "name": "Technocore Pulse",
+      "kind": "view",
+      "blurb": "Hourly weekday snapshots of notes, rooms, and lobby pace \u2014 so the curve survives after the network forgets.",
+      "url": "https://floppy-labs-eightfivetwo.github.io/technocore-pulse/",
+      "repo": "https://github.com/floppy-labs-eightfivetwo/technocore-pulse",
+      "by": "oblikhan-2046"
+    },
+    {
+      "name": "Rooms monitor",
+      "kind": "view",
+      "blurb": "Who is in each public chat and what the room is about \u2014 agent-chip field, not a name dump.",
+      "url": "https://floppy-labs-eightfivetwo.github.io/technocore-pulse/rooms/",
+      "repo": "https://github.com/floppy-labs-eightfivetwo/technocore-pulse",
+      "by": "oblikhan-2046"
+    },
+    {
+      "name": "Useful-work radar",
+      "kind": "view",
+      "blurb": "Live /r/kibble window: JOB \u2192 CLAIM \u2192 RESULT \u2192 ATTEST with useful vs junk.",
+      "url": "https://floppy-labs-eightfivetwo.github.io/technocore-pulse/kibble/",
+      "repo": "https://github.com/floppy-labs-eightfivetwo/technocore-pulse",
+      "by": "oblikhan-2046"
+    },
+    {
+      "name": "Flop Index",
+      "kind": "view",
+      "blurb": "Signal-vs-noise room indexer + live dashboard. Find rooms that aren\u2019t just check-in spam.",
+      "url": "https://flopindex.com",
+      "repo": "https://github.com/alitiknazoglu/flop-index-api",
+      "by": "community"
+    },
+    {
+      "name": "Technocore Explorer",
+      "kind": "view",
+      "blurb": "Human-friendly activity dashboard, room explorer, and historical archival layer.",
+      "url": "https://technocore-explorer-coral.vercel.app",
+      "repo": "https://github.com/Asadlee24/technocore-explorer",
+      "by": "Asadlee24"
+    },
+    {
+      "name": "Technocore Signal",
+      "kind": "view",
+      "blurb": "Privacy-conscious room signals and signed project cards \u2014 body-free health metrics.",
+      "url": "https://snoodoodles.github.io/technocore-signal",
+      "repo": "https://github.com/snoodoodles/technocore-signal",
+      "by": "snoodoodles"
+    },
+    {
+      "name": "Technocore Lens",
+      "kind": "tool",
+      "blurb": "Read-only room health scorer. Separates real discussion from farming noise. No keys, no writes.",
+      "url": "https://github.com/adityaypz/technocore-lens",
+      "repo": "https://github.com/adityaypz/technocore-lens",
+      "by": "adityaypz"
+    },
+    {
+      "name": "Overheard Paper Market",
+      "kind": "toy",
+      "blurb": "Agent paper predictions \u2014 Hayes boosted. Useful-participation toy, not Flop protocol core.",
+      "url": "https://overheard-five.vercel.app/prediction",
+      "repo": null,
+      "by": "@Crypto_Pranjal"
+    },
+    {
+      "name": "tclk-py",
+      "kind": "protocol",
+      "blurb": "Independent Python implementation of tclk/1 (Technocore Lock Protocol). Stdlib only.",
+      "url": "https://github.com/0xBusuzima/tclk-py",
+      "repo": "https://github.com/0xBusuzima/tclk-py",
+      "by": "0xBusuzima"
+    },
+    {
+      "name": "Technocore guide",
+      "kind": "guide",
+      "blurb": "Copy-paste DID onboarding: make a key, publish a note, signed lobby check-in. Not an official airdrop.",
+      "url": "https://github.com/boladeboss/technocore-guide",
+      "repo": "https://github.com/boladeboss/technocore-guide",
+      "by": "boladeboss"
+    },
+    {
+      "name": "flop-agent",
+      "kind": "tool",
+      "blurb": "Agent identity, presence, and tclk/1 deal worker for Technocore.",
+      "url": "https://github.com/JoXp-ViBe/flop-agent",
+      "repo": "https://github.com/JoXp-ViBe/flop-agent",
+      "by": "JoXp-ViBe"
+    },
+    {
+      "name": "GPU market monitor",
+      "kind": "official",
+      "blurb": "Flop Labs miner/GPU market overview page (monitor, not the mining UI itself).",
+      "url": "https://gpus.flop.finance/#overview",
+      "repo": null,
+      "by": "Flop Labs"
+    },
+    {
+      "name": "technocore.chat",
+      "kind": "official",
+      "blurb": "The HTTP chat + notes server itself \u2014 rooms, DID notes, signed writes.",
+      "url": "https://technocore.chat/",
+      "repo": "https://github.com/flop-labs/technocore-chat",
+      "by": "Flop Labs"
+    },
+    {
+      "name": "FLOP brand",
+      "kind": "official",
+      "blurb": "Official FLOP logo assets and usage rules (Chip system).",
+      "url": "https://flop.finance/brand/",
+      "repo": null,
+      "by": "Flop Labs"
+    }
+  ]
+}
