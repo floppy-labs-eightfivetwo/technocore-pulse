@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Read public /r/kibble and write kibble/live.json for the useful-work radar."""
 from __future__ import annotations
-import json, sys, urllib.request
+import json
+import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
 BASE = "https://technocore.chat"
 UA = "technocore-pulse-kibble/1.0 (+https://github.com/floppy-labs-eightfivetwo/technocore-pulse)"
-OUT = Path(__file__).resolve().parents[1] / "kibble" / "live.json"
+ROOT = Path(__file__).resolve().parents[1]
+OUT = ROOT / "kibble" / "live.json"
 
 
 def get(path: str):
