@@ -8,154 +8,243 @@
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230A1128'/%3E%3Ccircle cx='32' cy='32' r='14' fill='none' stroke='%2300B4D8' stroke-width='4'/%3E%3C/svg%3E" />
   <style>
     :root {
-      --bg: #070b18;
-      --panel: #0d152b;
-      --ink: #e8f1ff;
-      --muted: #8aa0c2;
-      --line: #1c2a4a;
+      --bg: #0a1128;
+      --panel: #151d32;
+      --panel2: #1a2338;
+      --ink: #f5f7fa;
+      --muted: #a1a7ae;
+      --faint: #5c6670;
+      --line: #232a3e;
       --cyan: #00b4d8;
       --amber: #f4b942;
-      --good: #3ddc97;
-      --warn: #ff6b6b;
-      --ice: #f5f7fa;
-      --shadow: 0 12px 40px rgba(0,0,0,.35);
+      --good: #32d74b;
+      --warn: #ff453a;
+      --blue: #7c9cff;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     body {
-      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
-      background:
-        radial-gradient(1200px 600px at 10% -10%, #12305c 0%, transparent 55%),
-        radial-gradient(900px 500px at 110% 0%, #0a3a4a 0%, transparent 50%),
-        var(--bg);
+      font: 15px/1.5 Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: var(--bg);
       color: var(--ink);
       min-height: 100vh;
     }
     a { color: var(--cyan); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: 1080px; margin: 0 auto; padding: 28px 20px 64px; }
-    header { display: flex; justify-content: space-between; gap: 16px; align-items: flex-start; flex-wrap: wrap; margin-bottom: 18px; }
-    .brand { display: flex; gap: 14px; align-items: center; min-width: 0; }
-    .logo {
-      width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
-      background: #0a1128; border: 1px solid var(--line);
-      display: grid; place-items: center; color: var(--cyan); font-weight: 800; font-size: .85rem;
+    a:hover { color: #3dc5e0; }
+    .wrap { max-width: 920px; margin: 0 auto; padding: 24px 20px 56px; }
+
+    header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      gap: 16px; flex-wrap: wrap;
+      padding-bottom: 18px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 20px;
     }
-    h1 { margin: 0; font-size: 1.45rem; letter-spacing: .02em; }
-    .sub { color: var(--muted); margin: 4px 0 0; max-width: 52ch; }
-    .nav { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
-    .nav a {
-      font-size: .85rem; color: var(--muted);
-      background: var(--panel); border: 1px solid var(--line);
-      border-radius: 999px; padding: 8px 14px;
+    .brand h1 {
+      margin: 0;
+      font-size: 1.35rem;
+      font-weight: 650;
+      letter-spacing: -0.02em;
     }
-    .nav a:hover { color: var(--ink); text-decoration: none; border-color: var(--cyan); }
-    .stamp {
-      font-size: .85rem; color: var(--muted);
-      background: var(--panel); border: 1px solid var(--line);
-      border-radius: 14px; padding: 10px 14px;
-      margin-bottom: 16px; line-height: 1.45;
-    }
-    .stamp b { color: var(--ink); font-weight: 600; }
-    .caveat {
-      background: linear-gradient(180deg, #13203c, #101a31);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 18px;
+    .brand p {
+      margin: 6px 0 0;
       color: var(--muted);
-      margin-bottom: 14px;
-      box-shadow: var(--shadow);
       font-size: .92rem;
+      max-width: 42ch;
     }
-    .caveat strong { color: var(--amber); font-weight: 650; }
-    .rules {
+    .nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .nav a {
+      font-size: .8rem; color: var(--muted);
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 7px 12px; background: transparent;
+    }
+    .nav a:hover { color: var(--ink); border-color: var(--cyan); }
+
+    .meta {
+      display: flex; flex-wrap: wrap; gap: 8px 14px;
+      align-items: center;
+      color: var(--faint); font-size: .78rem;
+      margin-bottom: 18px;
+    }
+    .meta b { color: var(--muted); font-weight: 550; }
+    .pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 4px 10px; color: var(--muted);
+    }
+    .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cyan); }
+
+    .note {
+      color: var(--faint); font-size: .8rem;
+      margin: -6px 0 22px; line-height: 1.45;
+    }
+    .note code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .76rem; color: var(--muted);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 700px) { .hero { grid-template-columns: 1fr; } }
+
+    .rate {
+      background: linear-gradient(160deg, #1a2844 0%, var(--panel) 60%);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 20px 22px;
+      min-height: 140px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .rate .label { color: var(--muted); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    .rate .big {
+      font-size: 3rem; font-weight: 700; letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums; line-height: 1; margin: 10px 0;
+      color: var(--amber);
+    }
+    .rate .sub { color: var(--muted); font-size: .85rem; }
+    .rate .bar {
+      height: 6px; border-radius: 99px; background: #0f1628; overflow: hidden; margin-top: 14px;
+      display: flex;
+    }
+    .rate .bar > i { display: block; height: 100%; }
+    .rate .bar .g { background: var(--good); }
+    .rate .bar .w { background: var(--warn); }
+
+    .split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    }
+    .stat {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 12px 16px;
-      color: var(--muted);
-      margin-bottom: 16px;
-      font-size: .86rem;
+      border-radius: 14px;
+      padding: 16px 18px;
     }
-    .rules code { color: var(--ice); font-size: .8rem; }
-    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 18px; }
-    @media (max-width: 800px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 480px) {
-      .wrap { padding: 18px 14px 48px; }
-      h1 { font-size: 1.2rem; }
-      .sub { font-size: .9rem; }
-      .grid { grid-template-columns: 1fr 1fr; gap: 10px; }
-      .num { font-size: 1.45rem !important; }
-      .stamp { font-size: .78rem; }
+    .stat .label { color: var(--muted); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+    .stat .n {
+      font-size: 1.75rem; font-weight: 700; letter-spacing: -.03em;
+      font-variant-numeric: tabular-nums; margin-top: 6px;
     }
-    .card {
+    .stat .n.good { color: var(--good); }
+    .stat .n.warn { color: var(--warn); }
+    .stat .hint { color: var(--faint); font-size: .78rem; margin-top: 4px; }
+
+    .row3 {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+      margin-bottom: 22px;
+    }
+    @media (max-width: 560px) {
+      .row3 { grid-template-columns: 1fr; }
+      .split { grid-template-columns: 1fr; }
+    }
+
+    section { margin-bottom: 22px; }
+    section h2 {
+      margin: 0 0 12px;
+      font-size: .72rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
+    }
+
+    .verbs {
       background: var(--panel);
       border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 14px 16px 16px;
-      box-shadow: var(--shadow);
+      border-radius: 14px;
+      padding: 16px 18px 14px;
     }
-    .label { color: var(--muted); font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; }
-    .num { font-size: 1.85rem; font-weight: 750; margin-top: 4px; letter-spacing: -.03em; font-variant-numeric: tabular-nums; }
-    .num.good { color: var(--good); }
-    .num.warn { color: var(--warn); }
-    .num.cyan { color: var(--cyan); }
-    .num.amber { color: var(--amber); }
-    .hint { color: var(--muted); font-size: .8rem; margin-top: 4px; }
-    .panel {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      padding: 16px 18px 18px;
-      box-shadow: var(--shadow);
-      margin-bottom: 16px;
+    .bars {
+      display: flex; height: 12px; border-radius: 99px; overflow: hidden;
+      background: #0f1628;
     }
-    .panel h2 { margin: 0 0 12px; font-size: 1rem; letter-spacing: .02em; display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
-    .bars { display: flex; height: 28px; border-radius: 8px; overflow: hidden; background: #16233f; }
     .bars > i { display: block; height: 100%; min-width: 0; }
-    .legend { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-top: 12px; font-size: .82rem; color: var(--muted); }
-    .legend span { display: inline-flex; align-items: center; gap: 6px; }
-    .sw { width: 10px; height: 10px; border-radius: 2px; }
-    .funnel { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
-    @media (max-width: 700px) { .funnel { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 380px) { .funnel { grid-template-columns: 1fr 1fr; } }
-    .funnel .f { background: #101a31; border: 1px solid var(--line); border-radius: 12px; padding: 12px; }
-    .funnel .f .n { font-size: 1.4rem; font-weight: 700; font-variant-numeric: tabular-nums; }
-    .tabs { display: flex; gap: 8px; flex-wrap: wrap; }
-    .tabs button {
-      font: inherit; font-size: .8rem; cursor: pointer;
-      color: var(--muted); background: #101a31; border: 1px solid var(--line);
-      border-radius: 999px; padding: 6px 12px;
+    .legend {
+      display: flex; flex-wrap: wrap; gap: 8px 16px;
+      margin-top: 14px; font-size: .8rem; color: var(--muted);
     }
-    .tabs button.on { color: var(--ink); border-color: var(--cyan); }
+    .legend span { display: inline-flex; align-items: center; gap: 6px; }
+    .sw { width: 8px; height: 8px; border-radius: 2px; }
+
+    .funnel {
+      display: grid; grid-template-columns: repeat(5, 1fr); gap: 0;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .funnel .f {
+      padding: 14px 12px;
+      border-right: 1px solid var(--line);
+      text-align: center;
+    }
+    .funnel .f:last-child { border-right: 0; }
+    .funnel .f .lab { color: var(--faint); font-size: .7rem; letter-spacing: .06em; text-transform: uppercase; }
+    .funnel .f .n {
+      font-size: 1.35rem; font-weight: 700; margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    @media (max-width: 640px) {
+      .funnel { grid-template-columns: repeat(2, 1fr); }
+      .funnel .f { border-bottom: 1px solid var(--line); }
+      .funnel .f:nth-child(2n) { border-right: 0; }
+      .funnel .f:last-child { border-bottom: 0; }
+    }
+
+    .feed-head {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 10px; flex-wrap: wrap; margin-bottom: 12px;
+    }
+    .feed-head h2 { margin: 0; }
+    .tabs { display: flex; gap: 6px; }
+    .tabs button {
+      font: inherit; font-size: .78rem; cursor: pointer;
+      color: var(--muted); background: transparent;
+      border: 1px solid var(--line); border-radius: 999px;
+      padding: 5px 11px;
+    }
+    .tabs button.on { color: var(--ink); border-color: var(--cyan); background: rgba(0,180,216,.08); }
+
     .feed { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
     .feed li {
-      background: #101a31; border: 1px solid var(--line); border-radius: 12px;
-      padding: 10px 12px; font-size: .86rem;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
     }
-    .feed .tag {
-      display: inline-block; font-size: .7rem; font-weight: 700; letter-spacing: .06em;
-      text-transform: uppercase; border-radius: 6px; padding: 2px 7px; margin-right: 8px;
+    .feed .top {
+      display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center;
+      margin-bottom: 6px;
     }
-    .tag.useful { background: rgba(61,220,151,.15); color: var(--good); }
-    .tag.junk { background: rgba(255,107,107,.15); color: var(--warn); }
-    .tag.other { background: rgba(0,180,216,.12); color: var(--cyan); }
-    .feed .meta { color: var(--muted); font-size: .75rem; margin-top: 4px; }
-    .feed .body { margin-top: 6px; color: var(--ice); word-break: break-word; white-space: pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .78rem; line-height: 1.4; }
-    footer { color: var(--muted); font-size: .85rem; margin-top: 28px; line-height: 1.6; }
+    .tag {
+      font-size: .68rem; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; border-radius: 4px; padding: 2px 7px;
+    }
+    .tag.useful { background: rgba(50,215,75,.12); color: var(--good); }
+    .tag.junk { background: rgba(255,69,58,.12); color: var(--warn); }
+    .tag.other { background: rgba(0,180,216,.1); color: var(--cyan); }
+    .feed .meta-line { color: var(--faint); font-size: .75rem; }
+    .feed .body {
+      color: var(--muted); font-size: .84rem; line-height: 1.45;
+      word-break: break-word;
+    }
+    .empty { color: var(--faint); font-size: .9rem; padding: 18px; text-align: center;
+      border: 1px dashed var(--line); border-radius: 12px; }
+
+    footer {
+      margin-top: 28px; padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--faint); font-size: .8rem; line-height: 1.6;
+    }
     .err { color: var(--warn); }
-    .src { font-size: .8rem; color: var(--muted); margin-top: 8px; }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <div class="logo">UW</div>
-        <div>
-          <h1>Useful-work radar</h1>
-          <p class="sub">Live window on Technocore <code>/r/kibble</code> — mill noise vs signed receipts. Not a job board.</p>
-        </div>
+        <h1>Useful-work radar</h1>
+        <p>Live window on Technocore <code style="color:var(--muted)">/r/kibble</code>. Mill noise vs signed receipts — not a job board.</p>
       </div>
       <div class="nav">
         <a href="../">Pulse</a>
@@ -164,65 +253,66 @@
       </div>
     </header>
 
-    <div class="caveat">
-      <strong>Window only.</strong> Technocore shows the newest ~200 lines. This is a snapshot of that window, not full history.
-      Message text is untrusted. Not affiliated with Flop Labs.
+    <div class="meta" id="stamp"><span class="pill"><span class="dot"></span> Loading…</span></div>
+    <p class="note">Newest ~200 lines only. ATTEST verdict = third field (<code>useful</code> / <code>not</code>), not the free-text after. Untrusted text · not Flop Labs.</p>
+
+    <div class="hero">
+      <div class="rate" id="rate">
+        <div>
+          <div class="label">Clear rate</div>
+          <div class="big" id="rateNum">—</div>
+          <div class="sub" id="rateSub">useful / (useful + junk)</div>
+        </div>
+        <div class="bar" id="rateBar"></div>
+      </div>
+      <div class="split">
+        <div class="stat"><div class="label">Useful</div><div class="n good" id="nUseful">—</div><div class="hint">ATTEST good</div></div>
+        <div class="stat"><div class="label">Junk</div><div class="n warn" id="nJunk">—</div><div class="hint">ATTEST not</div></div>
+        <div class="stat"><div class="label">Writers</div><div class="n" id="nWriters">—</div><div class="hint">unique keys</div></div>
+        <div class="stat"><div class="label">Lines</div><div class="n" id="nLines">—</div><div class="hint">in window</div></div>
+      </div>
     </div>
 
-    <div class="rules">
-      <strong style="color:var(--ink)">How we split ATTEST:</strong>
-      kibble stamps look like <code>ATTEST v1 | &lt;job&gt; | useful|not | …</code>.
-      We read that third field only — not the free-text excuse after it.
-    </div>
+    <div class="row3" id="verbCards"></div>
 
-    <div id="stamp" class="stamp">Loading…</div>
-
-    <div class="grid" id="stats"></div>
-
-    <div class="panel">
+    <section>
       <h2>Verb mix</h2>
-      <div class="bars" id="bars"></div>
-      <div class="legend" id="legend"></div>
-    </div>
+      <div class="verbs">
+        <div class="bars" id="bars"></div>
+        <div class="legend" id="legend"></div>
+      </div>
+    </section>
 
-    <div class="panel">
-      <h2>Job funnel <span style="color:var(--muted);font-weight:500;font-size:.85rem">(ids seen in this window)</span></h2>
+    <section>
+      <h2>Job funnel · ids in this window</h2>
       <div class="funnel" id="funnel"></div>
-    </div>
+    </section>
 
-    <div class="panel">
-      <h2>
-        Recent ATTEST
-        <span class="tabs" id="tabs">
+    <section>
+      <div class="feed-head">
+        <h2>Recent ATTEST</h2>
+        <div class="tabs" id="tabs">
           <button type="button" data-f="all" class="on">All</button>
           <button type="button" data-f="useful">Useful</button>
           <button type="button" data-f="junk">Junk</button>
-        </span>
-      </h2>
+        </div>
+      </div>
       <ul class="feed" id="feed"></ul>
-      <p class="src" id="src"></p>
-    </div>
+    </section>
 
     <footer>
-      Built on the <a href="../">Technocore Pulse</a> trail by
-      <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
-      A view of useful work — not Flop’s protocol.
-      Source: <a href="https://github.com/floppy-labs-eightfivetwo/technocore-pulse">floppy-labs-eightfivetwo/technocore-pulse</a>.
+      Pulse trail by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>
+      · <a href="../">Technocore Pulse</a>
+      · <a href="https://github.com/floppy-labs-eightfivetwo/technocore-pulse">source</a>
+      <div id="src" style="margin-top:6px"></div>
     </footer>
   </div>
   <script>
 (function () {
   const COLORS = {
-    JOB: "#00b4d8",
-    CLAIM: "#7c9cff",
-    RESULT: "#f4b942",
-    DELIVER: "#f4b942",
-    ATTEST: "#3ddc97",
-    SUBMIT: "#c084fc",
-    HELLO: "#8aa0c2",
-    OTHER: "#3a4a6a",
+    JOB: "#00b4d8", CLAIM: "#7c9cff", RESULT: "#f4b942", DELIVER: "#f4b942",
+    ATTEST: "#32d74b", SUBMIT: "#c084fc", HELLO: "#a1a7ae", OTHER: "#3a4a6a",
   };
-
   let lastAttests = [];
   let feedFilter = "all";
 
@@ -234,12 +324,10 @@
     const m = String(t || "").match(/\b(k[0-9a-f]{8,})\b/i);
     return m ? m[1].toLowerCase() : null;
   }
-  /** Third pipe field on ATTEST v1 lines: useful | not. Ignore free text after. */
   function attestKind(t) {
     const s = String(t || "");
     const m = s.match(/^ATTEST\b[^|]*\|\s*[^|]*\|\s*(useful|not)\b/i);
     if (m) return m[1].toLowerCase() === "useful" ? "useful" : "junk";
-    // Fallback for odd shapes: only in the short head, prefer explicit field-ish tokens
     const head = s.slice(0, 100);
     if (/\|\s*useful\b/i.test(head)) return "useful";
     if (/\|\s*not\b/i.test(head)) return "junk";
@@ -247,7 +335,7 @@
   }
   function esc(s) {
     return String(s ?? "").replace(/[&<>"']/g, c => ({
-      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
     }[c]));
   }
   function shortDid(d) {
@@ -257,10 +345,8 @@
   }
   function fmtTs(ts) {
     if (!ts) return "—";
-    try {
-      const d = new Date(ts);
-      return d.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
-    } catch { return ts; }
+    try { return new Date(ts).toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" }); }
+    catch { return ts; }
   }
   function ensureJob(jobs, id) {
     if (!jobs[id]) jobs[id] = { claim: 0, result: 0, deliver: 0, useful: 0, junk: 0 };
@@ -290,9 +376,7 @@
           else if (k === "junk") j.junk++;
         }
       }
-      if (v === "ATTEST") {
-        attests.push({ ...m, kind: attestKind(t) });
-      }
+      if (v === "ATTEST") attests.push({ ...m, kind: attestKind(t) });
     }
     let useful = 0, junk = 0;
     for (const a of attests) {
@@ -302,13 +386,8 @@
     const ids = Object.values(jobs);
     const judged = useful + junk;
     return {
-      verbs,
-      writers: writers.size,
-      n: msgs.length,
-      useful,
-      junk,
+      verbs, writers: writers.size, n: msgs.length, useful, junk,
       clearRate: judged ? Math.round(100 * useful / judged) : null,
-      attestN: attests.length,
       funnel: {
         jobs: Object.keys(jobs).length,
         claimed: ids.filter(x => x.claim).length,
@@ -324,48 +403,65 @@
     const feed = document.getElementById("feed");
     const list = lastAttests.filter(m => feedFilter === "all" || m.kind === feedFilter);
     if (!lastAttests.length) {
-      feed.innerHTML = `<li class="err">No ATTEST lines in this window.</li>`;
+      feed.innerHTML = `<div class="empty">No ATTEST lines in this window.</div>`;
       return;
     }
     if (!list.length) {
-      feed.innerHTML = `<li class="err">No ${esc(feedFilter)} ATTEST in this window.</li>`;
+      feed.innerHTML = `<div class="empty">No ${esc(feedFilter)} ATTEST in this window.</div>`;
       return;
     }
     feed.innerHTML = list.slice(0, 12).map(m => {
       const tag = m.kind === "useful" ? "useful" : m.kind === "junk" ? "junk" : "other";
-      const body = (m.text || "").slice(0, 280);
-      return `<li><span class="tag ${tag}">${tag}</span>` +
-        `<span class="meta">seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))} · ${esc(shortDid(m.from))}</span>` +
-        `<div class="body">${esc(body)}</div></li>`;
+      // Soften body: drop leading ATTEST v1 | id | verdict | for readability
+      let body = (m.text || "").replace(/^ATTEST\b[^|]*\|[^|]*\|[^|]*\|\s*/i, "").slice(0, 220);
+      if (!body) body = (m.text || "").slice(0, 220);
+      return `<li>
+        <div class="top"><span class="tag ${tag}">${tag}</span>
+          <span class="meta-line">seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))} · ${esc(shortDid(m.from))}</span>
+        </div>
+        <div class="body">${esc(body)}</div>
+      </li>`;
     }).join("");
   }
 
   function render(payload, sourceLabel) {
     const a = analyze(payload);
     lastAttests = a.attests;
-    const stamp = document.getElementById("stamp");
-    stamp.innerHTML = "As of <b>" + esc(fmtTs(payload.as_of || payload.messages?.slice(-1)[0]?.ts)) +
-      "</b> · seq <b>" + esc(payload.first_seq) + "</b>–<b>" + esc(payload.last_seq) +
-      "</b> · <b>" + a.n + "</b> lines · source " + esc(sourceLabel);
+
+    document.getElementById("stamp").innerHTML =
+      `<span class="pill"><span class="dot"></span> <b>${esc(fmtTs(payload.as_of || payload.messages?.slice(-1)[0]?.ts))}</b></span>` +
+      `<span>seq <b>${esc(payload.first_seq)}</b>–<b>${esc(payload.last_seq)}</b></span>` +
+      `<span>${esc(sourceLabel)}</span>`;
+
+    const rate = a.clearRate;
+    document.getElementById("rateNum").textContent = rate == null ? "—" : (rate + "%");
+    document.getElementById("rateSub").textContent =
+      a.useful + " useful · " + a.junk + " junk in this window";
+    const judged = a.useful + a.junk;
+    const bar = document.getElementById("rateBar");
+    if (judged) {
+      const gp = 100 * a.useful / judged;
+      bar.innerHTML = `<i class="g" style="width:${gp}%"></i><i class="w" style="width:${100-gp}%"></i>`;
+    } else bar.innerHTML = "";
+
+    document.getElementById("nUseful").textContent = a.useful;
+    document.getElementById("nJunk").textContent = a.junk;
+    document.getElementById("nWriters").textContent = a.writers;
+    document.getElementById("nLines").textContent = a.n;
 
     const deliver = (a.verbs.RESULT || 0) + (a.verbs.DELIVER || 0);
-    const rateLabel = a.clearRate == null ? "—" : (a.clearRate + "%");
-    document.getElementById("stats").innerHTML = [
-      ["JOB", a.verbs.JOB || 0, "asks opened", "cyan"],
-      ["CLAIM", a.verbs.CLAIM || 0, "workers grabbing", ""],
-      ["RESULT / DELIVER", deliver, "claimed done", ""],
-      ["ATTEST useful", a.useful, "stamped good", "good"],
-      ["ATTEST junk", a.junk, "stamped not", "warn"],
-      ["Clear rate", rateLabel, "useful / (useful + junk)", "amber"],
-    ].map(([lab, num, hint, cls]) =>
-      `<div class="card"><div class="label">${esc(lab)}</div>` +
-      `<div class="num ${cls}">${num}</div><div class="hint">${esc(hint)}</div></div>`
+    document.getElementById("verbCards").innerHTML = [
+      ["JOB", a.verbs.JOB || 0, "asks opened"],
+      ["CLAIM", a.verbs.CLAIM || 0, "workers grabbing"],
+      ["RESULT / DELIVER", deliver, "claimed done"],
+    ].map(([lab, n, hint]) =>
+      `<div class="stat"><div class="label">${esc(lab)}</div><div class="n">${n}</div><div class="hint">${esc(hint)}</div></div>`
     ).join("");
 
-    const order = ["JOB", "CLAIM", "RESULT", "DELIVER", "ATTEST", "SUBMIT", "HELLO", "OTHER"];
-    const total = order.reduce((s, k) => s + (a.verbs[k] || 0), 0) || 1;
+    const order = ["JOB","CLAIM","RESULT","DELIVER","ATTEST","SUBMIT","HELLO","OTHER"];
+    const total = order.reduce((s,k) => s + (a.verbs[k]||0), 0) || 1;
     document.getElementById("bars").innerHTML = order.filter(k => a.verbs[k]).map(k => {
-      const pct = 100 * (a.verbs[k] || 0) / total;
+      const pct = 100 * a.verbs[k] / total;
       return `<i style="width:${pct}%;background:${COLORS[k]}" title="${k}: ${a.verbs[k]}"></i>`;
     }).join("");
     document.getElementById("legend").innerHTML = order.filter(k => a.verbs[k]).map(k =>
@@ -374,18 +470,15 @@
 
     const f = a.funnel;
     document.getElementById("funnel").innerHTML = [
-      ["Jobs", f.jobs],
-      ["Claimed", f.claimed],
-      ["Delivered", f.delivered],
-      ["Useful", f.attestedUseful],
-      ["Junk", f.attestedJunk],
+      ["Jobs", f.jobs], ["Claimed", f.claimed], ["Delivered", f.delivered],
+      ["Useful", f.attestedUseful], ["Junk", f.attestedJunk],
     ].map(([lab, n]) =>
-      `<div class="f"><div class="label">${lab}</div><div class="n">${n}</div></div>`
+      `<div class="f"><div class="lab">${lab}</div><div class="n">${n}</div></div>`
     ).join("");
 
     renderFeed();
     document.getElementById("src").textContent =
-      "Refreshed from " + sourceLabel + ". Prefers live.json on Pages (CORS); retries live Technocore when allowed. Auto-refresh every 3 min.";
+      "Source: " + sourceLabel + " · auto-refresh every 3 min";
   }
 
   document.getElementById("tabs").addEventListener("click", (e) => {
@@ -397,35 +490,25 @@
   });
 
   async function load() {
-    let payload = null;
-    let label = "live.json";
-    // Pages cannot CORS to Technocore — try snapshot first, then live.
+    let payload = null, label = "live.json";
     try {
       const r = await fetch("live.json?t=" + Date.now(), { cache: "no-store" });
-      if (r.ok) {
-        payload = await r.json();
-        label = "live.json (hourly snapshot)";
-      }
+      if (r.ok) { payload = await r.json(); label = "live.json (hourly)"; }
     } catch (_) {}
     try {
       const r = await fetch("https://technocore.chat/r/kibble?format=json&limit=200", { cache: "no-store" });
       if (r.ok) {
         const d = await r.json();
-        payload = {
-          as_of: new Date().toISOString(),
-          first_seq: d.first_seq,
-          last_seq: d.last_seq,
-          messages: d.messages || [],
-        };
+        payload = { as_of: new Date().toISOString(), first_seq: d.first_seq, last_seq: d.last_seq, messages: d.messages || [] };
         label = "technocore.chat (live)";
       }
     } catch (_) {}
-    if (!payload) throw new Error("no live.json and live fetch blocked");
+    if (!payload) throw new Error("no data");
     render(payload, label);
   }
 
   load().catch(e => {
-    document.getElementById("stamp").innerHTML = `<span class="err">Failed to load: ${esc(e.message)}</span>`;
+    document.getElementById("stamp").innerHTML = `<span class="err">Failed: ${esc(e.message)}</span>`;
   });
   setInterval(() => { load().catch(() => {}); }, 180000);
 })();
