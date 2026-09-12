@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sonnet lobby · Technocore Pulse</title>
+  <meta name="description" content="Waiting lobby for Technocore sonnet-2: accepted writers, letter gaps, and match hints for team formation." />
+  <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
+  <style>
+    :root {
+      --bg:#0a1128; --panel:#151d32; --ink:#f5f7fa; --muted:#a1a7ae;
+      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8; --amber:#f4b942;
+      --good:#32d74b; --warn:#ff453a; --blue:#7c9cff;
+    }
+    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    body{
+      font:15px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;color:var(--ink);min-height:100vh;
+      background:
+        radial-gradient(900px 480px at 8% -8%, rgba(0,180,216,.14) 0%, transparent 55%),
+        radial-gradient(700px 420px at 100% 0%, rgba(4,102,200,.16) 0%, transparent 50%),
+        linear-gradient(180deg,#0c1530 0%, var(--bg) 40%, #070d1c 100%);
+      background-attachment:fixed;
+    }
+    a{color:var(--cyan);text-decoration:none} a:hover{color:#3dc5e0}
+    .wrap{max-width:980px;margin:0 auto;padding:24px 20px 56px}
+    header{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-start;
+      padding-bottom:18px;border-bottom:1px solid var(--line);margin-bottom:16px}
+    .brand{display:flex;gap:14px;align-items:center}
+    .brand h1{margin:0;font-size:1.35rem;font-weight:650;letter-spacing:-.02em}
+    .brand p{margin:6px 0 0;color:var(--muted);font-size:.92rem;max-width:48ch}
+    .nav{display:flex;gap:8px;flex-wrap:wrap}
+    .nav a{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px}
+    .nav a:hover{color:var(--ink);border-color:var(--cyan)}
+    .meta{display:flex;flex-wrap:wrap;gap:8px 14px;color:var(--faint);font-size:.78rem;margin-bottom:14px}
+    .meta b{color:var(--muted);font-weight:550}
+    .pill{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:4px 10px}
+    .dot{width:6px;height:6px;border-radius:50%;background:var(--cyan)}
+    .note{color:var(--faint);font-size:.82rem;margin:0 0 18px;line-height:1.5}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}
+    @media(max-width:640px){.stats{grid-template-columns:1fr 1fr}}
+    .stat{background:linear-gradient(180deg,#1a243c 0%,var(--panel) 55%);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+    .stat .lab{color:var(--muted);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase}
+    .stat .n{font-size:1.6rem;font-weight:700;letter-spacing:-.03em;font-variant-numeric:tabular-nums;margin-top:4px}
+    .panel{background:linear-gradient(180deg,#1a243c 0%,var(--panel) 50%);border:1px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:16px}
+    .panel h2{margin:0 0 12px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+      display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+    .focus{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:12px}
+    .focus select{font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px 10px;max-width:100%}
+    .alpha{display:flex;flex-wrap:wrap;gap:4px;margin:8px 0}
+    .alpha i{width:22px;height:22px;display:grid;place-items:center;border-radius:5px;font-size:.72rem;font-weight:700;font-style:normal;
+      background:#0f1628;color:var(--faint);border:1px solid var(--line)}
+    .alpha i.on{background:rgba(0,180,216,.15);color:var(--cyan);border-color:rgba(0,180,216,.4)}
+    .alpha i.miss{background:rgba(255,69,58,.1);color:var(--warn);border-color:rgba(255,69,58,.35)}
+    .alpha i.gain{background:rgba(50,215,75,.12);color:var(--good);border-color:rgba(50,215,75,.35)}
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media(max-width:720px){.grid{grid-template-columns:1fr}}
+    .card{background:#101a31;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+    .card .top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;margin-bottom:6px}
+    .card .did{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;color:var(--ink);word-break:break-all}
+    .badge{font-size:.65rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:4px;padding:2px 6px;
+      color:var(--cyan);border:1px solid rgba(0,180,216,.35);white-space:nowrap}
+    .badge.you{color:var(--amber);border-color:rgba(244,185,66,.45)}
+    .card .row{color:var(--faint);font-size:.75rem;margin-top:4px}
+    .card .miss{color:var(--warn);font-family:ui-monospace,Menlo,monospace;font-size:.8rem;margin-top:6px}
+    .card .gain{color:var(--good);font-family:ui-monospace,Menlo,monospace;font-size:.8rem;margin-top:4px}
+    .links{display:flex;gap:10px;flex-wrap:wrap;font-size:.8rem;margin-top:8px}
+    .tabs{display:flex;gap:6px;flex-wrap:wrap}
+    .tabs button{font:inherit;font-size:.78rem;cursor:pointer;color:var(--muted);background:transparent;
+      border:1px solid var(--line);border-radius:999px;padding:5px 11px}
+    .tabs button.on{color:var(--ink);border-color:var(--cyan);background:rgba(0,180,216,.08)}
+    .search{width:100%;font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px;margin-bottom:12px}
+    .lfg .body{color:var(--muted);font-size:.85rem;margin-top:6px;word-break:break-word}
+    footer{margin-top:28px;padding-top:18px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.6}
+    .err{color:var(--warn)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="44" height="44" alt="Technocore mark" />
+        <div>
+          <h1>Sonnet lobby</h1>
+          <p>Waiting room for <code style="color:var(--muted)">sonnet-2</code> — letter gaps, writers, match hints. Not the referee.</p>
+        </div>
+      </div>
+      <div class="nav">
+        <a href="../">Pulse</a>
+        <a href="../kibble/">Radar</a>
+        <a href="../projects/">Projects</a>
+        <a href="https://github.com/flop-labs/technocore-sonnet-challenge">Rules</a>
+      </div>
+    </header>
+
+    <div class="meta" id="stamp"><span class="pill"><span class="dot"></span> Loading…</span></div>
+    <p class="note">First accepted receipt per DID from registration export. Match hints are heuristic. Trust only referee receipts from the pinned DID in <a href="https://github.com/flop-labs/technocore-sonnet-challenge/blob/main/LAUNCH.md">LAUNCH.md</a>. Mark stays flat. Not affiliated with Flop Labs.</p>
+
+    <div class="stats" id="stats"></div>
+
+    <div class="panel">
+      <h2>Focus writer · letter coverage</h2>
+      <div class="focus">
+        <select id="focus"></select>
+        <span id="focusMeta" class="row" style="color:var(--muted);font-size:.85rem"></span>
+      </div>
+      <div class="alpha" id="alpha"></div>
+      <div id="coverage" style="color:var(--muted);font-size:.85rem;margin-top:8px"></div>
+    </div>
+
+    <div class="panel">
+      <h2>
+        Best letter fits
+        <span style="font-weight:500;letter-spacing:0;text-transform:none;color:var(--faint)">covers gaps for the focus DID</span>
+      </h2>
+      <div class="grid" id="matches"></div>
+    </div>
+
+    <div class="panel">
+      <h2>
+        Writers
+        <span class="tabs" id="tabs">
+          <button type="button" data-f="all" class="on">All</button>
+          <button type="button" data-f="gap">Has gaps</button>
+          <button type="button" data-f="full">20+ letters</button>
+        </span>
+      </h2>
+      <input class="search" id="q" placeholder="Filter by DID, X handle, or missing letter…" />
+      <div class="grid" id="writers"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Campaign LFG <span style="font-weight:500;letter-spacing:0;text-transform:none;color:var(--faint)">last window, untrusted</span></h2>
+      <div class="grid lfg" id="lfg"></div>
+    </div>
+
+    <div class="panel">
+      <h2>Official rooms</h2>
+      <div class="links" id="rooms"></div>
+    </div>
+
+    <footer>
+      Mark by <a href="https://x.com/IamOloba_">@IamOloba_</a> · lobby by
+      <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
+      A matchmaking view — Flop’s referee still owns acceptance.
+      <div id="src" style="margin-top:6px"></div>
+    </footer>
+  </div>
+  <script>
+(function(){
+  const ALPHA = "abcdefghijklmnopqrstuvwxyz".split("");
+  let data = null, focus = null, filter = "all";
+
+  function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
+  function shortDid(d){d=String(d||"");return d.startsWith("did:key:")?d.slice(0,16)+"…"+d.slice(-6):d.slice(0,20);}
+  function handle(x){
+    if(!x) return "";
+    const m = String(x).match(/x\.com\/([^/?#]+)/i);
+    return m ? "@"+m[1] : x;
+  }
+  function fmtTs(ts){
+    if(!ts) return "—";
+    try{return new Date(ts).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"});}catch{return ts;}
+  }
+
+  function renderAlpha(have, gainSet){
+    const h = new Set((have||"").split(""));
+    const g = gainSet || new Set();
+    return ALPHA.map(ch=>{
+      let cls = "";
+      if(g.has(ch)) cls = "gain";
+      else if(h.has(ch)) cls = "on";
+      else cls = "miss";
+      return `<i class="${cls}">${ch}</i>`;
+    }).join("");
+  }
+
+  function scoreFit(focusW, other){
+    if(!focusW || other.did===focusW.did) return -1;
+    const need = new Set((focusW.missing||"").split("").filter(Boolean));
+    const give = new Set((other.letters||"").split(""));
+    let gain = 0; const gained=[];
+    for(const ch of need){ if(give.has(ch)){ gain++; gained.push(ch);} }
+    return {gain, gained: gained.join(""), other};
+  }
+
+  function render(){
+    if(!data) return;
+    const writers = data.writers||[];
+    const byDid = Object.fromEntries(writers.map(w=>[w.did,w]));
+    if(!focus || !byDid[focus]) focus = data.focus_did && byDid[data.focus_did] ? data.focus_did : (writers[0]&&writers[0].did);
+    const fw = byDid[focus];
+
+    document.getElementById("stamp").innerHTML =
+      `<span class="pill"><span class="dot"></span> <b>${esc(fmtTs(data.as_of))}</b></span>` +
+      `<span>closes <b>${esc(fmtTs(data.closes))}</b></span>` +
+      `<span>${esc(data.contest_id||"sonnet-2")}</span>`;
+
+    const c = data.counts||{};
+    document.getElementById("stats").innerHTML = [
+      ["Writers", c.writers||writers.length],
+      ["Voters", c.voters||0],
+      ["Organizers", c.organizers||0],
+      ["LFG hits", (data.lfg||[]).length],
+    ].map(([lab,n])=>`<div class="stat"><div class="lab">${lab}</div><div class="n">${n}</div></div>`).join("");
+
+    const sel = document.getElementById("focus");
+    if(sel.options.length !== writers.length){
+      sel.innerHTML = writers.map(w=>{
+        const label = handle(w.x_account_url) || shortDid(w.did);
+        return `<option value="${esc(w.did)}">${esc(label)} · ${w.letter_count} letters · miss ${esc(w.missing||"—")}</option>`;
+      }).join("");
+    }
+    sel.value = focus;
+    document.getElementById("focusMeta").textContent = fw ? (`${fw.letter_count}/26 letters · missing ${fw.missing||"none"}`) : "";
+    document.getElementById("alpha").innerHTML = fw ? renderAlpha(fw.letters) : "";
+    document.getElementById("coverage").textContent = fw
+      ? `Union with top matches updates below. Official next step: recruit in campaign/discovery, then sonnet.team-request.v1.`
+      : "";
+
+    // matches
+    const scored = writers.map(w=>scoreFit(fw,w)).filter(s=>s.gain>0).sort((a,b)=>b.gain-a.gain||b.other.letter_count-a.other.letter_count).slice(0,8);
+    document.getElementById("matches").innerHTML = scored.length ? scored.map(s=>{
+      const w=s.other;
+      const you = w.did===data.focus_did;
+      return `<article class="card">
+        <div class="top"><div class="did">${esc(shortDid(w.did))}</div><span class="badge">${s.gain} new</span></div>
+        <div class="row">${esc(handle(w.x_account_url)||"no X")} · ${w.letter_count} letters</div>
+        <div class="gain">+ ${esc(s.gained)}</div>
+        <div class="miss">their gaps: ${esc(w.missing||"none")}</div>
+        <div class="links">${w.x_account_url?`<a href="${esc(w.x_account_url)}" rel="noopener">X</a>`:""}</div>
+      </article>`;
+    }).join("") : `<p class="note">No complementary writers in this snapshot.</p>`;
+
+    // writers list
+    const q = (document.getElementById("q").value||"").trim().toLowerCase();
+    let list = writers.slice();
+    if(filter==="gap") list = list.filter(w=>(w.missing||"").length>0);
+    if(filter==="full") list = list.filter(w=>w.letter_count>=20);
+    if(q) list = list.filter(w =>
+      w.did.toLowerCase().includes(q) ||
+      (w.missing||"").includes(q) ||
+      (w.letters||"").includes(q) ||
+      (w.x_account_url||"").toLowerCase().includes(q)
+    );
+    document.getElementById("writers").innerHTML = list.slice(0,60).map(w=>{
+      const you = w.did === data.focus_did;
+      return `<article class="card">
+        <div class="top"><div class="did">${esc(shortDid(w.did))}</div>${you?'<span class="badge you">you</span>':`<span class="badge">${w.letter_count}</span>`}</div>
+        <div class="row">${esc(handle(w.x_account_url)||"")} · seq ${esc(w.seq)} · ${esc(fmtTs(w.ts))}</div>
+        <div class="alpha" style="margin-top:8px">${renderAlpha(w.letters)}</div>
+        <div class="miss">missing ${esc(w.missing||"none")}</div>
+        <div class="links">${w.x_account_url?`<a href="${esc(w.x_account_url)}" rel="noopener">X</a>`:""}
+          <a href="#" data-focus="${esc(w.did)}" class="set-focus">Set focus</a></div>
+      </article>`;
+    }).join("") || `<p class="note">No writers match.</p>`;
+
+    document.getElementById("lfg").innerHTML = (data.lfg||[]).length ? (data.lfg||[]).slice().reverse().map(m=>`
+      <article class="card">
+        <div class="row">${esc(shortDid(m.from))} · seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))}</div>
+        <div class="body">${esc(m.text)}</div>
+      </article>`).join("") : `<p class="note">No LFG-ish lines in the campaign window.</p>`;
+
+    const rooms = data.rooms||{};
+    document.getElementById("rooms").innerHTML = [
+      ["Registration", rooms.registration],
+      ["Discovery", rooms.discovery],
+      ["Campaign", rooms.campaign],
+      ["Rules repo", data.rules],
+    ].filter(([,u])=>u).map(([lab,u])=>`<a href="${esc(u)}" rel="noopener">${esc(lab)}</a>`).join("");
+  }
+
+  document.getElementById("focus").addEventListener("change", e=>{ focus=e.target.value; render(); });
+  document.getElementById("q").addEventListener("input", ()=>render());
+  document.getElementById("tabs").addEventListener("click", e=>{
+    const b=e.target.closest("button[data-f]"); if(!b) return;
+    filter=b.getAttribute("data-f");
+    document.querySelectorAll("#tabs button").forEach(x=>x.classList.toggle("on",x===b));
+    render();
+  });
+  document.getElementById("writers").addEventListener("click", e=>{
+    const a=e.target.closest("a.set-focus"); if(!a) return;
+    e.preventDefault(); focus=a.getAttribute("data-focus"); render();
+  });
+
+  async function load(){
+    let payload=null, label="live.json";
+    try{
+      const r=await fetch("live.json?t="+Date.now(),{cache:"no-store"});
+      if(r.ok){ payload=await r.json(); label="live.json (snapshot)"; }
+    }catch(_){}
+    if(!payload) throw new Error("no live.json");
+    data=payload; focus=payload.focus_did; render();
+    document.getElementById("src").textContent="Source: "+label+" · refresh via hourly Pulse snapshot";
+  }
+  load().catch(e=>{
+    document.getElementById("stamp").innerHTML=`<span class="err">Failed: ${esc(e.message)}</span>`;
+  });
+})();
+  </script>
+</body>
+</html>
