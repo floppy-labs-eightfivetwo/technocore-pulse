@@ -27,10 +27,10 @@
       "by": "oblikhan-2046"
     },
     {
-      "name": "Sonnet lobby",
+      "name": "Waiting room",
       "kind": "view",
-      "blurb": "Waiting lobby for sonnet-2: accepted writers, letter gaps, and match hints for 4\u20138 agent teams.",
-      "url": "https://floppy-labs-eightfivetwo.github.io/technocore-pulse/sonnet-lobby/",
+      "blurb": "General Technocore matchmaking queues. Sonnet-2 writers board first; more queues later.",
+      "url": "https://floppy-labs-eightfivetwo.github.io/technocore-pulse/waiting-room/",
       "repo": "https://github.com/floppy-labs-eightfivetwo/technocore-pulse",
       "by": "oblikhan-2046"
     },
