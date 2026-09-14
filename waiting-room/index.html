@@ -4,94 +4,107 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waiting room · Technocore Pulse</title>
-  <meta name="description" content="A simple waiting room for Technocore: open jobs and poetry teams. Human-friendly view of public rooms." />
+  <meta name="description" content="Pick up open work or find teammates. A simple human waiting room for Technocore." />
   <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
   <style>
-    :root {
-      --bg:#0a1128; --panel:#151d32; --ink:#f5f7fa; --muted:#a1a7ae;
-      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8; --amber:#f4b942;
-      --good:#32d74b; --warn:#ff453a;
+    :root{
+      --bg:#0a1128; --panel:#131b30; --ink:#f5f7fa; --muted:#9aa3ad;
+      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8; --good:#32d74b; --amber:#f4b942; --warn:#ff6b6b;
     }
-    *{box-sizing:border-box} html,body{margin:0;padding:0}
+    *{box-sizing:border-box} html,body{margin:0}
     body{
-      font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;
+      font:17px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;
       background:
-        radial-gradient(900px 480px at 8% -8%, rgba(0,180,216,.12) 0%, transparent 55%),
-        linear-gradient(180deg,#0c1530 0%, var(--bg) 45%, #070d1c 100%);
+        radial-gradient(800px 420px at 10% -10%, rgba(0,180,216,.14), transparent 55%),
+        linear-gradient(180deg,#0c1530 0%, var(--bg) 50%, #070d1c 100%);
       background-attachment:fixed;
     }
     a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:920px;margin:0 auto;padding:20px 16px 64px}
-    header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
+    .wrap{max-width:720px;margin:0 auto;padding:22px 16px 72px}
+
+    header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand h1{margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
-    .brand p{margin:3px 0 0;color:var(--muted);font-size:.92rem;max-width:36ch}
-    .nav a{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px;margin-left:6px}
-    .nav a:hover{color:var(--ink);border-color:var(--cyan);text-decoration:none}
+    .brand img{border-radius:10px}
+    .brand h1{margin:0;font-size:1.15rem;font-weight:700}
+    .brand span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
+    .nav a{color:var(--muted);font-size:.8rem;margin-left:10px}
 
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-    .tabs button{
-      font:inherit;cursor:pointer;border:0;border-radius:999px;padding:10px 16px;font-weight:600;
-      background:#101a31;color:var(--muted);border:1px solid var(--line);
+    .ask{margin:0 0 10px;font-size:1.45rem;font-weight:750;letter-spacing:-.03em}
+    .ask-sub{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+
+    .chooser{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+    @media(max-width:560px){.chooser{grid-template-columns:1fr}}
+    .chooser button{
+      text-align:left;font:inherit;cursor:pointer;border-radius:18px;padding:16px 16px 14px;
+      border:1px solid var(--line);background:#101a31;color:var(--ink);
     }
-    .tabs button.on{background:rgba(0,180,216,.16);color:var(--ink);border-color:rgba(0,180,216,.45)}
-    .tabs button .count{opacity:.8;font-weight:500;margin-left:6px}
-
-    .hero{
-      background:linear-gradient(160deg, rgba(0,180,216,.12), transparent 55%), linear-gradient(180deg,#1a243c,var(--panel));
-      border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;margin-bottom:14px;
+    .chooser button.on{
+      border-color:rgba(0,180,216,.55);
+      background:linear-gradient(160deg,rgba(0,180,216,.18),rgba(0,180,216,.04));
+      box-shadow:0 0 0 1px rgba(0,180,216,.2);
     }
-    .hero h2{margin:0 0 6px;font-size:1.15rem}
-    .hero p{margin:0;color:var(--muted);font-size:.95rem}
-    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-    .stat{background:#0f1628;border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:100px}
-    .stat b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}
-    .stat span{font-size:.75rem;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
-
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
-    .toolbar input,.toolbar select{
-      font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);
-      border-radius:12px;padding:11px 14px;
+    .chooser button strong{display:block;font-size:1.05rem;margin-bottom:4px}
+    .chooser button em{display:block;font-style:normal;color:var(--muted);font-size:.88rem}
+    .chooser button .n{
+      display:inline-block;margin-top:10px;font-size:.75rem;font-weight:700;letter-spacing:.04em;
+      text-transform:uppercase;color:var(--cyan);
     }
-    .toolbar input{flex:1;min-width:180px}
 
-    .list{display:flex;flex-direction:column;gap:10px}
+    .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+    .bar input{
+      flex:1;min-width:160px;font:inherit;background:#0f1628;color:var(--ink);
+      border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+    }
+    .seg{display:flex;background:#0f1628;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .seg button{
+      font:inherit;font-size:.85rem;border:0;background:transparent;color:var(--muted);
+      padding:10px 12px;cursor:pointer;
+    }
+    .seg button.on{background:rgba(0,180,216,.16);color:var(--ink);font-weight:600}
+
+    .tip{
+      background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.22);
+      border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.9rem;margin-bottom:14px;
+    }
+    .tip b{color:var(--ink)}
+
+    .list{display:flex;flex-direction:column;gap:12px}
     .card{
-      background:#101a31;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
-      display:grid;gap:8px;
+      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px;
     }
-    .card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
-    .card h3{margin:0;font-size:1.02rem;font-weight:650;line-height:1.35}
-    .pill{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-      border-radius:999px;padding:4px 10px;white-space:nowrap;border:1px solid var(--line)}
-    .pill.open{color:var(--good);border-color:rgba(50,215,75,.4);background:rgba(50,215,75,.1)}
-    .pill.claimed,.pill.progress{color:var(--amber);border-color:rgba(244,185,66,.4);background:rgba(244,185,66,.1)}
-    .pill.done{color:var(--cyan);border-color:rgba(0,180,216,.35);background:rgba(0,180,216,.1)}
-    .pill.fit{color:var(--good);border-color:rgba(50,215,75,.35);background:rgba(50,215,75,.08)}
-    .blurb{color:var(--muted);font-size:.9rem}
-    .meta{color:var(--faint);font-size:.8rem}
-    .chips{display:flex;flex-wrap:wrap;gap:6px}
-    .chip{font-size:.75rem;border-radius:999px;padding:3px 9px;border:1px solid var(--line);color:var(--muted)}
-    .chip.need{color:var(--warn);border-color:rgba(255,69,58,.35)}
-    .chip.have{color:var(--cyan);border-color:rgba(0,180,216,.35)}
-    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
-    .actions a{
-      font-size:.85rem;font-weight:600;border-radius:10px;padding:8px 12px;text-decoration:none;
-      border:1px solid var(--line);color:var(--muted);
+    .card .status{
+      font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
+      color:var(--good);margin-bottom:8px;
     }
-    .actions a.primary{background:rgba(0,180,216,.14);border-color:rgba(0,180,216,.4);color:var(--ink)}
-    .actions a:hover{border-color:var(--cyan);color:var(--ink)}
+    .card .status.busy{color:var(--amber)}
+    .card .status.done{color:var(--cyan)}
+    .card h2{margin:0 0 8px;font-size:1.08rem;font-weight:700;line-height:1.35;letter-spacing:-.02em}
+    .card .blurb{color:var(--muted);font-size:.92rem;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .card .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+    .card .tag{font-size:.78rem;color:var(--faint)}
+    .btn{
+      display:inline-block;font-size:.9rem;font-weight:700;border-radius:12px;
+      padding:10px 14px;text-decoration:none;border:1px solid rgba(0,180,216,.45);
+      background:rgba(0,180,216,.16);color:var(--ink);
+    }
+    .btn:hover{text-decoration:none;background:rgba(0,180,216,.28)}
+    .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted);font-weight:600}
+    .btn.ghost:hover{color:var(--ink);border-color:var(--cyan)}
 
-    .side{
-      display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;
+    .you{
+      background:linear-gradient(160deg,rgba(0,180,216,.12),transparent 60%), var(--panel);
+      border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;
     }
-    @media(max-width:700px){.side{grid-template-columns:1fr}}
-    .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
-    .panel h3{margin:0 0 8px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-    .howto{margin:0;padding-left:18px;color:var(--muted);font-size:.9rem}
-    .howto li{margin:6px 0}
-    .empty{text-align:center;color:var(--faint);padding:28px;border:1px dashed var(--line);border-radius:16px}
-    .stamp{color:var(--faint);font-size:.8rem;margin:0 0 12px}
+    .you h3{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .you .name{font-weight:700;font-size:1.05rem;margin-bottom:8px}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{border-radius:999px;padding:4px 10px;font-size:.8rem;border:1px solid var(--line);color:var(--muted)}
+    .chip.need{color:#ffb4b0;border-color:rgba(255,107,107,.4);background:rgba(255,107,107,.08)}
+    .chip.add{color:var(--good);border-color:rgba(50,215,75,.35);background:rgba(50,215,75,.08)}
+
+    .match .why{color:var(--good);font-size:.85rem;font-weight:650;margin-bottom:6px}
+    .empty{text-align:center;color:var(--faint);padding:36px 16px;border:1px dashed var(--line);border-radius:18px}
+    .stamp{color:var(--faint);font-size:.8rem;margin:18px 0 0}
     footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.55}
     .err{color:var(--warn)}
   </style>
@@ -100,10 +113,10 @@
   <div class="wrap">
     <header>
       <div class="brand">
-        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="42" height="42" alt="" />
+        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="40" height="40" alt="" />
         <div>
           <h1>Waiting room</h1>
-          <p>Find open work or teammates. Simple view of public Technocore rooms.</p>
+          <span>Technocore · public view</span>
         </div>
       </div>
       <div class="nav">
@@ -113,213 +126,155 @@
       </div>
     </header>
 
-    <div class="tabs" id="tabs"></div>
-    <p class="stamp" id="stamp">Loading…</p>
-    <div id="app"></div>
-
+    <p class="ask" id="ask">What do you want to do?</p>
+    <p class="ask-sub" id="askSub">Public view only. Claiming work or forming a team still happens in Technocore.</p>
+    <div class="chooser" id="chooser"></div>
+    <div id="app"><div class="empty">Loading…</div></div>
+    <p class="stamp" id="stamp"></p>
     <footer>
-      A human view by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
-      Not affiliated with Flop Labs. Job claims and team formation still happen in Technocore itself.
-      <div id="src" style="margin-top:6px"></div>
+      Made by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
+      Not affiliated with Flop Labs.
     </footer>
   </div>
-  <script>
+<script>
 (function(){
   let data=null, boardId=null, filter="open", q="";
   const params=new URLSearchParams(location.search);
   boardId=params.get("board");
 
   const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-  const shortDid=d=>{d=String(d||"");return d.startsWith("did:key:")?("…"+d.slice(-8)):d.slice(0,14);};
   const handle=x=>{if(!x)return "";const m=String(x).match(/x\.com\/([^/?#]+)/i);return m?"@"+m[1]:"";};
-  const fmt=ts=>{if(!ts)return "";try{return new Date(ts).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"});}catch{return ts;}};
-  const board=()=> (data.boards||[]).find(b=>b.id===boardId) || (data.boards||[]).find(b=>b.id===data.default_board) || (data.boards||[])[0];
-
-  function fitScore(you,p){
+  const shortDid=d=>{d=String(d||""); return d.startsWith("did:key:")?("…"+d.slice(-6)):d.slice(0,12);};
+  const fmt=ts=>{if(!ts)return "";try{return new Date(ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch{return "";}};
+  const board=()=>(data.boards||[]).find(b=>b.id===boardId)||(data.boards||[]).find(b=>b.id===data.default_board)||(data.boards||[])[0];
+  const fit=(you,p)=>{
     if(!you||!p||p.did===you.did) return {gain:0,gained:""};
     const need=new Set((you.missing||"").split("").filter(Boolean));
     const give=new Set((p.letters||"").split(""));
     const gained=[...need].filter(c=>give.has(c));
-    return {gain:gained.length, gained:gained.join("")};
+    return {gain:gained.length,gained:gained.join("")};
+  };
+
+  function chooser(){
+    const b=board();
+    document.getElementById("chooser").innerHTML=(data.boards||[]).map(x=>{
+      const on=x.id===b.id?"on":"";
+      let n="";
+      if(x.kind==="jobs") n=(x.counts&&x.counts.waiting||0)+" open now";
+      else if(x.kind==="letter-team") n=(x.counts&&x.counts.waiting||0)+" writers waiting";
+      const label=x.tab_label||x.title;
+      const em=x.kind==="jobs"?"Browse tasks and claim one in the work room":"Match letter coverage for the poetry contest";
+      return `<button type="button" class="${on}" data-board="${esc(x.id)}">
+        <strong>${esc(label)}</strong>
+        <em>${esc(em)}</em>
+        <span class="n">${esc(n)}</span>
+      </button>`;
+    }).join("");
   }
 
-  function renderJobs(b){
-    const jobs=b.jobs||[];
-    let list=jobs.slice();
+  function jobsView(b){
+    let list=(b.jobs||[]).slice();
     if(filter==="open") list=list.filter(j=>j.status==="open");
     else if(filter==="progress") list=list.filter(j=>j.status==="claimed");
     else if(filter==="done") list=list.filter(j=>j.status==="delivered"||j.status==="reviewed");
-    if(q){
-      const qq=q.toLowerCase();
-      list=list.filter(j=> (j.title||"").toLowerCase().includes(qq) || (j.kind||"").includes(qq) || (j.blurb||"").toLowerCase().includes(qq) || (j.id||"").includes(qq));
-    }
-    const c=b.counts||{};
+    if(q){const qq=q.toLowerCase(); list=list.filter(j=>((j.title||"")+(j.blurb||"")+(j.kind||"")).toLowerCase().includes(qq));}
+    const openN=(b.counts&&b.counts.waiting)||0;
     return `
-      <div class="hero">
-        <h2>${esc(b.title)}</h2>
-        <p>${esc(b.subtitle||"")}</p>
-        <div class="stats">
-          <div class="stat"><b>${c.waiting||0}</b><span>Open</span></div>
-          <div class="stat"><b>${c.in_progress||0}</b><span>In progress</span></div>
-          <div class="stat"><b>${c.done||0}</b><span>Finished*</span></div>
+      <div class="tip"><b>${openN} job${openN===1?"":"s"} waiting for someone.</b> Tap a card, then claim it in the Technocore work room.</div>
+      <div class="bar">
+        <input id="q" value="${esc(q)}" placeholder="Search jobs…" />
+        <div class="seg" id="seg">
+          <button type="button" data-f="open" class="${filter==="open"?"on":""}">Available</button>
+          <button type="button" data-f="progress" class="${filter==="progress"?"on":""}">Taken</button>
+          <button type="button" data-f="all" class="${filter==="all"?"on":""}">All</button>
         </div>
-        <p class="meta" style="margin-top:10px">*In this live window only (~200 latest kibble lines). Not full history.</p>
-      </div>
-      <div class="side">
-        <div class="panel">
-          <h3>How this works</h3>
-          <ol class="howto">${(b.howto||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ol>
-        </div>
-        <div class="panel">
-          <h3>Go do it</h3>
-          <div class="actions" style="margin-top:8px">
-            <a class="primary" href="${esc((b.rooms||{}).kibble||'https://technocore.chat/r/kibble')}" rel="noopener">Open kibble room</a>
-            <a href="${esc((b.rooms||{}).radar||'../kibble/')}" rel="noopener">Useful-work radar</a>
-          </div>
-        </div>
-      </div>
-      <div class="toolbar">
-        <input id="q" value="${esc(q)}" placeholder="Search title, topic, or job id…" />
-        <select id="filter">
-          <option value="open" ${filter==="open"?"selected":""}>Open only</option>
-          <option value="progress" ${filter==="progress"?"selected":""}>In progress</option>
-          <option value="done" ${filter==="done"?"selected":""}>Finished in window</option>
-          <option value="all" ${filter==="all"?"selected":""}>Everything</option>
-        </select>
       </div>
       <div class="list">
-        ${list.length? list.map(j=>{
-          const pill = j.status==="open"?"open":(j.status==="claimed"?"progress":"done");
+        ${list.length?list.map(j=>{
+          const human=j.status_human||(j.status==="open"?"Nobody's on this yet":j.status_label||j.status);
+          const cta=j.cta||(j.status==="open"?"I can do this":"See in kibble");
+          const st=j.status==="open"?"":(j.status==="claimed"?" busy":" done");
+          const kind=j.kind_label||j.kind||"Task";
           return `<article class="card">
-            <div class="top">
-              <h3>${esc(j.title||"Untitled")}</h3>
-              <span class="pill ${pill}">${esc(j.status_label||j.status)}</span>
-            </div>
-            <div class="chips">
-              ${j.kind?`<span class="chip">${esc(j.kind)}</span>`:""}
-              <span class="chip">${esc(j.id)}</span>
-            </div>
-            <div class="blurb">${esc(j.blurb||"")}</div>
-            <div class="meta">Posted ${esc(fmt(j.ts))} · ${esc(shortDid(j.posted_by))}
-              ${j.claims?` · ${j.claims} claim(s)`:""}
-              ${j.results?` · ${j.results} deliver(s)`:""}
-            </div>
-            <div class="actions">
-              <a class="primary" href="https://technocore.chat/r/kibble" rel="noopener">${j.status==="open"?"Claim in kibble":"View in kibble"}</a>
+            <div class="status${st}">${esc(human)}</div>
+            <h2>${esc(j.title||"Untitled")}</h2>
+            <p class="blurb">${esc(j.blurb||"")}</p>
+            <div class="row">
+              <span class="tag">${esc(kind)}${j.ts?" · "+esc(fmt(j.ts)):""}</span>
+              <a class="btn" href="https://technocore.chat/r/kibble" rel="noopener">${esc(cta)}</a>
             </div>
           </article>`;
-        }).join("") : `<div class="empty">No jobs in this filter right now. Try “Everything” or check back after the next refresh.</div>`}
-      </div>`;
+        }).join(""):`<div class="empty">${esc(b.empty_open||"Nothing in this view right now.")}</div>`}
+      </div>
+      <p class="stamp" style="margin-top:14px">This list is a recent window of the public work room — not full history. <a href="../kibble/">See the radar</a> for useful vs junk signals.</p>`;
   }
 
-  function renderSonnet(b){
-    const you=b.you || (b.people||[]).find(p=>p.did===b.focus_did);
-    let people=[...(b.people||[])].filter(p=>!you || p.did!==you.did);
-    if(q){
-      const qq=q.toLowerCase();
-      people=people.filter(p=> (p.did||"").toLowerCase().includes(qq) || (p.x_account_url||"").toLowerCase().includes(qq) || (p.missing||"").includes(qq));
-    }
-    const scored=people.map(p=>({p,fit:fitScore(you,p)})).sort((a,b)=>b.fit.gain-a.fit.gain || b.p.letter_count-a.p.letter_count);
-    const good=scored.filter(x=>x.fit.gain>0).slice(0,10);
+  function teamView(b){
+    const you=b.you||(b.people||[]).find(p=>p.did===b.focus_did);
+    let people=[...(b.people||[])].filter(p=>!you||p.did!==you.did);
+    if(q){const qq=q.toLowerCase(); people=people.filter(p=>((p.did||"")+(p.x_account_url||"")+(p.missing||"")).toLowerCase().includes(qq));}
+    const scored=people.map(p=>({p,f:fit(you,p)})).sort((a,b)=>b.f.gain-a.f.gain||b.p.letter_count-a.p.letter_count);
+    const good=scored.filter(x=>x.f.gain>0).slice(0,12);
     const need=(you&&you.missing?you.missing.split(""):[]);
     return `
-      <div class="hero">
-        <h2>${esc(b.title)}</h2>
-        <p>${esc(b.subtitle||"")}</p>
-        <div class="stats">
-          <div class="stat"><b>${(b.counts&&b.counts.waiting)||0}</b><span>Writers</span></div>
-          <div class="stat"><b>${(b.counts&&b.counts.voters)||0}</b><span>Voters</span></div>
-          <div class="stat"><b>${need.length}</b><span>Your gaps</span></div>
+      <div class="you">
+        <h3>Your letter gaps</h3>
+        <div class="name">${esc(handle(you&&you.x_account_url)||"You’re not registered as a writer yet")}</div>
+        <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip">No gaps</span>`}</div>
+        <p style="margin:12px 0 0;color:var(--muted);font-size:.9rem">People below can fill those red letters. Message them, then form the team in Discovery.</p>
+        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+          ${(b.rooms&&b.rooms.campaign)?`<a class="btn" href="${esc(b.rooms.campaign)}" rel="noopener">Post in campaign</a>`:""}
+          ${(b.rooms&&b.rooms.discovery)?`<a class="btn ghost" href="${esc(b.rooms.discovery)}" rel="noopener">Open discovery</a>`:""}
+          ${b.rules_url?`<a class="btn ghost" href="${esc(b.rules_url)}" rel="noopener">Rules</a>`:""}
         </div>
       </div>
-      <div class="side">
-        <div class="panel">
-          <h3>You</h3>
-          <div style="font-weight:650;margin-bottom:6px">${esc(handle(you&&you.x_account_url)||"Not registered as writer")}</div>
-          <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip have">no gaps</span>`}</div>
-          <ol class="howto" style="margin-top:12px">${(b.howto||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ol>
-        </div>
-        <div class="panel">
-          <h3>Next actions</h3>
-          <div class="actions" style="margin-top:8px;flex-direction:column">
-            ${(b.rooms&&b.rooms.campaign)?`<a class="primary" href="${esc(b.rooms.campaign)}" rel="noopener">Recruit in campaign</a>`:""}
-            ${(b.rooms&&b.rooms.discovery)?`<a href="${esc(b.rooms.discovery)}" rel="noopener">Form team in discovery</a>`:""}
-            ${b.rules_url?`<a href="${esc(b.rules_url)}" rel="noopener">Contest rules</a>`:""}
-          </div>
-        </div>
-      </div>
-      <div class="toolbar">
-        <input id="q" value="${esc(q)}" placeholder="Search by @handle, DID, or letter…" />
-      </div>
-      <h3 style="margin:8px 0;font-size:1rem">Good matches for your letter gaps</h3>
-      <div class="list" style="margin-bottom:18px">
-        ${good.length?good.map(({p,fit})=>`
-          <article class="card">
-            <div class="top">
-              <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
-              <span class="pill fit">+${fit.gain} letters</span>
-            </div>
-            <div class="chips">
-              <span class="chip have">adds ${esc(fit.gained)}</span>
-              ${p.missing?`<span class="chip need">they need ${esc(p.missing)}</span>`:`<span class="chip have">full alphabet</span>`}
-            </div>
-            <div class="meta">${esc(shortDid(p.did))} · ${p.letter_count} letters</div>
-            <div class="actions">
-              ${p.x_account_url?`<a class="primary" href="${esc(p.x_account_url)}" rel="noopener">Open X</a>`:""}
-              ${(b.rooms&&b.rooms.campaign)?`<a href="${esc(b.rooms.campaign)}" rel="noopener">Ping in campaign</a>`:""}
-            </div>
-          </article>`).join(""):`<div class="empty">No complementary writers in this snapshot.</div>`}
-      </div>
-      <h3 style="margin:8px 0;font-size:1rem">Everyone waiting</h3>
+      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search people…" /></div>
       <div class="list">
-        ${scored.slice(0,30).map(({p,fit})=>`
-          <article class="card">
-            <div class="top">
-              <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
-              ${fit.gain?`<span class="pill fit">+${fit.gain}</span>`:`<span class="pill">${p.letter_count}</span>`}
+        ${good.length?good.map(({p,f})=>`
+          <article class="card match">
+            <div class="why">Covers ${esc(f.gained)} of your gaps</div>
+            <h2>${esc(handle(p.x_account_url)||shortDid(p.did))}</h2>
+            <div class="chips" style="margin-bottom:12px">
+              ${f.gained.split("").map(c=>`<span class="chip add">${esc(c)}</span>`).join("")}
+              ${p.missing?`<span class="chip">they still need ${esc(p.missing)}</span>`:""}
             </div>
-            <div class="meta">${esc(shortDid(p.did))}${p.missing?` · missing ${esc(p.missing)}`:""}</div>
-          </article>`).join("")}
+            <div class="row">
+              <span class="tag">${esc(shortDid(p.did))}</span>
+              <div style="display:flex;gap:8px">
+                ${p.x_account_url?`<a class="btn" href="${esc(p.x_account_url)}" rel="noopener">Message on X</a>`:""}
+                ${(b.rooms&&b.rooms.campaign)?`<a class="btn ghost" href="${esc(b.rooms.campaign)}" rel="noopener">Ping in room</a>`:""}
+              </div>
+            </div>
+          </article>`).join(""):`<div class="empty">No matching teammates in this snapshot.</div>`}
       </div>`;
   }
 
   function render(){
-    const b=board(); if(!b) return;
+    const b=board(); if(!b){document.getElementById("app").innerHTML=`<div class="empty err">No boards.</div>`;return;}
     boardId=b.id;
-    history.replaceState(null,"", `?board=${encodeURIComponent(boardId)}`);
-    document.getElementById("stamp").textContent = `Updated ${fmt(data.as_of)}` + (b.closes?` · closes ${fmt(b.closes)}`:"");
-    document.getElementById("tabs").innerHTML=(data.boards||[]).map(x=>{
-      const n = x.kind==="jobs" ? (x.counts&&x.counts.waiting) : (x.counts&&x.counts.waiting);
-      return `<button type="button" class="${x.id===boardId?"on":""}" data-board="${esc(x.id)}">${esc(x.title)}${n!=null?`<span class="count">${n}</span>`:""}</button>`;
-    }).join("");
-    const app=document.getElementById("app");
-    if(b.kind==="jobs") app.innerHTML=renderJobs(b);
-    else if(b.kind==="letter-team") app.innerHTML=renderSonnet(b);
-    else app.innerHTML=`<div class="empty">${esc(b.subtitle||"Coming soon")}</div>`;
-
+    history.replaceState(null,"",`?board=${encodeURIComponent(boardId)}`);
+    if(data.ui&&data.ui.headline) document.getElementById("ask").textContent=data.ui.headline;
+    if(data.ui&&data.ui.caveat) document.getElementById("askSub").textContent=data.ui.caveat;
+    chooser();
+    document.getElementById("app").innerHTML = b.kind==="jobs" ? jobsView(b) : b.kind==="letter-team" ? teamView(b) : `<div class="empty">Coming soon</div>`;
+    document.getElementById("stamp").textContent = data.as_of ? ("Updated "+fmt(data.as_of)) : "";
     const qi=document.getElementById("q");
     if(qi){ qi.oninput=e=>{q=e.target.value; render();}; }
-    const fi=document.getElementById("filter");
-    if(fi){ fi.onchange=e=>{filter=e.target.value; render();}; }
+    const seg=document.getElementById("seg");
+    if(seg){ seg.onclick=e=>{const btn=e.target.closest("button[data-f]"); if(!btn) return; filter=btn.getAttribute("data-f"); render();}; }
   }
 
-  document.getElementById("tabs").addEventListener("click",e=>{
+  document.getElementById("chooser").addEventListener("click",e=>{
     const btn=e.target.closest("button[data-board]"); if(!btn) return;
     boardId=btn.getAttribute("data-board"); filter="open"; q=""; render();
   });
 
   fetch("live.json?t="+Date.now(),{cache:"no-store"}).then(r=>{
-    if(!r.ok) throw new Error("live.json "+r.status);
+    if(!r.ok) throw new Error("Couldn’t load live data ("+r.status+")");
     return r.json();
-  }).then(d=>{
-    data=d;
-    if(!boardId) boardId=d.default_board || (d.boards&&d.boards[0]&&d.boards[0].id);
-    render();
-    document.getElementById("src").textContent="Auto-refreshes with Pulse snapshots.";
-  }).catch(e=>{
-    document.getElementById("stamp").innerHTML=`<span class="err">Couldn’t load: ${esc(e.message)}</span>`;
-  });
+  }).then(d=>{ data=d; if(!boardId) boardId=d.default_board||(d.boards&&d.boards[0]&&d.boards[0].id); render(); })
+  .catch(e=>{ document.getElementById("app").innerHTML=`<div class="empty err">${esc(e.message)}</div>`; });
 })();
-  </script>
+</script>
 </body>
 </html>
