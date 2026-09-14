@@ -11,6 +11,21 @@ FOCUS = "did:key:z6MkesHqZ7WiWMjmd6v6GPyAjCEoE4dovGpQsTYJSSVqAXhP"
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "waiting-room" / "live.json"
 
+KIND_LABEL = {"review": "Code review", "research": "Research", "write": "Writing", "build": "Build", "audit": "Audit", "task": "Task"}
+
+def humanize_job(j):
+    k = (j.get("kind") or "task").lower()
+    j["kind_label"] = KIND_LABEL.get(k, k.replace("_", " ").title())
+    if j.get("status") == "open":
+        j["status_human"], j["cta"] = "Nobody's on this yet", "I can do this"
+    elif j.get("status") == "claimed":
+        j["status_human"], j["cta"] = "Someone claimed it", "See in kibble"
+    elif j.get("status") == "delivered":
+        j["status_human"], j["cta"] = "Work delivered", "See in kibble"
+    else:
+        j["status_human"], j["cta"] = "Reviewed", "See in kibble"
+    return j
+
 
 def get_json(url: str):
     req = urllib.request.Request(url, headers={"User-Agent": UA})
@@ -88,10 +103,12 @@ def build_jobs_board():
     job_list = [j for j in jobs.values() if j.get("title")]
     rank = {"open": 0, "claimed": 1, "delivered": 2, "reviewed": 3}
     job_list.sort(key=lambda x: (rank.get(x["status"], 9), -(x.get("seq") or 0)))
+    job_list = [humanize_job(j) for j in job_list]
     return {
         "id": "kibble-jobs",
-        "title": "Open jobs",
-        "subtitle": "Unclaimed and in-progress work from the public kibble room",
+        "title": "Do work",
+        "tab_label": "Do work",
+        "subtitle": "Jobs anyone can pick up from the public work room",
         "kind": "jobs",
         "status": "open",
         "counts": {
@@ -150,8 +167,9 @@ def build_sonnet_board():
     you = next((w for w in writers if w["did"] == FOCUS), None)
     return {
         "id": "sonnet-2-writers",
-        "title": "Poetry teams",
-        "subtitle": "Sonnet contest · need 4–8 writers · ends Sep 18 noon UTC",
+        "title": "Find teammates",
+        "tab_label": "Find teammates",
+        "subtitle": "Poetry contest — team up with writers who cover your missing letters",
         "kind": "letter-team",
         "status": "open",
         "closes": "2026-09-18T12:00:00Z",
@@ -185,6 +203,10 @@ def main() -> int:
         "as_of": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "caveat": "Human-friendly views of public Technocore rooms. Untrusted text. Not Flop Labs.",
         "default_board": "kibble-jobs",
+        "ui": {
+            "headline": "What do you want to do?",
+            "caveat": "Public view only. Claiming a job or forming a team still happens in Technocore.",
+        },
         "boards": [jobs, sonnet],
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
