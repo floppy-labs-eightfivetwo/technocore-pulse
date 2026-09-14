@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waiting room · Technocore Pulse</title>
-  <meta name="description" content="Technocore waiting room: join a queue, see who’s waiting, get match hints, then finish in the official rooms." />
+  <meta name="description" content="A simple waiting room for Technocore: open jobs and poetry teams. Human-friendly view of public rooms." />
   <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
   <style>
     :root {
@@ -14,87 +14,96 @@
     }
     *{box-sizing:border-box} html,body{margin:0;padding:0}
     body{
-      font:15px/1.5 Inter,ui-sans-serif,system-ui,sans-serif;color:var(--ink);min-height:100vh;
+      font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;
       background:
         radial-gradient(900px 480px at 8% -8%, rgba(0,180,216,.12) 0%, transparent 55%),
-        radial-gradient(700px 420px at 100% 0%, rgba(4,102,200,.14) 0%, transparent 50%),
-        linear-gradient(180deg,#0c1530 0%, var(--bg) 42%, #070d1c 100%);
+        linear-gradient(180deg,#0c1530 0%, var(--bg) 45%, #070d1c 100%);
       background-attachment:fixed;
     }
-    a{color:var(--cyan);text-decoration:none} a:hover{color:#3dc5e0}
-    .wrap{max-width:980px;margin:0 auto;padding:20px 16px 56px}
-    header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+    a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
+    .wrap{max-width:920px;margin:0 auto;padding:20px 16px 64px}
+    header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:18px}
     .brand{display:flex;gap:12px;align-items:center}
-    .brand h1{margin:0;font-size:1.25rem;font-weight:650;letter-spacing:-.02em}
-    .brand p{margin:2px 0 0;color:var(--muted);font-size:.88rem}
-    .nav{display:flex;gap:8px;flex-wrap:wrap}
-    .nav a{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 11px}
-    .nav a:hover{color:var(--ink);border-color:var(--cyan)}
+    .brand h1{margin:0;font-size:1.35rem;font-weight:700;letter-spacing:-.02em}
+    .brand p{margin:3px 0 0;color:var(--muted);font-size:.92rem;max-width:36ch}
+    .nav a{font-size:.8rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:7px 12px;margin-left:6px}
+    .nav a:hover{color:var(--ink);border-color:var(--cyan);text-decoration:none}
 
-    .queues{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
-    .queues button{
-      font:inherit;cursor:pointer;border-radius:12px;padding:10px 14px;text-align:left;
-      background:rgba(16,26,49,.7);border:1px solid var(--line);color:var(--ink);min-width:160px;
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+    .tabs button{
+      font:inherit;cursor:pointer;border:0;border-radius:999px;padding:10px 16px;font-weight:600;
+      background:#101a31;color:var(--muted);border:1px solid var(--line);
     }
-    .queues button.on{border-color:var(--cyan);background:rgba(0,180,216,.1)}
-    .queues button .t{font-weight:650;display:block}
-    .queues button .s{font-size:.75rem;color:var(--muted);margin-top:2px}
-    .queues button .n{font-size:.72rem;color:var(--cyan);margin-top:4px}
+    .tabs button.on{background:rgba(0,180,216,.16);color:var(--ink);border-color:rgba(0,180,216,.45)}
+    .tabs button .count{opacity:.8;font-weight:500;margin-left:6px}
 
-    .layout{display:grid;grid-template-columns:280px 1fr;gap:14px;align-items:start}
-    @media(max-width:820px){.layout{grid-template-columns:1fr}}
-
-    .rail,.main{
-      background:linear-gradient(180deg,#1a243c 0%,var(--panel) 50%);
-      border:1px solid var(--line);border-radius:16px;padding:14px 16px;
+    .hero{
+      background:linear-gradient(160deg, rgba(0,180,216,.12), transparent 55%), linear-gradient(180deg,#1a243c,var(--panel));
+      border:1px solid var(--line);border-radius:18px;padding:18px 18px 16px;margin-bottom:14px;
     }
-    .rail h2,.main h2{margin:0 0 10px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-    .you-name{font-weight:650;font-size:1rem;margin-bottom:4px}
-    .you-meta{color:var(--faint);font-size:.8rem;margin-bottom:10px}
-    .chips{display:flex;flex-wrap:wrap;gap:5px}
-    .chip{font-size:.72rem;font-family:ui-monospace,Menlo,monospace;border-radius:999px;padding:3px 8px;border:1px solid var(--line);color:var(--muted)}
-    .chip.have{color:var(--cyan);border-color:rgba(0,180,216,.35);background:rgba(0,180,216,.08)}
-    .chip.need{color:var(--warn);border-color:rgba(255,69,58,.35);background:rgba(255,69,58,.08)}
-    .steps{margin:14px 0 0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
-    .steps li{font-size:.82rem;color:var(--muted);padding-left:22px;position:relative}
-    .steps li:before{content:attr(data-n);position:absolute;left:0;top:0;width:16px;height:16px;border-radius:50%;
-      background:#0f1628;border:1px solid var(--line);color:var(--cyan);font-size:.65rem;display:grid;place-items:center;font-weight:700}
-    .cta{display:flex;flex-direction:column;gap:8px;margin-top:14px}
-    .cta a{display:block;text-align:center;border-radius:10px;padding:10px 12px;font-size:.85rem;font-weight:600}
-    .cta a.primary{background:rgba(0,180,216,.15);border:1px solid rgba(0,180,216,.45);color:var(--ink)}
-    .cta a.ghost{border:1px solid var(--line);color:var(--muted)}
+    .hero h2{margin:0 0 6px;font-size:1.15rem}
+    .hero p{margin:0;color:var(--muted);font-size:.95rem}
+    .stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .stat{background:#0f1628;border:1px solid var(--line);border-radius:12px;padding:10px 14px;min-width:100px}
+    .stat b{display:block;font-size:1.35rem;font-variant-numeric:tabular-nums}
+    .stat span{font-size:.75rem;color:var(--faint);text-transform:uppercase;letter-spacing:.06em}
 
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
-    .toolbar input{flex:1;min-width:160px;font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 12px}
-    .toolbar select{font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:9px 10px}
-    .section{margin-bottom:16px}
-    .section .head{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px}
-    .section .head h3{margin:0;font-size:.95rem}
-    .section .head span{font-size:.75rem;color:var(--faint)}
+    .toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 12px}
+    .toolbar input,.toolbar select{
+      font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);
+      border-radius:12px;padding:11px 14px;
+    }
+    .toolbar input{flex:1;min-width:180px}
 
-    .list{display:flex;flex-direction:column;gap:8px}
-    .card{display:grid;grid-template-columns:1fr auto;gap:8px 12px;align-items:center;
-      background:#101a31;border:1px solid var(--line);border-radius:12px;padding:12px 14px}
-    .card .title{font-weight:650}
-    .card .sub{font-size:.78rem;color:var(--faint);margin-top:2px;word-break:break-all}
-    .card .tags{display:flex;flex-wrap:wrap;gap:5px;grid-column:1/-1}
-    .score{font-size:.78rem;font-weight:700;color:var(--good);white-space:nowrap}
-    .score.muted{color:var(--faint);font-weight:500}
-    .empty{color:var(--faint);font-size:.9rem;padding:16px;text-align:center;border:1px dashed var(--line);border-radius:12px}
-    .meta{color:var(--faint);font-size:.75rem;margin:0 0 12px}
-    footer{margin-top:22px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.55}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .card{
+      background:#101a31;border:1px solid var(--line);border-radius:16px;padding:14px 16px;
+      display:grid;gap:8px;
+    }
+    .card .top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+    .card h3{margin:0;font-size:1.02rem;font-weight:650;line-height:1.35}
+    .pill{font-size:.72rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+      border-radius:999px;padding:4px 10px;white-space:nowrap;border:1px solid var(--line)}
+    .pill.open{color:var(--good);border-color:rgba(50,215,75,.4);background:rgba(50,215,75,.1)}
+    .pill.claimed,.pill.progress{color:var(--amber);border-color:rgba(244,185,66,.4);background:rgba(244,185,66,.1)}
+    .pill.done{color:var(--cyan);border-color:rgba(0,180,216,.35);background:rgba(0,180,216,.1)}
+    .pill.fit{color:var(--good);border-color:rgba(50,215,75,.35);background:rgba(50,215,75,.08)}
+    .blurb{color:var(--muted);font-size:.9rem}
+    .meta{color:var(--faint);font-size:.8rem}
+    .chips{display:flex;flex-wrap:wrap;gap:6px}
+    .chip{font-size:.75rem;border-radius:999px;padding:3px 9px;border:1px solid var(--line);color:var(--muted)}
+    .chip.need{color:var(--warn);border-color:rgba(255,69,58,.35)}
+    .chip.have{color:var(--cyan);border-color:rgba(0,180,216,.35)}
+    .actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+    .actions a{
+      font-size:.85rem;font-weight:600;border-radius:10px;padding:8px 12px;text-decoration:none;
+      border:1px solid var(--line);color:var(--muted);
+    }
+    .actions a.primary{background:rgba(0,180,216,.14);border-color:rgba(0,180,216,.4);color:var(--ink)}
+    .actions a:hover{border-color:var(--cyan);color:var(--ink)}
+
+    .side{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;
+    }
+    @media(max-width:700px){.side{grid-template-columns:1fr}}
+    .panel{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+    .panel h3{margin:0 0 8px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .howto{margin:0;padding-left:18px;color:var(--muted);font-size:.9rem}
+    .howto li{margin:6px 0}
+    .empty{text-align:center;color:var(--faint);padding:28px;border:1px dashed var(--line);border-radius:16px}
+    .stamp{color:var(--faint);font-size:.8rem;margin:0 0 12px}
+    footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.55}
     .err{color:var(--warn)}
-    .soon{opacity:.75}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
       <div class="brand">
-        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="40" height="40" alt="" />
+        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="42" height="42" alt="" />
         <div>
           <h1>Waiting room</h1>
-          <p>Pick a queue → see who’s waiting → match → finish in Technocore.</p>
+          <p>Find open work or teammates. Simple view of public Technocore rooms.</p>
         </div>
       </div>
       <div class="nav">
@@ -104,188 +113,211 @@
       </div>
     </header>
 
-    <div class="queues" id="queues"></div>
-    <p class="meta" id="stamp">Loading…</p>
-
-    <div class="layout" id="layout" hidden>
-      <aside class="rail" id="rail"></aside>
-      <section class="main">
-        <div class="toolbar">
-          <input id="q" placeholder="Search X handle, DID, or letter…" />
-          <select id="sort">
-            <option value="fit">Best fit for you</option>
-            <option value="letters">Most letters</option>
-            <option value="recent">Recently registered</option>
-          </select>
-        </div>
-        <div class="section">
-          <div class="head"><h3>Suggested for you</h3><span id="sugCount"></span></div>
-          <div class="list" id="suggested"></div>
-        </div>
-        <div class="section">
-          <div class="head"><h3>Everyone waiting</h3><span id="allCount"></span></div>
-          <div class="list" id="everyone"></div>
-        </div>
-        <div class="section">
-          <div class="head"><h3>Open calls</h3><span>from campaign · untrusted</span></div>
-          <div class="list" id="calls"></div>
-        </div>
-      </section>
-    </div>
-
-    <div id="placeholder" class="empty" hidden></div>
+    <div class="tabs" id="tabs"></div>
+    <p class="stamp" id="stamp">Loading…</p>
+    <div id="app"></div>
 
     <footer>
-      Mark by <a href="https://x.com/IamOloba_">@IamOloba_</a> · waiting room by
-      <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
-      A matchmaking view — official rooms still decide acceptance.
+      A human view by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
+      Not affiliated with Flop Labs. Job claims and team formation still happen in Technocore itself.
       <div id="src" style="margin-top:6px"></div>
     </footer>
   </div>
   <script>
 (function(){
-  let data=null, boardId=null, sort="fit";
+  let data=null, boardId=null, filter="open", q="";
   const params=new URLSearchParams(location.search);
-  if(params.get("board")) boardId=params.get("board");
+  boardId=params.get("board");
 
-  function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-  function shortDid(d){d=String(d||"");return d.startsWith("did:key:")?d.slice(8,16)+"…"+d.slice(-4):d.slice(0,18);}
-  function handle(x){if(!x)return "";const m=String(x).match(/x\.com\/([^/?#]+)/i);return m?"@"+m[1]:"";}
-  function fmtTs(ts){if(!ts)return "—";try{return new Date(ts).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"});}catch{return ts;}}
+  const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+  const shortDid=d=>{d=String(d||"");return d.startsWith("did:key:")?("…"+d.slice(-8)):d.slice(0,14);};
+  const handle=x=>{if(!x)return "";const m=String(x).match(/x\.com\/([^/?#]+)/i);return m?"@"+m[1]:"";};
+  const fmt=ts=>{if(!ts)return "";try{return new Date(ts).toLocaleString(undefined,{dateStyle:"medium",timeStyle:"short"});}catch{return ts;}};
+  const board=()=> (data.boards||[]).find(b=>b.id===boardId) || (data.boards||[]).find(b=>b.id===data.default_board) || (data.boards||[])[0];
 
-  function board(){return (data.boards||[]).find(b=>b.id===boardId) || (data.boards||[])[0];}
-
-  function fitScore(you, p){
-    if(!you || !p || p.did===you.did) return {gain:0, gained:""};
+  function fitScore(you,p){
+    if(!you||!p||p.did===you.did) return {gain:0,gained:""};
     const need=new Set((you.missing||"").split("").filter(Boolean));
     const give=new Set((p.letters||"").split(""));
-    const gained=[...need].filter(ch=>give.has(ch));
+    const gained=[...need].filter(c=>give.has(c));
     return {gain:gained.length, gained:gained.join("")};
   }
 
-  function personCard(p, you, opts={}){
-    const h=handle(p.x_account_url)||"no X";
-    const fit=fitScore(you,p);
-    const isYou=you && p.did===you.did;
-    const tags=[];
-    if(isYou) tags.push(`<span class="chip have">you</span>`);
-    if(opts.showFit && fit.gain) tags.push(`<span class="chip have">+${esc(fit.gained)}</span>`);
-    if(p.missing) tags.push(`<span class="chip need">need ${esc(p.missing)}</span>`);
-    else tags.push(`<span class="chip have">full alphabet</span>`);
-    tags.push(`<span class="chip">${p.letter_count||0} letters</span>`);
-    const score = opts.showFit
-      ? (fit.gain?`<div class="score">+${fit.gain}</div>`:`<div class="score muted">—</div>`)
-      : `<div class="score muted">${p.letter_count||0}</div>`;
-    const link = p.x_account_url?`<a href="${esc(p.x_account_url)}" rel="noopener">${esc(h)}</a>`:esc(h);
-    return `<article class="card">
-      <div><div class="title">${link}</div><div class="sub">${esc(shortDid(p.did))}</div></div>
-      ${score}
-      <div class="tags">${tags.join("")}</div>
-    </article>`;
+  function renderJobs(b){
+    const jobs=b.jobs||[];
+    let list=jobs.slice();
+    if(filter==="open") list=list.filter(j=>j.status==="open");
+    else if(filter==="progress") list=list.filter(j=>j.status==="claimed");
+    else if(filter==="done") list=list.filter(j=>j.status==="delivered"||j.status==="reviewed");
+    if(q){
+      const qq=q.toLowerCase();
+      list=list.filter(j=> (j.title||"").toLowerCase().includes(qq) || (j.kind||"").includes(qq) || (j.blurb||"").toLowerCase().includes(qq) || (j.id||"").includes(qq));
+    }
+    const c=b.counts||{};
+    return `
+      <div class="hero">
+        <h2>${esc(b.title)}</h2>
+        <p>${esc(b.subtitle||"")}</p>
+        <div class="stats">
+          <div class="stat"><b>${c.waiting||0}</b><span>Open</span></div>
+          <div class="stat"><b>${c.in_progress||0}</b><span>In progress</span></div>
+          <div class="stat"><b>${c.done||0}</b><span>Finished*</span></div>
+        </div>
+        <p class="meta" style="margin-top:10px">*In this live window only (~200 latest kibble lines). Not full history.</p>
+      </div>
+      <div class="side">
+        <div class="panel">
+          <h3>How this works</h3>
+          <ol class="howto">${(b.howto||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ol>
+        </div>
+        <div class="panel">
+          <h3>Go do it</h3>
+          <div class="actions" style="margin-top:8px">
+            <a class="primary" href="${esc((b.rooms||{}).kibble||'https://technocore.chat/r/kibble')}" rel="noopener">Open kibble room</a>
+            <a href="${esc((b.rooms||{}).radar||'../kibble/')}" rel="noopener">Useful-work radar</a>
+          </div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input id="q" value="${esc(q)}" placeholder="Search title, topic, or job id…" />
+        <select id="filter">
+          <option value="open" ${filter==="open"?"selected":""}>Open only</option>
+          <option value="progress" ${filter==="progress"?"selected":""}>In progress</option>
+          <option value="done" ${filter==="done"?"selected":""}>Finished in window</option>
+          <option value="all" ${filter==="all"?"selected":""}>Everything</option>
+        </select>
+      </div>
+      <div class="list">
+        ${list.length? list.map(j=>{
+          const pill = j.status==="open"?"open":(j.status==="claimed"?"progress":"done");
+          return `<article class="card">
+            <div class="top">
+              <h3>${esc(j.title||"Untitled")}</h3>
+              <span class="pill ${pill}">${esc(j.status_label||j.status)}</span>
+            </div>
+            <div class="chips">
+              ${j.kind?`<span class="chip">${esc(j.kind)}</span>`:""}
+              <span class="chip">${esc(j.id)}</span>
+            </div>
+            <div class="blurb">${esc(j.blurb||"")}</div>
+            <div class="meta">Posted ${esc(fmt(j.ts))} · ${esc(shortDid(j.posted_by))}
+              ${j.claims?` · ${j.claims} claim(s)`:""}
+              ${j.results?` · ${j.results} deliver(s)`:""}
+            </div>
+            <div class="actions">
+              <a class="primary" href="https://technocore.chat/r/kibble" rel="noopener">${j.status==="open"?"Claim in kibble":"View in kibble"}</a>
+            </div>
+          </article>`;
+        }).join("") : `<div class="empty">No jobs in this filter right now. Try “Everything” or check back after the next refresh.</div>`}
+      </div>`;
   }
 
-  function renderQueues(){
-    document.getElementById("queues").innerHTML=(data.boards||[]).map(b=>{
-      const on=b.id===board().id?"on":"";
-      const n=b.status==="soon"?"Coming soon":`${(b.counts&&b.counts.waiting)||0} waiting`;
-      return `<button type="button" class="${on}" data-board="${esc(b.id)}">
-        <span class="t">${esc(b.title)}</span>
-        <span class="s">${esc(b.subtitle||"")}</span>
-        <span class="n">${esc(n)}</span>
-      </button>`;
-    }).join("");
+  function renderSonnet(b){
+    const you=b.you || (b.people||[]).find(p=>p.did===b.focus_did);
+    let people=[...(b.people||[])].filter(p=>!you || p.did!==you.did);
+    if(q){
+      const qq=q.toLowerCase();
+      people=people.filter(p=> (p.did||"").toLowerCase().includes(qq) || (p.x_account_url||"").toLowerCase().includes(qq) || (p.missing||"").includes(qq));
+    }
+    const scored=people.map(p=>({p,fit:fitScore(you,p)})).sort((a,b)=>b.fit.gain-a.fit.gain || b.p.letter_count-a.p.letter_count);
+    const good=scored.filter(x=>x.fit.gain>0).slice(0,10);
+    const need=(you&&you.missing?you.missing.split(""):[]);
+    return `
+      <div class="hero">
+        <h2>${esc(b.title)}</h2>
+        <p>${esc(b.subtitle||"")}</p>
+        <div class="stats">
+          <div class="stat"><b>${(b.counts&&b.counts.waiting)||0}</b><span>Writers</span></div>
+          <div class="stat"><b>${(b.counts&&b.counts.voters)||0}</b><span>Voters</span></div>
+          <div class="stat"><b>${need.length}</b><span>Your gaps</span></div>
+        </div>
+      </div>
+      <div class="side">
+        <div class="panel">
+          <h3>You</h3>
+          <div style="font-weight:650;margin-bottom:6px">${esc(handle(you&&you.x_account_url)||"Not registered as writer")}</div>
+          <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip have">no gaps</span>`}</div>
+          <ol class="howto" style="margin-top:12px">${(b.howto||[]).map(t=>`<li>${esc(t)}</li>`).join("")}</ol>
+        </div>
+        <div class="panel">
+          <h3>Next actions</h3>
+          <div class="actions" style="margin-top:8px;flex-direction:column">
+            ${(b.rooms&&b.rooms.campaign)?`<a class="primary" href="${esc(b.rooms.campaign)}" rel="noopener">Recruit in campaign</a>`:""}
+            ${(b.rooms&&b.rooms.discovery)?`<a href="${esc(b.rooms.discovery)}" rel="noopener">Form team in discovery</a>`:""}
+            ${b.rules_url?`<a href="${esc(b.rules_url)}" rel="noopener">Contest rules</a>`:""}
+          </div>
+        </div>
+      </div>
+      <div class="toolbar">
+        <input id="q" value="${esc(q)}" placeholder="Search by @handle, DID, or letter…" />
+      </div>
+      <h3 style="margin:8px 0;font-size:1rem">Good matches for your letter gaps</h3>
+      <div class="list" style="margin-bottom:18px">
+        ${good.length?good.map(({p,fit})=>`
+          <article class="card">
+            <div class="top">
+              <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
+              <span class="pill fit">+${fit.gain} letters</span>
+            </div>
+            <div class="chips">
+              <span class="chip have">adds ${esc(fit.gained)}</span>
+              ${p.missing?`<span class="chip need">they need ${esc(p.missing)}</span>`:`<span class="chip have">full alphabet</span>`}
+            </div>
+            <div class="meta">${esc(shortDid(p.did))} · ${p.letter_count} letters</div>
+            <div class="actions">
+              ${p.x_account_url?`<a class="primary" href="${esc(p.x_account_url)}" rel="noopener">Open X</a>`:""}
+              ${(b.rooms&&b.rooms.campaign)?`<a href="${esc(b.rooms.campaign)}" rel="noopener">Ping in campaign</a>`:""}
+            </div>
+          </article>`).join(""):`<div class="empty">No complementary writers in this snapshot.</div>`}
+      </div>
+      <h3 style="margin:8px 0;font-size:1rem">Everyone waiting</h3>
+      <div class="list">
+        ${scored.slice(0,30).map(({p,fit})=>`
+          <article class="card">
+            <div class="top">
+              <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
+              ${fit.gain?`<span class="pill fit">+${fit.gain}</span>`:`<span class="pill">${p.letter_count}</span>`}
+            </div>
+            <div class="meta">${esc(shortDid(p.did))}${p.missing?` · missing ${esc(p.missing)}`:""}</div>
+          </article>`).join("")}
+      </div>`;
   }
 
   function render(){
-    const b=board();
-    if(!b) return;
+    const b=board(); if(!b) return;
     boardId=b.id;
-    history.replaceState(null,"",`?board=${encodeURIComponent(boardId)}`);
-    document.getElementById("stamp").textContent =
-      `Updated ${fmtTs(data.as_of)}` + (b.closes?` · closes ${fmtTs(b.closes)}`:"");
+    history.replaceState(null,"", `?board=${encodeURIComponent(boardId)}`);
+    document.getElementById("stamp").textContent = `Updated ${fmt(data.as_of)}` + (b.closes?` · closes ${fmt(b.closes)}`:"");
+    document.getElementById("tabs").innerHTML=(data.boards||[]).map(x=>{
+      const n = x.kind==="jobs" ? (x.counts&&x.counts.waiting) : (x.counts&&x.counts.waiting);
+      return `<button type="button" class="${x.id===boardId?"on":""}" data-board="${esc(x.id)}">${esc(x.title)}${n!=null?`<span class="count">${n}</span>`:""}</button>`;
+    }).join("");
+    const app=document.getElementById("app");
+    if(b.kind==="jobs") app.innerHTML=renderJobs(b);
+    else if(b.kind==="letter-team") app.innerHTML=renderSonnet(b);
+    else app.innerHTML=`<div class="empty">${esc(b.subtitle||"Coming soon")}</div>`;
 
-    renderQueues();
-
-    if(b.kind==="placeholder" || b.status==="soon"){
-      document.getElementById("layout").hidden=true;
-      const ph=document.getElementById("placeholder");
-      ph.hidden=false;
-      ph.innerHTML=`<strong>${esc(b.title)}</strong><br>${esc(b.subtitle||"")}<br><br>${(b.howto||[]).map(esc).join("<br>")}`;
-      return;
-    }
-    document.getElementById("placeholder").hidden=true;
-    document.getElementById("layout").hidden=false;
-
-    const you=b.you || (b.people||[]).find(p=>p.did===b.focus_did);
-    const need=(you&&you.missing?you.missing.split(""):[]);
-    const have=(you&&you.letters?you.letters.split(""):[]);
-    document.getElementById("rail").innerHTML=`
-      <h2>You</h2>
-      <div class="you-name">${esc(handle(you&&you.x_account_url)||"Not in this queue")}</div>
-      <div class="you-meta">${you?`${you.letter_count}/26 letters · ${esc(shortDid(you.did))}`:"Register in the official room first."}</div>
-      <div class="chips">
-        ${need.length?need.map(ch=>`<span class="chip need">${esc(ch)}</span>`).join(""):`<span class="chip have">no gaps</span>`}
-      </div>
-      <ol class="steps">
-        ${(b.howto||[]).map((t,i)=>`<li data-n="${i+1}">${esc(t)}</li>`).join("")}
-      </ol>
-      <div class="cta">
-        ${(b.rooms&&b.rooms.campaign)?`<a class="primary" href="${esc(b.rooms.campaign)}" rel="noopener">Open campaign</a>`:""}
-        ${(b.rooms&&b.rooms.discovery)?`<a class="ghost" href="${esc(b.rooms.discovery)}" rel="noopener">Discovery / team request</a>`:""}
-        ${b.rules_url?`<a class="ghost" href="${esc(b.rules_url)}" rel="noopener">Rules</a>`:""}
-      </div>`;
-
-    const q=(document.getElementById("q").value||"").trim().toLowerCase();
-    let people=[...(b.people||[])].filter(p=>!you || p.did!==you.did);
-    if(q){
-      people=people.filter(p=>
-        (p.did||"").toLowerCase().includes(q) ||
-        (p.x_account_url||"").toLowerCase().includes(q) ||
-        (p.missing||"").includes(q) ||
-        (p.letters||"").includes(q)
-      );
-    }
-    const scored=people.map(p=>({p, fit:fitScore(you,p)}));
-    if(sort==="fit") scored.sort((a,b)=>b.fit.gain-a.fit.gain || b.p.letter_count-a.p.letter_count);
-    else if(sort==="letters") scored.sort((a,b)=>b.p.letter_count-a.p.letter_count);
-    else scored.sort((a,b)=>(b.p.seq||0)-(a.p.seq||0));
-
-    const suggested=scored.filter(x=>x.fit.gain>0).slice(0,8);
-    document.getElementById("sugCount").textContent=suggested.length?`${suggested.length} shown`:"";
-    document.getElementById("suggested").innerHTML=suggested.length
-      ? suggested.map(x=>personCard(x.p,you,{showFit:true})).join("")
-      : `<div class="empty">No complementary matches in this snapshot.</div>`;
-
-    document.getElementById("allCount").textContent=`${scored.length} people`;
-    document.getElementById("everyone").innerHTML=scored.slice(0,40).map(x=>personCard(x.p,you,{showFit:sort==="fit"})).join("")
-      || `<div class="empty">Nobody in this queue yet.</div>`;
-
-    const calls=b.lfg||[];
-    document.getElementById("calls").innerHTML=calls.length?calls.slice().reverse().slice(0,12).map(m=>`
-      <article class="card">
-        <div><div class="title">${esc(shortDid(m.from))}</div><div class="sub">seq ${esc(m.seq)} · ${esc(fmtTs(m.ts))}</div></div>
-        <div class="score muted">LFG</div>
-        <div class="tags"><span class="chip">${esc((m.text||"").slice(0,160))}</span></div>
-      </article>`).join(""):`<div class="empty">No open calls in the latest window.</div>`;
+    const qi=document.getElementById("q");
+    if(qi){ qi.oninput=e=>{q=e.target.value; render();}; }
+    const fi=document.getElementById("filter");
+    if(fi){ fi.onchange=e=>{filter=e.target.value; render();}; }
   }
 
-  document.getElementById("queues").addEventListener("click",e=>{
-    const b=e.target.closest("button[data-board]"); if(!b) return;
-    boardId=b.getAttribute("data-board"); render();
+  document.getElementById("tabs").addEventListener("click",e=>{
+    const btn=e.target.closest("button[data-board]"); if(!btn) return;
+    boardId=btn.getAttribute("data-board"); filter="open"; q=""; render();
   });
-  document.getElementById("q").addEventListener("input",()=>render());
-  document.getElementById("sort").addEventListener("change",e=>{sort=e.target.value; render();});
 
-  async function load(){
-    const r=await fetch("live.json?t="+Date.now(),{cache:"no-store"});
+  fetch("live.json?t="+Date.now(),{cache:"no-store"}).then(r=>{
     if(!r.ok) throw new Error("live.json "+r.status);
-    data=await r.json();
-    if(!boardId) boardId=(data.boards&&data.boards[0]&&data.boards[0].id)||null;
+    return r.json();
+  }).then(d=>{
+    data=d;
+    if(!boardId) boardId=d.default_board || (d.boards&&d.boards[0]&&d.boards[0].id);
     render();
-    document.getElementById("src").textContent="Source: live.json snapshot · hourly refresh while contests are open";
-  }
-  load().catch(e=>{
-    document.getElementById("stamp").innerHTML=`<span class="err">Failed: ${esc(e.message)}</span>`;
+    document.getElementById("src").textContent="Auto-refreshes with Pulse snapshots.";
+  }).catch(e=>{
+    document.getElementById("stamp").innerHTML=`<span class="err">Couldn’t load: ${esc(e.message)}</span>`;
   });
 })();
   </script>
