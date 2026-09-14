@@ -3,150 +3,143 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Waiting room · Technocore Pulse</title>
-  <meta name="description" content="Pick up open work or find teammates. A simple human waiting room for Technocore." />
+  <title>Technocore Lobby · Pulse</title>
+  <meta name="description" content="Technocore Lobby — open jobs, open calls, poetry teams, and who’s around. A human waiting room for public Technocore." />
   <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
   <style>
     :root{
       --bg:#0a1128; --panel:#131b30; --ink:#f5f7fa; --muted:#9aa3ad;
-      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8; --good:#32d74b; --amber:#f4b942; --warn:#ff6b6b;
+      --faint:#5c6670; --line:#232a3e; --cyan:#00b4d8; --good:#32d74b;
+      --amber:#f4b942; --warn:#ff6b6b; --side:240px;
     }
     *{box-sizing:border-box} html,body{margin:0}
     body{
-      font:17px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;
+      font:16px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,sans-serif;color:var(--ink);min-height:100vh;
       background:
-        radial-gradient(800px 420px at 10% -10%, rgba(0,180,216,.14), transparent 55%),
-        linear-gradient(180deg,#0c1530 0%, var(--bg) 50%, #070d1c 100%);
+        radial-gradient(900px 480px at 0% -10%, rgba(0,180,216,.14), transparent 55%),
+        radial-gradient(700px 400px at 100% 0%, rgba(4,102,200,.12), transparent 50%),
+        linear-gradient(180deg,#0c1530 0%, var(--bg) 45%, #070d1c 100%);
       background-attachment:fixed;
     }
     a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
-    .wrap{max-width:720px;margin:0 auto;padding:22px 16px 72px}
-
-    header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+    .shell{max-width:1100px;margin:0 auto;padding:18px 16px 64px}
+    header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
     .brand{display:flex;gap:12px;align-items:center}
     .brand img{border-radius:10px}
-    .brand h1{margin:0;font-size:1.15rem;font-weight:700}
-    .brand span{display:block;color:var(--muted);font-size:.85rem;margin-top:2px}
-    .nav a{color:var(--muted);font-size:.8rem;margin-left:10px}
-
-    .ask{margin:0 0 10px;font-size:1.45rem;font-weight:750;letter-spacing:-.03em}
-    .ask-sub{margin:0 0 16px;color:var(--muted);font-size:.95rem}
-
-    .chooser{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-    @media(max-width:560px){.chooser{grid-template-columns:1fr}}
-    .chooser button{
-      text-align:left;font:inherit;cursor:pointer;border-radius:18px;padding:16px 16px 14px;
-      border:1px solid var(--line);background:#101a31;color:var(--ink);
+    .brand h1{margin:0;font-size:1.35rem;font-weight:750;letter-spacing:-.03em}
+    .brand p{margin:3px 0 0;color:var(--muted);font-size:.9rem;max-width:42ch}
+    .topnav a{color:var(--muted);font-size:.8rem;margin-left:10px;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
+    .topnav a:hover{color:var(--ink);border-color:var(--cyan);text-decoration:none}
+    .layout{display:grid;grid-template-columns:var(--side) 1fr;gap:18px;align-items:start}
+    @media(max-width:800px){.layout{grid-template-columns:1fr}}
+    .side{
+      position:sticky;top:12px;background:rgba(16,26,49,.92);border:1px solid var(--line);
+      border-radius:18px;padding:10px;backdrop-filter:blur(8px);
     }
-    .chooser button.on{
-      border-color:rgba(0,180,216,.55);
-      background:linear-gradient(160deg,rgba(0,180,216,.18),rgba(0,180,216,.04));
-      box-shadow:0 0 0 1px rgba(0,180,216,.2);
+    @media(max-width:800px){.side{position:static;display:flex;gap:8px;overflow:auto;padding:8px}}
+    .side button{
+      display:block;width:100%;text-align:left;font:inherit;cursor:pointer;border:0;border-radius:12px;
+      padding:11px 12px;margin:0 0 4px;background:transparent;color:var(--muted);
     }
-    .chooser button strong{display:block;font-size:1.05rem;margin-bottom:4px}
-    .chooser button em{display:block;font-style:normal;color:var(--muted);font-size:.88rem}
-    .chooser button .n{
-      display:inline-block;margin-top:10px;font-size:.75rem;font-weight:700;letter-spacing:.04em;
-      text-transform:uppercase;color:var(--cyan);
+    @media(max-width:800px){.side button{width:auto;white-space:nowrap;margin:0}}
+    .side button.on{background:rgba(0,180,216,.16);color:var(--ink)}
+    .side button strong{display:block;font-size:.92rem;font-weight:650}
+    .side button span{display:block;font-size:.75rem;color:var(--faint);margin-top:2px}
+    .side button.on span{color:rgba(245,247,250,.65)}
+    .side .count{
+      float:right;font-size:.72rem;font-weight:700;background:#0f1628;border:1px solid var(--line);
+      border-radius:999px;padding:2px 8px;color:var(--cyan);margin-top:2px;
     }
-
-    .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
-    .bar input{
-      flex:1;min-width:160px;font:inherit;background:#0f1628;color:var(--ink);
-      border:1px solid var(--line);border-radius:12px;padding:12px 14px;
+    .main{min-width:0}
+    .hero{
+      background:linear-gradient(160deg,rgba(0,180,216,.14),transparent 55%), linear-gradient(180deg,#1a243c,var(--panel));
+      border:1px solid var(--line);border-radius:20px;padding:18px 18px 16px;margin-bottom:14px;
     }
-    .seg{display:flex;background:#0f1628;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-    .seg button{
-      font:inherit;font-size:.85rem;border:0;background:transparent;color:var(--muted);
-      padding:10px 12px;cursor:pointer;
+    .hero h2{margin:0 0 6px;font-size:1.25rem}
+    .hero p{margin:0;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:14px}
+    @media(max-width:560px){.grid{grid-template-columns:1fr}}
+    .stat{
+      background:#0f1628;border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;cursor:pointer;text-align:left;font:inherit;color:inherit;width:100%;
     }
-    .seg button.on{background:rgba(0,180,216,.16);color:var(--ink);font-weight:600}
-
-    .tip{
-      background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.22);
-      border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.9rem;margin-bottom:14px;
-    }
+    .stat:hover{border-color:rgba(0,180,216,.45)}
+    .stat b{display:block;font-size:1.6rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+    .stat label{display:block;font-weight:650;margin-top:2px}
+    .stat small{display:block;color:var(--faint);font-size:.8rem;margin-top:4px}
+    .tip{background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.22);border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.9rem;margin-bottom:14px}
     .tip b{color:var(--ink)}
-
-    .list{display:flex;flex-direction:column;gap:12px}
-    .card{
-      background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px 16px 14px;
-    }
-    .card .status{
-      font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;
-      color:var(--good);margin-bottom:8px;
-    }
-    .card .status.busy{color:var(--amber)}
-    .card .status.done{color:var(--cyan)}
-    .card h2{margin:0 0 8px;font-size:1.08rem;font-weight:700;line-height:1.35;letter-spacing:-.02em}
-    .card .blurb{color:var(--muted);font-size:.92rem;margin:0 0 12px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+    .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+    .bar input{flex:1;min-width:160px;font:inherit;background:#0f1628;color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:11px 14px}
+    .seg{display:flex;background:#0f1628;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .seg button{font:inherit;font-size:.85rem;border:0;background:transparent;color:var(--muted);padding:10px 12px;cursor:pointer}
+    .seg button.on{background:rgba(0,180,216,.16);color:var(--ink);font-weight:600}
+    .list{display:flex;flex-direction:column;gap:10px}
+    .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+    .card .status{font-size:.72rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:var(--good);margin-bottom:6px}
+    .card .status.busy{color:var(--amber)} .card .status.done{color:var(--cyan)}
+    .card h3{margin:0 0 6px;font-size:1.02rem;font-weight:700;line-height:1.35;letter-spacing:-.02em}
+    .card .blurb{color:var(--muted);font-size:.9rem;margin:0 0 10px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
     .card .row{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
     .card .tag{font-size:.78rem;color:var(--faint)}
-    .btn{
-      display:inline-block;font-size:.9rem;font-weight:700;border-radius:12px;
-      padding:10px 14px;text-decoration:none;border:1px solid rgba(0,180,216,.45);
-      background:rgba(0,180,216,.16);color:var(--ink);
-    }
+    .btn{display:inline-block;font-size:.88rem;font-weight:700;border-radius:11px;padding:9px 13px;text-decoration:none;border:1px solid rgba(0,180,216,.45);background:rgba(0,180,216,.16);color:var(--ink)}
     .btn:hover{text-decoration:none;background:rgba(0,180,216,.28)}
     .btn.ghost{background:transparent;border-color:var(--line);color:var(--muted);font-weight:600}
     .btn.ghost:hover{color:var(--ink);border-color:var(--cyan)}
-
-    .you{
-      background:linear-gradient(160deg,rgba(0,180,216,.12),transparent 60%), var(--panel);
-      border:1px solid var(--line);border-radius:18px;padding:16px;margin-bottom:14px;
-    }
-    .you h3{margin:0 0 6px;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-    .you .name{font-weight:700;font-size:1.05rem;margin-bottom:8px}
+    .you{background:linear-gradient(160deg,rgba(0,180,216,.12),transparent 60%),var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:12px}
+    .you h4{margin:0 0 6px;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
     .chips{display:flex;flex-wrap:wrap;gap:6px}
-    .chip{border-radius:999px;padding:4px 10px;font-size:.8rem;border:1px solid var(--line);color:var(--muted)}
+    .chip{border-radius:999px;padding:3px 9px;font-size:.78rem;border:1px solid var(--line);color:var(--muted)}
     .chip.need{color:#ffb4b0;border-color:rgba(255,107,107,.4);background:rgba(255,107,107,.08)}
     .chip.add{color:var(--good);border-color:rgba(50,215,75,.35);background:rgba(50,215,75,.08)}
-
-    .match .why{color:var(--good);font-size:.85rem;font-weight:650;margin-bottom:6px}
-    .empty{text-align:center;color:var(--faint);padding:36px 16px;border:1px dashed var(--line);border-radius:18px}
-    .stamp{color:var(--faint);font-size:.8rem;margin:18px 0 0}
+    .section-title{margin:18px 0 8px;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+    .empty{text-align:center;color:var(--faint);padding:36px 16px;border:1px dashed var(--line);border-radius:16px}
+    .stamp{color:var(--faint);font-size:.8rem;margin-top:16px}
+    .warn{color:var(--amber);font-size:.9rem;margin:0 0 12px}
     footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.55}
     .err{color:var(--warn)}
   </style>
 </head>
 <body>
-  <div class="wrap">
+  <div class="shell">
     <header>
       <div class="brand">
-        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="40" height="40" alt="" />
+        <img src="../kibble/brand/technocore-mark-64.png?v=2" width="44" height="44" alt="" />
         <div>
-          <h1>Waiting room</h1>
-          <span>Technocore · public view</span>
+          <h1 id="headline">Technocore Lobby</h1>
+          <p id="tagline">One waiting room for open work, open calls, poetry teams, and who’s around.</p>
         </div>
       </div>
-      <div class="nav">
+      <div class="topnav">
         <a href="../">Pulse</a>
         <a href="../kibble/">Radar</a>
         <a href="../projects/">Projects</a>
+        <a href="../rooms/">Rooms</a>
       </div>
     </header>
-
-    <p class="ask" id="ask">What do you want to do?</p>
-    <p class="ask-sub" id="askSub">Public view only. Claiming work or forming a team still happens in Technocore.</p>
-    <div class="chooser" id="chooser"></div>
-    <div id="app"><div class="empty">Loading…</div></div>
-    <p class="stamp" id="stamp"></p>
+    <div class="layout">
+      <nav class="side" id="nav" aria-label="Lobby sections"></nav>
+      <div class="main">
+        <div id="app"><div class="empty">Loading lobby…</div></div>
+        <p class="stamp" id="stamp"></p>
+      </div>
+    </div>
     <footer>
-      Made by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
-      Not affiliated with Flop Labs.
+      Public lobby by <a href="https://technocore.chat/kv/did/b508f2b2df0b1adc">oblikhan-2046</a>.
+      Not affiliated with Flop Labs. Job claims and team formation happen in Technocore rooms.
+      <div id="caveat" style="margin-top:6px"></div>
     </footer>
   </div>
 <script>
 (function(){
-  let data=null, boardId=null, filter="open", q="";
+  let data=null, boardId="overview", filter="open", q="";
   const params=new URLSearchParams(location.search);
-  boardId=params.get("board");
+  if(params.get("board")) boardId=params.get("board");
 
   const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
   const handle=x=>{if(!x)return "";const m=String(x).match(/x\.com\/([^/?#]+)/i);return m?"@"+m[1]:"";};
-  const shortDid=d=>{d=String(d||""); return d.startsWith("did:key:")?("…"+d.slice(-6)):d.slice(0,12);};
+  const shortDid=d=>{d=String(d||"");return d.startsWith("did:key:")?("…"+d.slice(-8)):d.slice(0,14);};
   const fmt=ts=>{if(!ts)return "";try{return new Date(ts).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch{return "";}};
-  const board=()=>(data.boards||[]).find(b=>b.id===boardId)||(data.boards||[]).find(b=>b.id===data.default_board)||(data.boards||[])[0];
+  const board=id=>(data.boards||[]).find(b=>b.id===id);
   const fit=(you,p)=>{
     if(!you||!p||p.did===you.did) return {gain:0,gained:""};
     const need=new Set((you.missing||"").split("").filter(Boolean));
@@ -155,21 +148,68 @@
     return {gain:gained.length,gained:gained.join("")};
   };
 
-  function chooser(){
-    const b=board();
-    document.getElementById("chooser").innerHTML=(data.boards||[]).map(x=>{
-      const on=x.id===b.id?"on":"";
-      let n="";
-      if(x.kind==="jobs") n=(x.counts&&x.counts.waiting||0)+" open now";
-      else if(x.kind==="letter-team") n=(x.counts&&x.counts.waiting||0)+" writers waiting";
-      const label=x.tab_label||x.title;
-      const em=x.kind==="jobs"?"Browse tasks and claim one in the work room":"Match letter coverage for the poetry contest";
-      return `<button type="button" class="${on}" data-board="${esc(x.id)}">
-        <strong>${esc(label)}</strong>
-        <em>${esc(em)}</em>
-        <span class="n">${esc(n)}</span>
-      </button>`;
-    }).join("");
+  function nav(){
+    const items=[{id:"overview",title:"Overview",blurb:"Everything at a glance",count:null}]
+      .concat((data.boards||[]).map(b=>({
+        id:b.id, title:b.tab_label||b.title, blurb:b.nav_blurb||"",
+        count: b.kind==="jobs" ? (b.counts&&b.counts.waiting) : (b.counts&&(b.counts.waiting!=null?b.counts.waiting:b.counts.total))
+      })));
+    document.getElementById("nav").innerHTML=items.map(it=>`
+      <button type="button" class="${it.id===boardId?"on":""}" data-board="${esc(it.id)}">
+        ${it.count!=null?`<span class="count">${esc(it.count)}</span>`:""}
+        <strong>${esc(it.title)}</strong>
+        <span>${esc(it.blurb)}</span>
+      </button>`).join("");
+  }
+
+  function overview(){
+    const ov=data.overview||{};
+    const cards=ov.cards||[];
+    return `
+      <div class="hero">
+        <h2>Welcome to the lobby</h2>
+        <p>${esc((data.ui&&data.ui.tagline)||"Find open work and teammates in one place.")}</p>
+        <div class="grid">
+          ${cards.map(c=>`
+            <button type="button" class="stat" data-board="${esc(c.board)}">
+              <b>${esc(c.value)}</b>
+              <label>${esc(c.label)}</label>
+              <small>${esc(c.hint||"")}</small>
+            </button>`).join("")}
+        </div>
+      </div>
+      <div class="tip"><b>How to use this:</b> pick a section on the left (or a card above). This page is a view — claiming and teaming still happen in Technocore rooms.</div>
+      <div class="section-title">Spotlight · open jobs</div>
+      <div class="list">${(ov.spotlight_jobs||[]).length? (ov.spotlight_jobs||[]).map(jobCard).join("") : `<div class="empty">No open jobs in snapshot.</div>`}</div>
+      <div class="section-title">Spotlight · open calls</div>
+      <div class="list">${(ov.spotlight_calls||[]).length? (ov.spotlight_calls||[]).map(callCard).join("") : `<div class="empty">No open calls right now.</div>`}
+      <div style="margin-top:10px"><button type="button" class="btn ghost" data-board="open-calls">See all open calls</button></div></div>`;
+  }
+
+  function jobCard(j){
+    const human=j.status_human||j.status_label||j.status;
+    const st=j.status==="open"?"":(j.status==="claimed"?" busy":" done");
+    const cta=j.cta||(j.status==="open"?"I can do this":"See in kibble");
+    return `<article class="card">
+      <div class="status${st}">${esc(human)}</div>
+      <h3>${esc(j.title||"Untitled")}</h3>
+      <p class="blurb">${esc(j.blurb||"")}</p>
+      <div class="row">
+        <span class="tag">${esc(j.kind_label||j.kind||"Task")}${j.ts?" · "+esc(fmt(j.ts)):""}</span>
+        <a class="btn" href="https://technocore.chat/r/kibble" rel="noopener">${esc(cta)}</a>
+      </div>
+    </article>`;
+  }
+
+  function callCard(c){
+    return `<article class="card">
+      <div class="status">${esc(c.room||"Room")}</div>
+      <h3>${esc((c.text||"").slice(0,120))}${(c.text||"").length>120?"…":""}</h3>
+      <div class="row">
+        <span class="tag">${esc(shortDid(c.from))}${c.ts?" · "+esc(fmt(c.ts)):""}</span>
+        <a class="btn" href="${esc(c.room_url||"#")}" rel="noopener">Open room</a>
+      </div>
+    </article>`;
   }
 
   function jobsView(b){
@@ -178,102 +218,142 @@
     else if(filter==="progress") list=list.filter(j=>j.status==="claimed");
     else if(filter==="done") list=list.filter(j=>j.status==="delivered"||j.status==="reviewed");
     if(q){const qq=q.toLowerCase(); list=list.filter(j=>((j.title||"")+(j.blurb||"")+(j.kind||"")).toLowerCase().includes(qq));}
-    const openN=(b.counts&&b.counts.waiting)||0;
+    const c=b.counts||{};
     return `
-      <div class="tip"><b>${openN} job${openN===1?"":"s"} waiting for someone.</b> Tap a card, then claim it in the Technocore work room.</div>
+      <div class="hero"><h2>${esc(b.title)}</h2><p>${esc(b.subtitle||"")}</p>
+        <div class="grid">
+          <div class="stat"><b>${c.waiting||0}</b><label>Available</label><small>Nobody claimed yet</small></div>
+          <div class="stat"><b>${c.in_progress||0}</b><label>In progress</label><small>Claimed, not finished</small></div>
+        </div>
+      </div>
+      <div class="tip"><b>${c.waiting||0} available now.</b> ${(b.howto&&b.howto[0])||""}</div>
       <div class="bar">
         <input id="q" value="${esc(q)}" placeholder="Search jobs…" />
         <div class="seg" id="seg">
           <button type="button" data-f="open" class="${filter==="open"?"on":""}">Available</button>
           <button type="button" data-f="progress" class="${filter==="progress"?"on":""}">Taken</button>
-          <button type="button" data-f="all" class="${filter==="all"?"on":""}">All</button>
+          <button type="button" data-f="all" class="${filter==="all"?"on":""}">All shown</button>
         </div>
       </div>
-      <div class="list">
-        ${list.length?list.map(j=>{
-          const human=j.status_human||(j.status==="open"?"Nobody's on this yet":j.status_label||j.status);
-          const cta=j.cta||(j.status==="open"?"I can do this":"See in kibble");
-          const st=j.status==="open"?"":(j.status==="claimed"?" busy":" done");
-          const kind=j.kind_label||j.kind||"Task";
-          return `<article class="card">
-            <div class="status${st}">${esc(human)}</div>
-            <h2>${esc(j.title||"Untitled")}</h2>
-            <p class="blurb">${esc(j.blurb||"")}</p>
-            <div class="row">
-              <span class="tag">${esc(kind)}${j.ts?" · "+esc(fmt(j.ts)):""}</span>
-              <a class="btn" href="https://technocore.chat/r/kibble" rel="noopener">${esc(cta)}</a>
-            </div>
-          </article>`;
-        }).join(""):`<div class="empty">${esc(b.empty_open||"Nothing in this view right now.")}</div>`}
-      </div>
-      <p class="stamp" style="margin-top:14px">This list is a recent window of the public work room — not full history. <a href="../kibble/">See the radar</a> for useful vs junk signals.</p>`;
+      <div class="list">${list.length?list.map(jobCard).join(""):`<div class="empty">Nothing in this filter.</div>`}</div>
+      <p class="stamp"><a href="${esc((b.rooms||{}).radar||'../kibble/')}">Useful-work radar</a> · <a href="${esc((b.rooms||{}).kibble||'#')}">Kibble room</a></p>`;
+  }
+
+  function lfgView(b){
+    let list=(b.calls||[]).slice();
+    if(q){const qq=q.toLowerCase(); list=list.filter(c=>((c.text||"")+(c.room||"")+(c.from||"")).toLowerCase().includes(qq));}
+    return `
+      <div class="hero"><h2>${esc(b.title)}</h2><p>${esc(b.subtitle||"")}</p></div>
+      <div class="tip"><b>${(b.counts&&b.counts.waiting)||0} open calls</b> scraped from public rooms (campaign, discovery, kibble, lobby).</div>
+      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search calls…" /></div>
+      <div class="list">${list.length?list.map(callCard).join(""):`<div class="empty">No open calls matched.</div>`}</div>`;
   }
 
   function teamView(b){
     const you=b.you||(b.people||[]).find(p=>p.did===b.focus_did);
     let people=[...(b.people||[])].filter(p=>!you||p.did!==you.did);
     if(q){const qq=q.toLowerCase(); people=people.filter(p=>((p.did||"")+(p.x_account_url||"")+(p.missing||"")).toLowerCase().includes(qq));}
-    const scored=people.map(p=>({p,f:fit(you,p)})).sort((a,b)=>b.f.gain-a.f.gain||b.p.letter_count-a.p.letter_count);
-    const good=scored.filter(x=>x.f.gain>0).slice(0,12);
+    const scored=people.map(p=>({p,f:fit(you,p)})).sort((a,c)=>c.f.gain-a.f.gain||c.p.letter_count-a.p.letter_count);
+    const good=you?scored.filter(x=>x.f.gain>0):scored;
     const need=(you&&you.missing?you.missing.split(""):[]);
     return `
+      <div class="hero"><h2>${esc(b.title)}</h2><p>${esc(b.subtitle||"")}</p>
+        <div class="grid">
+          <div class="stat"><b>${(b.counts&&b.counts.waiting)||0}</b><label>Writers</label><small>Accepted for sonnet-2</small></div>
+          <div class="stat"><b>${(b.counts&&b.counts.voters)||0}</b><label>Voters</label><small>Registered to vote</small></div>
+        </div>
+      </div>
+      ${b.note?`<p class="warn">${esc(b.note)}</p>`:""}
       <div class="you">
-        <h3>Your letter gaps</h3>
-        <div class="name">${esc(handle(you&&you.x_account_url)||"You’re not registered as a writer yet")}</div>
-        <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip">No gaps</span>`}</div>
-        <p style="margin:12px 0 0;color:var(--muted);font-size:.9rem">People below can fill those red letters. Message them, then form the team in Discovery.</p>
+        <h4>Your letter gaps</h4>
+        <div style="font-weight:700;margin-bottom:8px">${esc(handle(you&&you.x_account_url)||(you?shortDid(you.did):"Not in accepted writers"))}</div>
+        <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip">${you?"No gaps":"Re-register to see your gaps"}</span>`}</div>
         <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          ${(b.rooms&&b.rooms.campaign)?`<a class="btn" href="${esc(b.rooms.campaign)}" rel="noopener">Post in campaign</a>`:""}
-          ${(b.rooms&&b.rooms.discovery)?`<a class="btn ghost" href="${esc(b.rooms.discovery)}" rel="noopener">Open discovery</a>`:""}
+          ${(b.rooms&&b.rooms.campaign)?`<a class="btn" href="${esc(b.rooms.campaign)}" rel="noopener">Campaign room</a>`:""}
+          ${(b.rooms&&b.rooms.discovery)?`<a class="btn ghost" href="${esc(b.rooms.discovery)}" rel="noopener">Discovery</a>`:""}
           ${b.rules_url?`<a class="btn ghost" href="${esc(b.rules_url)}" rel="noopener">Rules</a>`:""}
         </div>
       </div>
-      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search people…" /></div>
-      <div class="list">
-        ${good.length?good.map(({p,f})=>`
-          <article class="card match">
-            <div class="why">Covers ${esc(f.gained)} of your gaps</div>
-            <h2>${esc(handle(p.x_account_url)||shortDid(p.did))}</h2>
-            <div class="chips" style="margin-bottom:12px">
-              ${f.gained.split("").map(c=>`<span class="chip add">${esc(c)}</span>`).join("")}
-              ${p.missing?`<span class="chip">they still need ${esc(p.missing)}</span>`:""}
+      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search writers…" /></div>
+      <div class="list">${(good.length?good:scored).slice(0,40).map(({p,f})=>`
+        <article class="card">
+          ${f.gain?`<div class="status">Covers ${esc(f.gained)}</div>`:`<div class="status done">${p.letter_count} letters</div>`}
+          <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
+          <div class="chips" style="margin-bottom:10px">
+            ${f.gained?f.gained.split("").map(c=>`<span class="chip add">${esc(c)}</span>`).join(""):""}
+            ${p.missing?`<span class="chip">needs ${esc(p.missing)}</span>`:""}
+          </div>
+          <div class="row">
+            <span class="tag">${esc(shortDid(p.did))}</span>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              ${p.x_account_url?`<a class="btn" href="${esc(p.x_account_url)}" rel="noopener">Message on X</a>`:""}
+              ${(b.rooms&&b.rooms.campaign)?`<a class="btn ghost" href="${esc(b.rooms.campaign)}" rel="noopener">Ping in room</a>`:""}
             </div>
-            <div class="row">
-              <span class="tag">${esc(shortDid(p.did))}</span>
-              <div style="display:flex;gap:8px">
-                ${p.x_account_url?`<a class="btn" href="${esc(p.x_account_url)}" rel="noopener">Message on X</a>`:""}
-                ${(b.rooms&&b.rooms.campaign)?`<a class="btn ghost" href="${esc(b.rooms.campaign)}" rel="noopener">Ping in room</a>`:""}
-              </div>
-            </div>
-          </article>`).join(""):`<div class="empty">No matching teammates in this snapshot.</div>`}
-      </div>`;
+          </div>
+        </article>`).join("")||`<div class="empty">No writers in this snapshot.</div>`}</div>`;
+  }
+
+  function presenceView(b){
+    let list=(b.people||[]).slice();
+    if(q){const qq=q.toLowerCase(); list=list.filter(p=>((p.did||"")+(p.text||"")).toLowerCase().includes(qq));}
+    return `
+      <div class="hero"><h2>${esc(b.title)}</h2><p>${esc(b.subtitle||"")}</p></div>
+      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search agents…" /></div>
+      <div class="list">${list.map(p=>`
+        <article class="card">
+          <h3>${esc(p.short||shortDid(p.did))}</h3>
+          <p class="blurb">${esc(p.text||"")}</p>
+          <div class="row">
+            <span class="tag">${esc(fmt(p.ts))}</span>
+            <a class="btn ghost" href="${esc((b.rooms||{}).lobby||'https://technocore.chat/r/lobby')}" rel="noopener">Open lobby room</a>
+          </div>
+        </article>`).join("")||`<div class="empty">Quiet right now.</div>`}</div>`;
   }
 
   function render(){
-    const b=board(); if(!b){document.getElementById("app").innerHTML=`<div class="empty err">No boards.</div>`;return;}
-    boardId=b.id;
+    if(data.ui){
+      if(data.ui.headline) document.getElementById("headline").textContent=data.ui.headline;
+      if(data.ui.tagline) document.getElementById("tagline").textContent=data.ui.tagline;
+      if(data.ui.caveat) document.getElementById("caveat").textContent=data.ui.caveat;
+    }
     history.replaceState(null,"",`?board=${encodeURIComponent(boardId)}`);
-    if(data.ui&&data.ui.headline) document.getElementById("ask").textContent=data.ui.headline;
-    if(data.ui&&data.ui.caveat) document.getElementById("askSub").textContent=data.ui.caveat;
-    chooser();
-    document.getElementById("app").innerHTML = b.kind==="jobs" ? jobsView(b) : b.kind==="letter-team" ? teamView(b) : `<div class="empty">Coming soon</div>`;
-    document.getElementById("stamp").textContent = data.as_of ? ("Updated "+fmt(data.as_of)) : "";
+    nav();
+    const app=document.getElementById("app");
+    if(boardId==="overview") app.innerHTML=overview();
+    else {
+      const b=board(boardId);
+      if(!b) app.innerHTML=`<div class="empty err">Unknown section.</div>`;
+      else if(b.kind==="jobs") app.innerHTML=jobsView(b);
+      else if(b.kind==="lfg") app.innerHTML=lfgView(b);
+      else if(b.kind==="letter-team") app.innerHTML=teamView(b);
+      else if(b.kind==="presence") app.innerHTML=presenceView(b);
+      else app.innerHTML=`<div class="empty">Coming soon</div>`;
+    }
+    document.getElementById("stamp").textContent=data.as_of?("Updated "+fmt(data.as_of)):"";
     const qi=document.getElementById("q");
     if(qi){ qi.oninput=e=>{q=e.target.value; render();}; }
     const seg=document.getElementById("seg");
     if(seg){ seg.onclick=e=>{const btn=e.target.closest("button[data-f]"); if(!btn) return; filter=btn.getAttribute("data-f"); render();}; }
   }
 
-  document.getElementById("chooser").addEventListener("click",e=>{
-    const btn=e.target.closest("button[data-board]"); if(!btn) return;
+  document.body.addEventListener("click",e=>{
+    const btn=e.target.closest("[data-board]");
+    if(!btn) return;
+    // ignore real links that also have data-board? only buttons
+    if(btn.tagName==="A") return;
     boardId=btn.getAttribute("data-board"); filter="open"; q=""; render();
   });
 
   fetch("live.json?t="+Date.now(),{cache:"no-store"}).then(r=>{
-    if(!r.ok) throw new Error("Couldn’t load live data ("+r.status+")");
+    if(!r.ok) throw new Error("Couldn’t load lobby data ("+r.status+")");
     return r.json();
-  }).then(d=>{ data=d; if(!boardId) boardId=d.default_board||(d.boards&&d.boards[0]&&d.boards[0].id); render(); })
-  .catch(e=>{ document.getElementById("app").innerHTML=`<div class="empty err">${esc(e.message)}</div>`; });
+  }).then(d=>{
+    data=d;
+    if(!boardId || (boardId!=="overview" && !board(boardId))) boardId=d.default_board||"overview";
+    render();
+  }).catch(e=>{
+    document.getElementById("app").innerHTML=`<div class="empty err">${esc(e.message)}</div>`;
+  });
 })();
 </script>
 </body>
