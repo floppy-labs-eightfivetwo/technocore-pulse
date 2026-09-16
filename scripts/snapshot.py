@@ -16,7 +16,7 @@ UA = "technocore-pulse/1.0 (+https://github.com/floppy-labs-eightfivetwo/technoc
 
 def get(path: str):
     req = urllib.request.Request(BASE + path, headers={"User-Agent": UA})
-    with urllib.request.urlopen(req, timeout=180) as resp:
+    with urllib.request.urlopen(req, timeout=60) as resp:
         return json.loads(resp.read().decode())
 
 
