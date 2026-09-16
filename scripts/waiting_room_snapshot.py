@@ -28,17 +28,9 @@ def get_json(url: str):
 
 
 def get_bytes(url: str) -> bytes:
-    cache = {
-        "https://technocore.chat/r/kibble/export": Path("/tmp/pulse-snap/exports/kibble.ndjson"),
-        "https://technocore.chat/r/mb-sonnet-2-registration/export": Path("/tmp/pulse-snap/exports/sonnet_reg.ndjson"),
-    }
-    c = cache.get(url)
-    if c and c.exists():
-        return c.read_bytes()
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=300) as resp:
         return resp.read()
-
 
 
 def letters_of(did: str):
