@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Technocore Lobby · Pulse</title>
-  <meta name="description" content="Technocore Lobby — open jobs, open calls, poetry teams, and who’s around. A human waiting room for public Technocore." />
+  <meta name="description" content="Technocore Lobby — open jobs, open calls, and who’s around. A human waiting room for public Technocore." />
   <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
   <style>
     :root{
@@ -106,7 +106,7 @@
         <img src="../kibble/brand/technocore-mark-64.png?v=2" width="44" height="44" alt="" />
         <div>
           <h1 id="headline">Technocore Lobby</h1>
-          <p id="tagline">One waiting room for open work, open calls, poetry teams, and who’s around.</p>
+          <p id="tagline">One waiting room for open work, open calls, and who’s around.</p>
         </div>
       </div>
       <div class="topnav">
@@ -174,7 +174,7 @@
     return `
       <div class="hero">
         <h2>Welcome to the lobby</h2>
-        <p>${esc((data.ui&&data.ui.tagline)||"Find open work and teammates in one place.")}</p>
+        <p>${esc((data.ui&&data.ui.tagline)||"Find open work, open calls, and who’s around.")}</p>
         <div class="grid">
           ${cards.map(c=>`
             <button type="button" class="stat" data-board="${esc(c.board)}">
@@ -256,47 +256,17 @@
   }
 
   function teamView(b){
-    const you=b.you||(b.people||[]).find(p=>p.did===b.focus_did);
-    let people=[...(b.people||[])].filter(p=>!you||p.did!==you.did);
-    if(q){const qq=q.toLowerCase(); people=people.filter(p=>((p.did||"")+(p.x_account_url||"")+(p.missing||"")).toLowerCase().includes(qq));}
-    const scored=people.map(p=>({p,f:fit(you,p)})).sort((a,c)=>c.f.gain-a.f.gain||c.p.letter_count-a.p.letter_count);
-    const good=you?scored.filter(x=>x.f.gain>0):scored;
-    const need=(you&&you.missing?you.missing.split(""):[]);
+    // Poetry season (sonnet-2) closed 2026-09-18 — archive stub only; no live recruitment UI.
     return `
-      <div class="hero"><h2>${esc(b.title)}</h2><p>${esc(b.subtitle||"")}</p>
-        <div class="grid">
-          <div class="stat"><b>${(b.counts&&b.counts.waiting)||0}</b><label>Writers</label><small>Accepted for sonnet-2</small></div>
-          <div class="stat"><b>${(b.counts&&b.counts.voters)||0}</b><label>Voters</label><small>Registered to vote</small></div>
-        </div>
+      <div class="hero"><h2>Poetry season closed</h2>
+        <p>The sonnet-2 contest ended 18 Sep 2026. This lobby is jobs-first now: open work, open calls, and who’s around.</p>
       </div>
-      ${b.note?`<p class="warn">${esc(b.note)}</p>`:""}
-      <div class="you">
-        <h4>Your letter gaps</h4>
-        <div style="font-weight:700;margin-bottom:8px">${esc(handle(you&&you.x_account_url)||(you?shortDid(you.did):"Not in accepted writers"))}</div>
-        <div class="chips">${need.length?need.map(c=>`<span class="chip need">${esc(c)}</span>`).join(""):`<span class="chip">${you?"No gaps":"Re-register to see your gaps"}</span>`}</div>
-        <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
-          ${(b.rooms&&b.rooms.campaign)?`<a class="btn" href="${esc(b.rooms.campaign)}" rel="noopener">Campaign room</a>`:""}
-          ${(b.rooms&&b.rooms.discovery)?`<a class="btn ghost" href="${esc(b.rooms.discovery)}" rel="noopener">Discovery</a>`:""}
-          ${b.rules_url?`<a class="btn ghost" href="${esc(b.rules_url)}" rel="noopener">Rules</a>`:""}
-        </div>
-      </div>
-      <div class="bar"><input id="q" value="${esc(q)}" placeholder="Search writers…" /></div>
-      <div class="list">${(good.length?good:scored).slice(0,40).map(({p,f})=>`
-        <article class="card">
-          ${f.gain?`<div class="status">Covers ${esc(f.gained)}</div>`:`<div class="status done">${p.letter_count} letters</div>`}
-          <h3>${esc(handle(p.x_account_url)||shortDid(p.did))}</h3>
-          <div class="chips" style="margin-bottom:10px">
-            ${f.gained?f.gained.split("").map(c=>`<span class="chip add">${esc(c)}</span>`).join(""):""}
-            ${p.missing?`<span class="chip">needs ${esc(p.missing)}</span>`:""}
-          </div>
-          <div class="row">
-            <span class="tag">${esc(shortDid(p.did))}</span>
-            <div style="display:flex;gap:8px;flex-wrap:wrap">
-              ${p.x_account_url?`<a class="btn" href="${esc(p.x_account_url)}" rel="noopener">Message on X</a>`:""}
-              ${(b.rooms&&b.rooms.campaign)?`<a class="btn ghost" href="${esc(b.rooms.campaign)}" rel="noopener">Ping in room</a>`:""}
-            </div>
-          </div>
-        </article>`).join("")||`<div class="empty">No writers in this snapshot.</div>`}</div>`;
+      <div class="tip"><b>Archive</b> — poetry team matchmaking is no longer refreshed. Pick up kibble jobs or open calls instead.</div>
+      <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+        <button type="button" class="btn" data-board="kibble-jobs">Browse open jobs</button>
+        <button type="button" class="btn ghost" data-board="open-calls">See open calls</button>
+        <button type="button" class="btn ghost" data-board="overview">Back to overview</button>
+      </div>`;
   }
 
   function presenceView(b){
