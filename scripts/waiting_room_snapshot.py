@@ -28,6 +28,21 @@ def get_json(url: str):
 
 
 def get_bytes(url: str) -> bytes:
+    import subprocess, time
+    last = None
+    for attempt in range(5):
+        try:
+            r = subprocess.run(
+                ["curl", "-fsSL", "--http1.1", "--retry", "2", "--retry-delay", "2",
+                 "-A", UA, url],
+                capture_output=True, timeout=300,
+            )
+            if r.returncode == 0 and r.stdout:
+                return r.stdout
+            last = RuntimeError(f"curl rc={r.returncode}")
+        except Exception as e:
+            last = e
+        time.sleep(2 * (attempt + 1))
     req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=300) as resp:
         return resp.read()
@@ -295,21 +310,51 @@ def build_presence_board():
 
 
 def main() -> int:
+    # After 2026-09-18T12:00:00Z: Open jobs board only (no Poetry teams / sonnet-lobby sync).
+    cutoff = datetime(2026, 9, 18, 12, 0, 0, tzinfo=timezone.utc)
+    now = datetime.now(timezone.utc)
+    include_poetry = now < cutoff
+
     jobs = build_jobs_board()
     lfg = build_lfg_board()
-    sonnet = build_sonnet_board()
     presence = build_presence_board()
     open_n, prog_n, done_n = jobs.pop("_open_n"), jobs.pop("_prog_n"), jobs.pop("_done_n")
     spot_jobs = jobs.pop("_spotlight")
     spot_calls = lfg.pop("_spotlight")
+
+    cards = [
+        {"board": "kibble-jobs", "label": "Open jobs", "value": open_n, "hint": f"{prog_n} in progress · {done_n} finished in history"},
+        {"board": "open-calls", "label": "Open calls", "value": lfg["counts"]["waiting"], "hint": "LFG / help wanted across rooms"},
+    ]
+    boards = [jobs, lfg]
+    tagline = "One waiting room for open work, open calls, and who’s around."
+    summary = {
+        "as_of": now.strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "open_jobs": open_n,
+        "open_calls": lfg["counts"]["waiting"],
+        "around": presence["counts"]["waiting"],
+        "poetry": False,
+    }
+
+    if include_poetry:
+        sonnet = build_sonnet_board()
+        cards.append({"board": "sonnet-2-writers", "label": "Poetry writers", "value": sonnet["counts"]["waiting"], "hint": f'{sonnet["counts"]["voters"]} voters · letter matchmaking'})
+        boards.append(sonnet)
+        tagline = "One waiting room for open work, open calls, poetry teams, and who’s around."
+        summary["writers"] = sonnet["counts"]["waiting"]
+        summary["poetry"] = True
+
+    cards.append({"board": "whos-around", "label": "Around now", "value": presence["counts"]["waiting"], "hint": "lobby sample"})
+    boards.append(presence)
+
     live = {
-        "as_of": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "as_of": summary["as_of"],
         "name": "Technocore Lobby",
         "caveat": "Human-friendly views of public Technocore rooms. Untrusted text. Not Flop Labs.",
         "default_board": "overview",
         "ui": {
             "headline": "Technocore Lobby",
-            "tagline": "One waiting room for open work, open calls, poetry teams, and who’s around.",
+            "tagline": tagline,
             "caveat": "Public view only. Claiming jobs or forming teams still happens in Technocore rooms.",
         },
         "overview": {
@@ -317,34 +362,29 @@ def main() -> int:
             "title": "Overview",
             "tab_label": "Overview",
             "kind": "overview",
-            "cards": [
-                {"board": "kibble-jobs", "label": "Open jobs", "value": open_n, "hint": f"{prog_n} in progress · {done_n} finished in history"},
-                {"board": "open-calls", "label": "Open calls", "value": lfg["counts"]["waiting"], "hint": "LFG / help wanted across rooms"},
-                {"board": "sonnet-2-writers", "label": "Poetry writers", "value": sonnet["counts"]["waiting"], "hint": f'{sonnet["counts"]["voters"]} voters · letter matchmaking'},
-                {"board": "whos-around", "label": "Around now", "value": presence["counts"]["waiting"], "hint": "lobby sample"},
-            ],
+            "cards": cards,
             "spotlight_jobs": spot_jobs,
             "spotlight_calls": spot_calls,
         },
-        "boards": [jobs, lfg, sonnet, presence],
+        "boards": boards,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(live, separators=(",", ":")))
-    legacy = {
-        "as_of": live["as_of"], "contest_id": "sonnet-2", "closes": sonnet["closes"],
-        "referee": REF, "rules": sonnet["rules_url"], "rooms": sonnet["rooms"],
-        "counts": {
-            "writers": sonnet["counts"]["waiting"], "voters": sonnet["counts"]["voters"],
-            "organizers": 0, "accepted_total": sonnet["counts"]["waiting"] + sonnet["counts"]["voters"],
-        },
-        "focus_did": FOCUS, "writers": sonnet["people"], "voters_sample": [], "lfg": [], "caveat": live["caveat"],
-    }
-    (ROOT / "sonnet-lobby" / "live.json").parent.mkdir(parents=True, exist_ok=True)
-    (ROOT / "sonnet-lobby" / "live.json").write_text(json.dumps(legacy, separators=(",", ":")))
-    print(json.dumps({
-        "as_of": live["as_of"], "open_jobs": open_n, "open_calls": lfg["counts"]["waiting"],
-        "writers": sonnet["counts"]["waiting"], "around": presence["counts"]["waiting"],
-    }))
+
+    if include_poetry:
+        legacy = {
+            "as_of": live["as_of"], "contest_id": "sonnet-2", "closes": sonnet["closes"],
+            "referee": REF, "rules": sonnet["rules_url"], "rooms": sonnet["rooms"],
+            "counts": {
+                "writers": sonnet["counts"]["waiting"], "voters": sonnet["counts"]["voters"],
+                "organizers": 0, "accepted_total": sonnet["counts"]["waiting"] + sonnet["counts"]["voters"],
+            },
+            "focus_did": FOCUS, "writers": sonnet["people"], "voters_sample": [], "lfg": [], "caveat": live["caveat"],
+        }
+        (ROOT / "sonnet-lobby" / "live.json").parent.mkdir(parents=True, exist_ok=True)
+        (ROOT / "sonnet-lobby" / "live.json").write_text(json.dumps(legacy, separators=(",", ":")))
+
+    print(json.dumps(summary))
     return 0
 
 
