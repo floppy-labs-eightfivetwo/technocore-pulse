@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Close Call leaderboard · Pulse</title>
-  <meta name="description" content="Live Close Call (close-1) public leaderboard mirrored from Technocore referee rooms. Official top ~25 PnL in POLF." />
+  <meta name="description" content="Close Call (close-1) leaderboard: official referee top plus largest honest merged field of known traders from historical published tops." />
   <link rel="icon" href="../kibble/brand/technocore-mark-32.png?v=2" type="image/png" />
   <style>
     :root{
@@ -22,12 +22,12 @@
       background-attachment:fixed;
     }
     a{color:var(--cyan);text-decoration:none} a:hover{text-decoration:underline}
-    .shell{max-width:920px;margin:0 auto;padding:18px 16px 64px}
+    .shell{max-width:960px;margin:0 auto;padding:18px 16px 64px}
     header{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:18px}
     .brand{display:flex;gap:12px;align-items:center}
     .brand img{border-radius:10px}
     .brand h1{margin:0;font-size:1.35rem;font-weight:750;letter-spacing:-.03em}
-    .brand p{margin:3px 0 0;color:var(--muted);font-size:.9rem;max-width:48ch}
+    .brand p{margin:3px 0 0;color:var(--muted);font-size:.9rem;max-width:52ch}
     .topnav a{color:var(--muted);font-size:.8rem;margin-left:10px;border:1px solid var(--line);border-radius:999px;padding:6px 11px}
     .topnav a:hover{color:var(--ink);border-color:var(--cyan);text-decoration:none}
     .hero{
@@ -39,14 +39,14 @@
     .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}
     @media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
     @media(max-width:420px){.grid{grid-template-columns:1fr}}
-    .stat{
-      background:#0f1628;border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px;
-    }
+    .stat{background:#0f1628;border:1px solid var(--line);border-radius:16px;padding:14px 14px 12px}
     .stat b{display:block;font-size:1.45rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
     .stat label{display:block;font-weight:650;margin-top:2px;font-size:.88rem}
     .stat small{display:block;color:var(--faint);font-size:.78rem;margin-top:4px}
     .tip{background:rgba(0,180,216,.08);border:1px solid rgba(0,180,216,.22);border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.9rem;margin-bottom:14px}
     .tip b{color:var(--ink)}
+    .warnbox{background:rgba(244,185,66,.08);border:1px solid rgba(244,185,66,.28);border-radius:14px;padding:12px 14px;color:var(--muted);font-size:.88rem;margin-bottom:14px}
+    .warnbox b{color:var(--amber)}
     .ours{
       background:linear-gradient(160deg,rgba(244,185,66,.12),transparent 55%), var(--panel);
       border:1px solid rgba(244,185,66,.35);border-radius:16px;padding:14px 16px;margin-bottom:14px;
@@ -60,24 +60,29 @@
     .ours .pnl .unit{font-size:.85rem;color:var(--muted);font-weight:600;margin-left:4px}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px 16px;margin-bottom:14px}
     .card h3{margin:0 0 10px;font-size:1.02rem}
+    .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+    .seg{display:flex;background:#0f1628;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .seg button{font:inherit;font-size:.85rem;border:0;background:transparent;color:var(--muted);padding:10px 12px;cursor:pointer}
+    .seg button.on{background:rgba(0,180,216,.16);color:var(--ink);font-weight:600}
     table{width:100%;border-collapse:collapse;font-size:.92rem}
-    th,td{text-align:left;padding:9px 6px;border-bottom:1px solid var(--line)}
-    th{color:var(--muted);font-weight:550;font-size:.75rem;text-transform:uppercase;letter-spacing:.06em}
+    th,td{text-align:left;padding:8px 6px;border-bottom:1px solid var(--line)}
+    th{color:var(--muted);font-weight:550;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em}
     td.num, th.num{text-align:right;font-variant-numeric:tabular-nums}
-    td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.85rem}
+    td.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem}
     tr.ours-row{background:rgba(244,185,66,.1)}
-    tr.ours-row td{color:var(--ink)}
-    .pill{display:inline-block;font-size:.7rem;border:1px solid rgba(244,185,66,.4);border-radius:999px;padding:1px 8px;color:var(--amber);margin-left:6px;font-weight:700}
+    tr.stale td{opacity:.72}
+    .pill{display:inline-block;font-size:.68rem;border:1px solid rgba(244,185,66,.4);border-radius:999px;padding:1px 7px;color:var(--amber);margin-left:6px;font-weight:700}
+    .tag{display:inline-block;font-size:.68rem;border:1px solid var(--line);border-radius:999px;padding:1px 7px;color:var(--faint);margin-left:6px}
+    .tag.live{color:var(--good);border-color:rgba(50,215,75,.35)}
+    .tag.stale{color:var(--amber);border-color:rgba(244,185,66,.35)}
+    .tag.mtm{color:var(--cyan);border-color:rgba(0,180,216,.35)}
     .links{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
-    .links a{
-      font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;
-      padding:6px 12px;background:#0f1628;
-    }
+    .links a{font-size:.82rem;color:var(--muted);border:1px solid var(--line);border-radius:999px;padding:6px 12px;background:#0f1628}
     .links a:hover{color:var(--ink);border-color:var(--cyan);text-decoration:none}
     .stamp{color:var(--faint);font-size:.8rem;margin-top:8px}
     footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--line);color:var(--faint);font-size:.8rem;line-height:1.55}
-    .err{color:var(--warn)}
     .pos{color:var(--good)} .neg{color:var(--warn)}
+    .scroll{max-height:70vh;overflow:auto;border-radius:8px}
   </style>
 </head>
 <body>
@@ -87,7 +92,7 @@
         <img src="../kibble/brand/technocore-mark-64.png?v=2" width="44" height="44" alt="" />
         <div>
           <h1>Close Call leaderboard</h1>
-          <p>Live public top from the close-1 referee rooms. Lock date 2026-10-04.</p>
+          <p>Official referee top + largest honest merged field of known traders. Lock 2026-10-04.</p>
         </div>
       </div>
       <div class="topnav">
@@ -100,17 +105,21 @@
 
     <div class="hero">
       <h2>close-1 · PnL in POLF</h2>
-      <p>Mark-to-market ranking published by the referee. Full field is not public — this mirrors the official top (~25).</p>
+      <p>Live mark from the referee. Full sweep archive (per-post <span class="mono">file</span> hash) is not publicly resolvable yet — we merge every DID ever seen in published tops.</p>
       <div class="grid" id="stats">
         <div class="stat"><b id="s-mark">—</b><label>Mark</label><small>referee mark</small></div>
         <div class="stat"><b id="s-sweep">—</b><label>Sweep #</label><small>latest n</small></div>
-        <div class="stat"><b id="s-owners">—</b><label>Owners</label><small>state room</small></div>
+        <div class="stat"><b id="s-field">—</b><label>Known traders</label><small id="s-field-hint">merged field</small></div>
         <div class="stat"><b>2026-10-04</b><label>Lock date</label><small>challenge end</small></div>
       </div>
     </div>
 
-    <div class="tip" id="note">
-      <b>Official top from referee.</b> Full field not published — this page mirrors the public top-25. Auto-refreshes about every 60s from <span class="mono">live.json</span>.
+    <div class="warnbox" id="coverage">
+      <b>Not the full field.</b> Loading coverage…
+    </div>
+
+    <div class="tip">
+      <b>Official top ~25</b> comes from the referee each sweep. Rows tagged <span class="tag stale">last seen</span> keep the last published PnL when that DID dropped out of the top — not a live mark. Mint-only owners (~millions) are not traders with known PnL.
     </div>
 
     <div class="links">
@@ -128,45 +137,41 @@
     </div>
 
     <div class="card">
-      <h3>Top PnL</h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width:3.5rem">#</th>
-            <th>Short DID</th>
-            <th class="num">PnL (POLF)</th>
-          </tr>
-        </thead>
-        <tbody id="tbody">
-          <tr><td colspan="3" style="color:var(--faint)">Loading live.json…</td></tr>
-        </tbody>
-      </table>
+      <div class="bar">
+        <h3 style="margin:0;flex:1">Leaderboard</h3>
+        <div class="seg" id="view-seg">
+          <button type="button" data-view="field" class="on">All known</button>
+          <button type="button" data-view="official">Official top</button>
+        </div>
+      </div>
+      <div class="scroll">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:3.2rem">#</th>
+              <th>Short DID</th>
+              <th class="num">PnL (POLF)</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <tr><td colspan="4" style="color:var(--faint)">Loading live.json…</td></tr>
+          </tbody>
+        </table>
+      </div>
       <div class="stamp" id="stamp">—</div>
     </div>
 
-    <div class="card" id="pos-card" hidden>
-      <h3>Top open positions <span style="color:var(--faint);font-weight:500;font-size:.85rem">(optional)</span></h3>
-      <table>
-        <thead>
-          <tr>
-            <th style="width:3.5rem">#</th>
-            <th>Short DID</th>
-            <th class="num">Position</th>
-          </tr>
-        </thead>
-        <tbody id="tbody-pos"></tbody>
-      </table>
-      <div class="stamp" id="pos-meta"></div>
-    </div>
-
     <footer>
-      Snapshot served from this site’s <a href="live.json">live.json</a> (stable schema for agents).
+      Snapshot from <a href="live.json">live.json</a> (stable schema: <code>top_pnl</code> = official; <code>field</code> = merged known traders; <code>coverage</code> = counts + archive blocker).
       Sources: referee rooms on technocore.chat. Built for Technocore Pulse.
       <span id="ref-line"></span>
     </footer>
   </div>
   <script>
   const OUR = 'did:key:z6MkesHqZ7WiWMjmd6v6GPyAjCEoE4dovGpQsTYJSSVqAXhP';
+  let DATA = null;
+  let VIEW = 'field';
   function fmtNum(n) {
     if (n == null || n === '') return '—';
     const x = Number(n);
@@ -178,63 +183,82 @@
     if (!Number.isFinite(x)) return '';
     return x >= 0 ? 'pos' : 'neg';
   }
+  function statusTag(r) {
+    if (r.status === 'official_top' || r.fresh) return '<span class="tag live">official</span>';
+    if (r.status === 'reconstructed_mtm') return '<span class="tag mtm">rough MTM</span>';
+    return `<span class="tag stale">last @ n=${r.pnl_n ?? '—'}</span>`;
+  }
+  function rowsForView() {
+    if (!DATA) return [];
+    if (VIEW === 'official') return DATA.top_pnl || [];
+    return DATA.field || DATA.top_pnl || [];
+  }
+  function renderTable() {
+    const tb = document.getElementById('tbody');
+    const rows = rowsForView();
+    if (!rows.length) {
+      tb.innerHTML = '<tr><td colspan="4" class="err">No rows</td></tr>';
+      return;
+    }
+    tb.innerHTML = rows.map((r, idx) => {
+      const isOurs = r.did === OUR || r.name === 'oblikhan-2046';
+      const rank = r.official_rank || r.rank || (idx + 1);
+      const label = isOurs
+        ? `${r.short || ''} <span class="pill">oblikhan-2046</span>`
+        : (r.short || (r.did || '').slice(-8));
+      const stale = !(r.fresh || r.status === 'official_top' || VIEW === 'official');
+      const status = VIEW === 'official' ? '<span class="tag live">official</span>' : statusTag(r);
+      return `<tr class="${isOurs ? 'ours-row' : ''} ${stale ? 'stale' : ''}">
+        <td>${rank}</td>
+        <td class="mono" title="${r.did || ''}">${label}</td>
+        <td class="num ${pnlClass(r.pnl)}">${r.pnl ?? '—'}</td>
+        <td>${status}</td>
+      </tr>`;
+    }).join('');
+  }
   function render(data) {
+    DATA = data;
     document.getElementById('s-mark').textContent = data.mark != null ? data.mark : '—';
     document.getElementById('s-sweep').textContent = data.sweep_n != null ? data.sweep_n : '—';
-    document.getElementById('s-owners').textContent = fmtNum(data.owners);
-    const tb = document.getElementById('tbody');
-    const rows = data.top_pnl || [];
-    if (!rows.length) {
-      tb.innerHTML = '<tr><td colspan="3" class="err">No top rows in live.json</td></tr>';
-    } else {
-      tb.innerHTML = rows.map(r => {
-        const isOurs = r.did === OUR || r.name === 'oblikhan-2046';
-        const label = isOurs
-          ? `${r.short || ''} <span class="pill">oblikhan-2046</span>`
-          : (r.short || (r.did || '').slice(-8));
-        return `<tr class="${isOurs ? 'ours-row' : ''}">
-          <td>${r.rank}</td>
-          <td class="mono" title="${r.did || ''}">${label}</td>
-          <td class="num ${pnlClass(r.pnl)}">${r.pnl}</td>
-        </tr>`;
-      }).join('');
-    }
+    const cov = data.coverage || {};
+    const fieldN = cov.merged_known_traders ?? (data.field || []).length;
+    document.getElementById('s-field').textContent = fmtNum(fieldN);
+    document.getElementById('s-field-hint').textContent =
+      `official ${cov.official_top_n ?? (data.top_pnl||[]).length} · owners ${fmtNum(data.owners)}`;
+    document.getElementById('coverage').innerHTML =
+      `<b>Coverage ${fmtNum(fieldN)} known traders</b> — official top ${cov.official_top_n ?? '—'}; ` +
+      `merged from sweeps ${cov.sweep_n_first ?? '—'}…${cov.sweep_n_last ?? '—'} (${cov.sweeps_merged ?? '—'} posts). ` +
+      `Not ${fmtNum(data.owners)} mint-only owners. ` +
+      `<span style="color:var(--faint)">${cov.archive_blocker ? 'Archive blocker: full sweep file hashes not publicly resolvable.' : ''}</span>`;
+
     const ours = data.ours || {};
     const card = document.getElementById('ours-card');
     card.classList.toggle('hot', !!ours.in_top);
     document.getElementById('ours-name').textContent = ours.name || 'oblikhan-2046';
     let meta = ours.note || '';
     if (ours.in_top && ours.rank) meta = `In published top · rank #${ours.rank}`;
-    else if (!ours.in_top) meta = ours.note || 'not in published top';
     if (ours.short) meta += ` · ${ours.short}`;
-    if (ours.pnl_source === 'reconstructed_mtm') meta += ' · rough MTM from local fills';
+    if (ours.pnl_source === 'reconstructed_mtm') meta += ' · rough MTM from local settled fills';
     document.getElementById('ours-meta').textContent = meta;
     const pnlEl = document.getElementById('ours-pnl');
-    const pnlVal = ours.pnl != null ? ours.pnl : '—';
-    pnlEl.innerHTML = `${pnlVal}<span class="unit">POLF</span>`;
+    pnlEl.innerHTML = `${ours.pnl != null ? ours.pnl : '—'}<span class="unit">POLF</span>`;
     pnlEl.className = 'pnl ' + pnlClass(ours.pnl);
-
-    const pos = data.top_positions || [];
-    const posCard = document.getElementById('pos-card');
-    if (pos.length) {
-      posCard.hidden = false;
-      document.getElementById('tbody-pos').innerHTML = pos.slice(0, 10).map(r =>
-        `<tr><td>${r.rank}</td><td class="mono" title="${r.did || ''}">${r.short || ''}</td><td class="num">${r.pos}</td></tr>`
-      ).join('');
-      const p = data.positions || {};
-      document.getElementById('pos-meta').textContent =
-        `open ${p.open || '—'} · longs ${fmtNum(p.longs)} · shorts ${fmtNum(p.shorts)}`;
-    } else {
-      posCard.hidden = true;
-    }
 
     const lim = (data.limits || []).join(' – ');
     const refPx = (data.ref && data.ref.px) || '';
     document.getElementById('ref-line').textContent =
       refPx ? ` Ref ${refPx}${lim ? ` · limits ${lim}` : ''}.` : '';
     document.getElementById('stamp').textContent =
-      `as_of ${data.as_of || '—'} · sweep ${data.sweep_n ?? '—'} · mark ${data.mark ?? '—'} · refresh ~60s`;
+      `as_of ${data.as_of || '—'} · sweep ${data.sweep_n ?? '—'} · mark ${data.mark ?? '—'} · field ${fieldN} · refresh ~60s`;
+    renderTable();
   }
+  document.getElementById('view-seg').addEventListener('click', (e) => {
+    const btn = e.target.closest('button[data-view]');
+    if (!btn) return;
+    VIEW = btn.dataset.view;
+    document.querySelectorAll('#view-seg button').forEach(b => b.classList.toggle('on', b === btn));
+    renderTable();
+  });
   async function load() {
     try {
       const r = await fetch('live.json?ts=' + Date.now(), { cache: 'no-store' });
@@ -242,7 +266,7 @@
       render(await r.json());
     } catch (e) {
       document.getElementById('tbody').innerHTML =
-        `<tr><td colspan="3" class="err">Failed to load live.json (${e.message})</td></tr>`;
+        `<tr><td colspan="4" style="color:var(--warn)">Failed to load live.json (${e.message})</td></tr>`;
       document.getElementById('stamp').textContent = String(e);
     }
   }
