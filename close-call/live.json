@@ -1,0 +1,265 @@
+{
+  "as_of": "2026-09-28T09:10:29+08:00",
+  "as_of_zone": "Asia/Hong_Kong",
+  "sweep_n": 733,
+  "mark": "224.24",
+  "ref": {
+    "px": "225.10",
+    "tid": 1084873768612765,
+    "time": "2026-09-28T01:04:54.074000Z"
+  },
+  "limits": [
+    "213.85",
+    "236.35"
+  ],
+  "applied": "224.85",
+  "owners": 5637715,
+  "rooms": 179,
+  "lock_date": "2026-10-04",
+  "lock": "2026-10-04T09:00:00Z",
+  "positions": {
+    "open": "22134522.55",
+    "longs": 526537,
+    "shorts": 541762
+  },
+  "top_pnl": [
+    {
+      "rank": 1,
+      "did": "did:key:z6Mkro5Jrz3GsiYD7KtGrq5XRMHTDNQVhPwgTrigSjoFn3uM",
+      "short": "SjoFn3uM",
+      "pnl": "160.86"
+    },
+    {
+      "rank": 2,
+      "did": "did:key:z6MkhGbg6pc64X9XupSFRVRHbjgVdpChz1NxVXfHhrt5xmHW",
+      "short": "hrt5xmHW",
+      "pnl": "159.40"
+    },
+    {
+      "rank": 3,
+      "did": "did:key:z6Mkhyj7zPsxs8ogJy5jRWRZ8SCc4qM897EjcViZvPdeGxP4",
+      "short": "vPdeGxP4",
+      "pnl": "150.69"
+    },
+    {
+      "rank": 4,
+      "did": "did:key:z6MkjQJymHxnBQ5VuPWBPjN2MWGeBGPU1bxCZf6FfMNfVa4M",
+      "short": "fMNfVa4M",
+      "pnl": "150.69"
+    },
+    {
+      "rank": 5,
+      "did": "did:key:z6MkpHe5BUDxHhWNrika5R5eoazhCaHfFkcFD2fUcTtLLoYT",
+      "short": "cTtLLoYT",
+      "pnl": "150.69"
+    },
+    {
+      "rank": 6,
+      "did": "did:key:z6MkwN7kQAden9NPP7JWU8jV2cQV8pnnbc1JkoowPwJCJ3YE",
+      "short": "PwJCJ3YE",
+      "pnl": "150.69"
+    },
+    {
+      "rank": 7,
+      "did": "did:key:z6Mkp1Ggj1uG6H7fZu9ikoNRXZA6Fu6ks2yhweSydxGWfJnB",
+      "short": "dxGWfJnB",
+      "pnl": "150.68"
+    },
+    {
+      "rank": 8,
+      "did": "did:key:z6MkvCfJEv9H32qkeiEzf4MkVY8q5mDVHxezttrv7gpdSNFR",
+      "short": "7gpdSNFR",
+      "pnl": "150.68"
+    },
+    {
+      "rank": 9,
+      "did": "did:key:z6MkvQfNWa3gaGqqDMdAyzTB7XKAhx4ua3AyeLBv2h5te3wN",
+      "short": "2h5te3wN",
+      "pnl": "150.68"
+    },
+    {
+      "rank": 10,
+      "did": "did:key:z6MkwK7d1ctNe5TZXtZjCpXB9r3VLbUTB2DYKsNbV9Xgs8iB",
+      "short": "V9Xgs8iB",
+      "pnl": "150.68"
+    },
+    {
+      "rank": 11,
+      "did": "did:key:z6Mku5oaoNmFdy5SfADjRo1UqrDviSFS1gPBbGf11Z5kMe8P",
+      "short": "1Z5kMe8P",
+      "pnl": "150.16"
+    },
+    {
+      "rank": 12,
+      "did": "did:key:z6MkmZ4sudDgaxErBzrV23tpBc4XeYaZbAXCJeTk9cBGSczu",
+      "short": "9cBGSczu",
+      "pnl": "149.80"
+    },
+    {
+      "rank": 13,
+      "did": "did:key:z6MkoHCHygryNbBK2s9yQeAwkcBEFnqnPWnEuV7SQpzm4m9o",
+      "short": "Qpzm4m9o",
+      "pnl": "149.80"
+    },
+    {
+      "rank": 14,
+      "did": "did:key:z6MkuFLbQVavnCXBBsDAdSowctRtgDER4gfvnp2sT9keehgR",
+      "short": "T9keehgR",
+      "pnl": "149.80"
+    },
+    {
+      "rank": 15,
+      "did": "did:key:z6MkuhtkBwiYcrotMuf4gUj9HRxuzXatNWDUQ65ZmbDAGqAK",
+      "short": "mbDAGqAK",
+      "pnl": "149.80"
+    },
+    {
+      "rank": 16,
+      "did": "did:key:z6MkfHHQrmvYAxms3RARnNenBNWhknCA6F5oa2TVD3zxXoZQ",
+      "short": "D3zxXoZQ",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 17,
+      "did": "did:key:z6MkgXDJzsJFVoiseqycdkYmyyiudH4GTCBDWsQj9BgbU7Pq",
+      "short": "9BgbU7Pq",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 18,
+      "did": "did:key:z6MkgpJ6muQxwX2A8AGpGgDChsQak3cnzDtcAp2VzSdRKtaG",
+      "short": "zSdRKtaG",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 19,
+      "did": "did:key:z6MkgswJiapADyFa5QgbzjA4rEJMQAo33QVU4JDySog1ynxX",
+      "short": "Sog1ynxX",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 20,
+      "did": "did:key:z6MkiJz4iA71ZV9t2Nnbeim77jtb3PKynSbzbuS8J7vjcwFt",
+      "short": "J7vjcwFt",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 21,
+      "did": "did:key:z6Mkj7kQF8GjsAWcAi5xLDT4tA88YnJGDaed9ATw7ANsV3HF",
+      "short": "7ANsV3HF",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 22,
+      "did": "did:key:z6MkpSvEKATx6J7pFKGPXiBCvr2BH11bdKV2cZ9XS8UPWcy5",
+      "short": "S8UPWcy5",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 23,
+      "did": "did:key:z6MktQqz9u31KVHJFmxEjhWHvaU5fQ537HmRd9Es3mXqQwNH",
+      "short": "3mXqQwNH",
+      "pnl": "149.52"
+    },
+    {
+      "rank": 24,
+      "did": "did:key:z6MkoNLtayzKxyQxegty6PJXUjKcgd9ozSao3qL2CbQQbkd1",
+      "short": "CbQQbkd1",
+      "pnl": "147.79"
+    },
+    {
+      "rank": 25,
+      "did": "did:key:z6MkhioeMdHWJ9Y8vdYF6XpsSWVxDKWRKUpmVRTGYyhMZepV",
+      "short": "YyhMZepV",
+      "pnl": "147.37"
+    }
+  ],
+  "top_positions": [
+    {
+      "rank": 1,
+      "did": "did:key:z6MktyJFqEeJXqKkHdqpE7k2f1z52SwWLCGEAsZQTLLx2nWb",
+      "short": "TLLx2nWb",
+      "pos": "-46.30"
+    },
+    {
+      "rank": 2,
+      "did": "did:key:z6MksbeCjhRD8sWUXmhgKqodPQr5j5D21znC9wx44CHcaXn5",
+      "short": "4CHcaXn5",
+      "pos": "-46.20"
+    },
+    {
+      "rank": 3,
+      "did": "did:key:z6MkfLKsk1fRiLvNMrxCdqdXcymk1QRtZidnCeTRtWJFzRnQ",
+      "short": "tWJFzRnQ",
+      "pos": "-45.32"
+    },
+    {
+      "rank": 4,
+      "did": "did:key:z6Mktv5f43Yj9RFs7sxHqdfAx8VE85VTginQXz4GWmXwvMXL",
+      "short": "WmXwvMXL",
+      "pos": "-45.28"
+    },
+    {
+      "rank": 5,
+      "did": "did:key:z6MkkgzkkPZWx7GoBtMuNJ7u5enbDQMXGAeTgUNsqxeyRhW5",
+      "short": "qxeyRhW5",
+      "pos": "-45.24"
+    },
+    {
+      "rank": 6,
+      "did": "did:key:z6Mkgbmb5vTWaKfAEXuEdfHebEZu4t86YUsmdM5KTsGD6Bwg",
+      "short": "TsGD6Bwg",
+      "pos": "-44.87"
+    },
+    {
+      "rank": 7,
+      "did": "did:key:z6Mkgck98AxgecEeJjs9QSMEDyVVB8ufZBq1Evd5q7WAqzCn",
+      "short": "q7WAqzCn",
+      "pos": "-44.87"
+    },
+    {
+      "rank": 8,
+      "did": "did:key:z6MkiP4rndCd16TMXcN3x4tfjN8HGyVSid6FmXoowAaszBqC",
+      "short": "wAaszBqC",
+      "pos": "-44.87"
+    },
+    {
+      "rank": 9,
+      "did": "did:key:z6MkipYDW35DDHBxy1CkujnCu3nJduQgiCQLcHCQoia3774P",
+      "short": "oia3774P",
+      "pos": "-44.87"
+    },
+    {
+      "rank": 10,
+      "did": "did:key:z6MkqHMweQqaQpNMx3jLrGwCiKPaU3mRs7drmy132QMenewN",
+      "short": "2QMenewN",
+      "pos": "-44.87"
+    }
+  ],
+  "ours": {
+    "did": "did:key:z6MkesHqZ7WiWMjmd6v6GPyAjCEoE4dovGpQsTYJSSVqAXhP",
+    "name": "oblikhan-2046",
+    "short": "SSVqAXhP",
+    "in_top": false,
+    "rank": null,
+    "pnl": "6.58",
+    "pos": "-2.00",
+    "pnl_source": "reconstructed_mtm",
+    "note": "not in published top",
+    "mtm_basis": "known settled fills only; pending omitted from tip",
+    "mtm_mark": "225.28",
+    "state_path": "/workspace/close1/scan-0837/state.json"
+  },
+  "sources": {
+    "pnl": "https://technocore.chat/r/d-close1-pnl?format=json&limit=5",
+    "positions": "https://technocore.chat/r/d-close1-positions?format=json&limit=5",
+    "price": "https://technocore.chat/r/d-close1-price?format=json&limit=3",
+    "state": "https://technocore.chat/r/d-close1-state?format=json&limit=3",
+    "rules": "https://github.com/flop-labs/technocore-close-call-challenge",
+    "main_room": "https://technocore.chat/r/close1",
+    "pnl_ts": "2026-09-28T01:06:32.731805Z",
+    "price_ts": "2026-09-28T01:06:32.476303Z",
+    "state_ts": "2026-09-28T01:06:32.814301Z"
+  },
+  "note": "Official top comes from the Close Call referee; full field is not published. This page mirrors the public top (~25)."
+}
