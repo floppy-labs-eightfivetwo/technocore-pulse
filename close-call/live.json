@@ -1,177 +1,177 @@
 {
-  "as_of": "2026-09-28T09:10:29+08:00",
+  "as_of": "2026-09-28T09:18:24+08:00",
   "as_of_zone": "Asia/Hong_Kong",
-  "sweep_n": 733,
-  "mark": "224.24",
+  "sweep_n": 735,
+  "mark": "224.08",
   "ref": {
-    "px": "225.10",
-    "tid": 1084873768612765,
-    "time": "2026-09-28T01:04:54.074000Z"
+    "px": "224.70",
+    "tid": 726139223860091,
+    "time": "2026-09-28T01:14:59.240000Z"
   },
   "limits": [
-    "213.85",
-    "236.35"
+    "213.47",
+    "235.93"
   ],
-  "applied": "224.85",
-  "owners": 5637715,
-  "rooms": 179,
+  "applied": "224.89",
+  "owners": 5674928,
+  "rooms": 177,
   "lock_date": "2026-10-04",
   "lock": "2026-10-04T09:00:00Z",
   "positions": {
-    "open": "22134522.55",
-    "longs": 526537,
-    "shorts": 541762
+    "open": "22166002.12",
+    "longs": 527302,
+    "shorts": 542676
   },
   "top_pnl": [
     {
       "rank": 1,
       "did": "did:key:z6Mkro5Jrz3GsiYD7KtGrq5XRMHTDNQVhPwgTrigSjoFn3uM",
       "short": "SjoFn3uM",
-      "pnl": "160.86"
+      "pnl": "167.35"
     },
     {
       "rank": 2,
       "did": "did:key:z6MkhGbg6pc64X9XupSFRVRHbjgVdpChz1NxVXfHhrt5xmHW",
       "short": "hrt5xmHW",
-      "pnl": "159.40"
+      "pnl": "165.57"
     },
     {
       "rank": 3,
       "did": "did:key:z6Mkhyj7zPsxs8ogJy5jRWRZ8SCc4qM897EjcViZvPdeGxP4",
       "short": "vPdeGxP4",
-      "pnl": "150.69"
+      "pnl": "157.04"
     },
     {
       "rank": 4,
       "did": "did:key:z6MkjQJymHxnBQ5VuPWBPjN2MWGeBGPU1bxCZf6FfMNfVa4M",
       "short": "fMNfVa4M",
-      "pnl": "150.69"
+      "pnl": "157.04"
     },
     {
       "rank": 5,
       "did": "did:key:z6MkpHe5BUDxHhWNrika5R5eoazhCaHfFkcFD2fUcTtLLoYT",
       "short": "cTtLLoYT",
-      "pnl": "150.69"
+      "pnl": "157.04"
     },
     {
       "rank": 6,
       "did": "did:key:z6MkwN7kQAden9NPP7JWU8jV2cQV8pnnbc1JkoowPwJCJ3YE",
       "short": "PwJCJ3YE",
-      "pnl": "150.69"
+      "pnl": "157.04"
     },
     {
       "rank": 7,
       "did": "did:key:z6Mkp1Ggj1uG6H7fZu9ikoNRXZA6Fu6ks2yhweSydxGWfJnB",
       "short": "dxGWfJnB",
-      "pnl": "150.68"
+      "pnl": "157.03"
     },
     {
       "rank": 8,
       "did": "did:key:z6MkvCfJEv9H32qkeiEzf4MkVY8q5mDVHxezttrv7gpdSNFR",
       "short": "7gpdSNFR",
-      "pnl": "150.68"
+      "pnl": "157.03"
     },
     {
       "rank": 9,
       "did": "did:key:z6MkvQfNWa3gaGqqDMdAyzTB7XKAhx4ua3AyeLBv2h5te3wN",
       "short": "2h5te3wN",
-      "pnl": "150.68"
+      "pnl": "157.03"
     },
     {
       "rank": 10,
       "did": "did:key:z6MkwK7d1ctNe5TZXtZjCpXB9r3VLbUTB2DYKsNbV9Xgs8iB",
       "short": "V9Xgs8iB",
-      "pnl": "150.68"
+      "pnl": "157.03"
     },
     {
       "rank": 11,
       "did": "did:key:z6Mku5oaoNmFdy5SfADjRo1UqrDviSFS1gPBbGf11Z5kMe8P",
       "short": "1Z5kMe8P",
-      "pnl": "150.16"
+      "pnl": "156.52"
     },
     {
       "rank": 12,
       "did": "did:key:z6MkmZ4sudDgaxErBzrV23tpBc4XeYaZbAXCJeTk9cBGSczu",
       "short": "9cBGSczu",
-      "pnl": "149.80"
+      "pnl": "156.14"
     },
     {
       "rank": 13,
       "did": "did:key:z6MkoHCHygryNbBK2s9yQeAwkcBEFnqnPWnEuV7SQpzm4m9o",
       "short": "Qpzm4m9o",
-      "pnl": "149.80"
+      "pnl": "156.14"
     },
     {
       "rank": 14,
       "did": "did:key:z6MkuFLbQVavnCXBBsDAdSowctRtgDER4gfvnp2sT9keehgR",
       "short": "T9keehgR",
-      "pnl": "149.80"
+      "pnl": "156.14"
     },
     {
       "rank": 15,
       "did": "did:key:z6MkuhtkBwiYcrotMuf4gUj9HRxuzXatNWDUQ65ZmbDAGqAK",
       "short": "mbDAGqAK",
-      "pnl": "149.80"
+      "pnl": "156.14"
     },
     {
       "rank": 16,
       "did": "did:key:z6MkfHHQrmvYAxms3RARnNenBNWhknCA6F5oa2TVD3zxXoZQ",
       "short": "D3zxXoZQ",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 17,
       "did": "did:key:z6MkgXDJzsJFVoiseqycdkYmyyiudH4GTCBDWsQj9BgbU7Pq",
       "short": "9BgbU7Pq",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 18,
       "did": "did:key:z6MkgpJ6muQxwX2A8AGpGgDChsQak3cnzDtcAp2VzSdRKtaG",
       "short": "zSdRKtaG",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 19,
       "did": "did:key:z6MkgswJiapADyFa5QgbzjA4rEJMQAo33QVU4JDySog1ynxX",
       "short": "Sog1ynxX",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 20,
       "did": "did:key:z6MkiJz4iA71ZV9t2Nnbeim77jtb3PKynSbzbuS8J7vjcwFt",
       "short": "J7vjcwFt",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 21,
       "did": "did:key:z6Mkj7kQF8GjsAWcAi5xLDT4tA88YnJGDaed9ATw7ANsV3HF",
       "short": "7ANsV3HF",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 22,
       "did": "did:key:z6MkpSvEKATx6J7pFKGPXiBCvr2BH11bdKV2cZ9XS8UPWcy5",
       "short": "S8UPWcy5",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 23,
       "did": "did:key:z6MktQqz9u31KVHJFmxEjhWHvaU5fQ537HmRd9Es3mXqQwNH",
       "short": "3mXqQwNH",
-      "pnl": "149.52"
+      "pnl": "155.87"
     },
     {
       "rank": 24,
       "did": "did:key:z6MkoNLtayzKxyQxegty6PJXUjKcgd9ozSao3qL2CbQQbkd1",
       "short": "CbQQbkd1",
-      "pnl": "147.79"
+      "pnl": "154.14"
     },
     {
       "rank": 25,
       "did": "did:key:z6MkhioeMdHWJ9Y8vdYF6XpsSWVxDKWRKUpmVRTGYyhMZepV",
       "short": "YyhMZepV",
-      "pnl": "147.37"
+      "pnl": "153.71"
     }
   ],
   "top_positions": [
@@ -236,6 +236,2061 @@
       "pos": "-44.87"
     }
   ],
+  "field": [
+    {
+      "did": "did:key:z6Mkro5Jrz3GsiYD7KtGrq5XRMHTDNQVhPwgTrigSjoFn3uM",
+      "short": "SjoFn3uM",
+      "pnl": "167.35",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 1,
+      "official_rank": 1
+    },
+    {
+      "did": "did:key:z6MkhGbg6pc64X9XupSFRVRHbjgVdpChz1NxVXfHhrt5xmHW",
+      "short": "hrt5xmHW",
+      "pnl": "165.57",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 13,
+      "first_seen_n": 723,
+      "rank": 2,
+      "official_rank": 2
+    },
+    {
+      "did": "did:key:z6Mkhyj7zPsxs8ogJy5jRWRZ8SCc4qM897EjcViZvPdeGxP4",
+      "short": "vPdeGxP4",
+      "pnl": "157.04",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 3,
+      "official_rank": 3
+    },
+    {
+      "did": "did:key:z6MkjQJymHxnBQ5VuPWBPjN2MWGeBGPU1bxCZf6FfMNfVa4M",
+      "short": "fMNfVa4M",
+      "pnl": "157.04",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 4,
+      "official_rank": 4
+    },
+    {
+      "did": "did:key:z6MkpHe5BUDxHhWNrika5R5eoazhCaHfFkcFD2fUcTtLLoYT",
+      "short": "cTtLLoYT",
+      "pnl": "157.04",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 5,
+      "official_rank": 5
+    },
+    {
+      "did": "did:key:z6MkwN7kQAden9NPP7JWU8jV2cQV8pnnbc1JkoowPwJCJ3YE",
+      "short": "PwJCJ3YE",
+      "pnl": "157.04",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 6,
+      "official_rank": 6
+    },
+    {
+      "did": "did:key:z6Mkp1Ggj1uG6H7fZu9ikoNRXZA6Fu6ks2yhweSydxGWfJnB",
+      "short": "dxGWfJnB",
+      "pnl": "157.03",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 7,
+      "official_rank": 7
+    },
+    {
+      "did": "did:key:z6MkvCfJEv9H32qkeiEzf4MkVY8q5mDVHxezttrv7gpdSNFR",
+      "short": "7gpdSNFR",
+      "pnl": "157.03",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 8,
+      "official_rank": 8
+    },
+    {
+      "did": "did:key:z6MkvQfNWa3gaGqqDMdAyzTB7XKAhx4ua3AyeLBv2h5te3wN",
+      "short": "2h5te3wN",
+      "pnl": "157.03",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 9,
+      "official_rank": 9
+    },
+    {
+      "did": "did:key:z6MkwK7d1ctNe5TZXtZjCpXB9r3VLbUTB2DYKsNbV9Xgs8iB",
+      "short": "V9Xgs8iB",
+      "pnl": "157.03",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 10,
+      "official_rank": 10
+    },
+    {
+      "did": "did:key:z6Mku5oaoNmFdy5SfADjRo1UqrDviSFS1gPBbGf11Z5kMe8P",
+      "short": "1Z5kMe8P",
+      "pnl": "156.52",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 153,
+      "first_seen_n": 536,
+      "rank": 11,
+      "official_rank": 11
+    },
+    {
+      "did": "did:key:z6MkmZ4sudDgaxErBzrV23tpBc4XeYaZbAXCJeTk9cBGSczu",
+      "short": "9cBGSczu",
+      "pnl": "156.14",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 12,
+      "official_rank": 12
+    },
+    {
+      "did": "did:key:z6MkoHCHygryNbBK2s9yQeAwkcBEFnqnPWnEuV7SQpzm4m9o",
+      "short": "Qpzm4m9o",
+      "pnl": "156.14",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 13,
+      "official_rank": 13
+    },
+    {
+      "did": "did:key:z6MkuFLbQVavnCXBBsDAdSowctRtgDER4gfvnp2sT9keehgR",
+      "short": "T9keehgR",
+      "pnl": "156.14",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 14,
+      "official_rank": 14
+    },
+    {
+      "did": "did:key:z6MkuhtkBwiYcrotMuf4gUj9HRxuzXatNWDUQ65ZmbDAGqAK",
+      "short": "mbDAGqAK",
+      "pnl": "156.14",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 11,
+      "first_seen_n": 725,
+      "rank": 15,
+      "official_rank": 15
+    },
+    {
+      "did": "did:key:z6MkfHHQrmvYAxms3RARnNenBNWhknCA6F5oa2TVD3zxXoZQ",
+      "short": "D3zxXoZQ",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 16,
+      "official_rank": 16
+    },
+    {
+      "did": "did:key:z6MkgXDJzsJFVoiseqycdkYmyyiudH4GTCBDWsQj9BgbU7Pq",
+      "short": "9BgbU7Pq",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 17,
+      "official_rank": 17
+    },
+    {
+      "did": "did:key:z6MkgpJ6muQxwX2A8AGpGgDChsQak3cnzDtcAp2VzSdRKtaG",
+      "short": "zSdRKtaG",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 18,
+      "official_rank": 18
+    },
+    {
+      "did": "did:key:z6MkgswJiapADyFa5QgbzjA4rEJMQAo33QVU4JDySog1ynxX",
+      "short": "Sog1ynxX",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 19,
+      "official_rank": 19
+    },
+    {
+      "did": "did:key:z6MkiJz4iA71ZV9t2Nnbeim77jtb3PKynSbzbuS8J7vjcwFt",
+      "short": "J7vjcwFt",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 20,
+      "official_rank": 20
+    },
+    {
+      "did": "did:key:z6Mkj7kQF8GjsAWcAi5xLDT4tA88YnJGDaed9ATw7ANsV3HF",
+      "short": "7ANsV3HF",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 10,
+      "first_seen_n": 726,
+      "rank": 21,
+      "official_rank": 21
+    },
+    {
+      "did": "did:key:z6MkpSvEKATx6J7pFKGPXiBCvr2BH11bdKV2cZ9XS8UPWcy5",
+      "short": "S8UPWcy5",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 9,
+      "first_seen_n": 727,
+      "rank": 22,
+      "official_rank": 22
+    },
+    {
+      "did": "did:key:z6MktQqz9u31KVHJFmxEjhWHvaU5fQ537HmRd9Es3mXqQwNH",
+      "short": "3mXqQwNH",
+      "pnl": "155.87",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 9,
+      "first_seen_n": 727,
+      "rank": 23,
+      "official_rank": 23
+    },
+    {
+      "did": "did:key:z6MkoNLtayzKxyQxegty6PJXUjKcgd9ozSao3qL2CbQQbkd1",
+      "short": "CbQQbkd1",
+      "pnl": "154.14",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 7,
+      "first_seen_n": 729,
+      "rank": 24,
+      "official_rank": 24
+    },
+    {
+      "did": "did:key:z6MkhioeMdHWJ9Y8vdYF6XpsSWVxDKWRKUpmVRTGYyhMZepV",
+      "short": "YyhMZepV",
+      "pnl": "153.71",
+      "pnl_n": 735,
+      "fresh": true,
+      "status": "official_top",
+      "appearances": 6,
+      "first_seen_n": 730,
+      "rank": 25,
+      "official_rank": 25
+    },
+    {
+      "did": "did:key:z6MkgGHxNXYrXRHGpc7rTuYo6UJbQkoh5TWmoea5WeSA8THn",
+      "short": "WeSA8THn",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 128,
+      "first_seen_n": 537,
+      "rank": 26
+    },
+    {
+      "did": "did:key:z6MkgguZoEHtR9swFUBijm35pzsHu6VSu6ZYnCg38WRVSiE5",
+      "short": "8WRVSiE5",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 128,
+      "first_seen_n": 537,
+      "rank": 27
+    },
+    {
+      "did": "did:key:z6MkgoNezyKCRpF5Z71dS4HYR7QJtSs58a9BQhb1trHKKYJY",
+      "short": "trHKKYJY",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 128,
+      "first_seen_n": 537,
+      "rank": 28
+    },
+    {
+      "did": "did:key:z6Mkgp6WNy2MEtp3ZzSyHpkagTojFNcWAwtfyt8M8jZMBQck",
+      "short": "8jZMBQck",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 128,
+      "first_seen_n": 537,
+      "rank": 29
+    },
+    {
+      "did": "did:key:z6MkgyCCpopSUaXjarCQCVayeLjnQLQAxwGVN4MMpqMiEXFQ",
+      "short": "pqMiEXFQ",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 94,
+      "first_seen_n": 537,
+      "rank": 30
+    },
+    {
+      "did": "did:key:z6MkhPcuhogTU98s4VqRHrvhn7HMuCzTKuML1zMZsyRGqWL7",
+      "short": "syRGqWL7",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 94,
+      "first_seen_n": 537,
+      "rank": 31
+    },
+    {
+      "did": "did:key:z6MkhVREfWiBKPad4zmnJPEYcTC5c1HzvmGkHeJZ43tUCyfU",
+      "short": "43tUCyfU",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 88,
+      "first_seen_n": 537,
+      "rank": 32
+    },
+    {
+      "did": "did:key:z6Mkhbot1qH7PE3JQHt4sbYDt6AX6Db2k34MkPmi9J9Q3Chb",
+      "short": "9J9Q3Chb",
+      "pnl": "154.49",
+      "pnl_n": 670,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 88,
+      "first_seen_n": 537,
+      "rank": 33
+    },
+    {
+      "did": "did:key:z6MkgDAkV9H8ECr68PipsZTrKmgVeNVyzDrXhFop2JoYPiXz",
+      "short": "2JoYPiXz",
+      "pnl": "148.29",
+      "pnl_n": 672,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 130,
+      "first_seen_n": 537,
+      "rank": 34
+    },
+    {
+      "did": "did:key:z6MkgF6CTM88maYBeesrz3jMECCsC6mqpBG4XimQcJ5BiaYt",
+      "short": "cJ5BiaYt",
+      "pnl": "148.29",
+      "pnl_n": 672,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 130,
+      "first_seen_n": 537,
+      "rank": 35
+    },
+    {
+      "did": "did:key:z6MkjSefCj2CN335PyvfGBLhWfqYWK97EjCoNPoY5mVehbvC",
+      "short": "5mVehbvC",
+      "pnl": "143.38",
+      "pnl_n": 728,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 4,
+      "first_seen_n": 725,
+      "rank": 36
+    },
+    {
+      "did": "did:key:z6MkhRbUF57iNxHy1iv9bbmECNAsE7wFh3Ri1JT8rneFRWyZ",
+      "short": "rneFRWyZ",
+      "pnl": "142.71",
+      "pnl_n": 726,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 116,
+      "first_seen_n": 536,
+      "rank": 37
+    },
+    {
+      "did": "did:key:z6MkjyBG1Br9k8MFUXMmNzkYyH6h4JAe8hPv3oqWhdDT7tav",
+      "short": "hdDT7tav",
+      "pnl": "138.90",
+      "pnl_n": 729,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 144,
+      "first_seen_n": 536,
+      "rank": 38
+    },
+    {
+      "did": "did:key:z6MkerAZtkjEVYGQniNC9qKEodQNZP2j4un2wq1r43wBYxWA",
+      "short": "43wBYxWA",
+      "pnl": "129.36",
+      "pnl_n": 726,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 724,
+      "rank": 39
+    },
+    {
+      "did": "did:key:z6Mkqxoe9eqgayUJA2RYEyawuxYSFqxLAs6UhE9hCqYM6G27",
+      "short": "CqYM6G27",
+      "pnl": "119.78",
+      "pnl_n": 720,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 718,
+      "rank": 40
+    },
+    {
+      "did": "did:key:z6MkrQUDWwAnqXJJ3kfDLBE6uU7fHGyJG5vXfyeJs4CgKjkx",
+      "short": "s4CgKjkx",
+      "pnl": "119.78",
+      "pnl_n": 720,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 718,
+      "rank": 41
+    },
+    {
+      "did": "did:key:z6Mki5rpRkwvQhFdXJ58F6vKghQZqnCdDTeaKZ6fxEnf4kC6",
+      "short": "xEnf4kC6",
+      "pnl": "117.01",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 723,
+      "rank": 42
+    },
+    {
+      "did": "did:key:z6MkpmE36ygo2WqxDwQUa9Qo4Xft5ooEXwJkWAfbX2aBSvjp",
+      "short": "X2aBSvjp",
+      "pnl": "116.15",
+      "pnl_n": 721,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 40,
+      "first_seen_n": 682,
+      "rank": 43
+    },
+    {
+      "did": "did:key:z6MkqYCCnZqgd6tp4rmdg2KN1GWgDaCNMRDWdJdvA6bFw2iY",
+      "short": "A6bFw2iY",
+      "pnl": "116.15",
+      "pnl_n": 721,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 40,
+      "first_seen_n": 682,
+      "rank": 44
+    },
+    {
+      "did": "did:key:z6MkiRARsLuem5t2EMLKELJrvNWAz8gD5qcbWNhhAxppBCLJ",
+      "short": "AxppBCLJ",
+      "pnl": "115.16",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 118,
+      "first_seen_n": 536,
+      "rank": 45
+    },
+    {
+      "did": "did:key:z6MkfCb1kXrfecgFWoqcabUityTiZR8qeV2rnPgjJMSoQoJD",
+      "short": "JMSoQoJD",
+      "pnl": "115.06",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 46
+    },
+    {
+      "did": "did:key:z6Mkf9WyXcH5geEZXbuWZABcuSA9AZLfa6JZfgh8nGSBnCNW",
+      "short": "nGSBnCNW",
+      "pnl": "113.60",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 47
+    },
+    {
+      "did": "did:key:z6MkodAbZBnULUPxtgn41ET8N6GugnBcsJPLPrRhoiN1PSus",
+      "short": "oiN1PSus",
+      "pnl": "113.60",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 48
+    },
+    {
+      "did": "did:key:z6MkfGo4xtgHLK63hd9FjbKLfPUkwHVV5CE1Q2P9pBEMpV8W",
+      "short": "pBEMpV8W",
+      "pnl": "112.09",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 49
+    },
+    {
+      "did": "did:key:z6MkgEnVYWzBD9TBK6xXS2cJxhjqNc8NyBP11kEyYv1MtK9u",
+      "short": "Yv1MtK9u",
+      "pnl": "111.89",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 50
+    },
+    {
+      "did": "did:key:z6MkoGhwoYEbW8sJ23sXYt6hMW3TWJAZrVE6DsjBMT7YxH2V",
+      "short": "MT7YxH2V",
+      "pnl": "111.89",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 51
+    },
+    {
+      "did": "did:key:z6MkoZCjA7TJmU4gYgJPGDTsZyQRTjVN4fNdJ6jtYBfB8gJm",
+      "short": "YBfB8gJm",
+      "pnl": "111.89",
+      "pnl_n": 725,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 725,
+      "rank": 52
+    },
+    {
+      "did": "did:key:z6Mkej3iJfymdGcL4Hwp8su1C5aLUdt9Sgemn1KwhEbEQ55a",
+      "short": "hEbEQ55a",
+      "pnl": "109.55",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 723,
+      "rank": 53
+    },
+    {
+      "did": "did:key:z6Mkmwfiw81rcU9GgxiMPsiVT3CG8RN8WKbYmDm3EW4FJ7tk",
+      "short": "EW4FJ7tk",
+      "pnl": "109.49",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 54
+    },
+    {
+      "did": "did:key:z6MkrZqj8NekSzTyhvJ2pbRHkUxX5nSjDBRxgdbHZmmGzLV3",
+      "short": "ZmmGzLV3",
+      "pnl": "109.49",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 55
+    },
+    {
+      "did": "did:key:z6MksTv68hQ9b61frqBT1PrVz23CRfJuPVoydADJjhvZrKdC",
+      "short": "jhvZrKdC",
+      "pnl": "109.49",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 56
+    },
+    {
+      "did": "did:key:z6MkvssrEFGRqrYzjkUiDnKDj9i9kudV7MK9c8GwZiBmSh9g",
+      "short": "ZiBmSh9g",
+      "pnl": "109.49",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 57
+    },
+    {
+      "did": "did:key:z6MkifkuPt3n13Qg9j2W65F6X3mGztNZeKDQGve3vzuoSisX",
+      "short": "vzuoSisX",
+      "pnl": "105.78",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 58
+    },
+    {
+      "did": "did:key:z6Mkn5jWm2TRqhKcMW3hS9RAa3beuEoTFegXtCFPahND8REC",
+      "short": "ahND8REC",
+      "pnl": "105.78",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 59
+    },
+    {
+      "did": "did:key:z6MknXCXLrwr6rWKQuKchaAWGyURbLTwYc6abjuM4pKqkdbM",
+      "short": "4pKqkdbM",
+      "pnl": "105.78",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 60
+    },
+    {
+      "did": "did:key:z6MkqhoCKDiJ1tLgxpChzfL8bzBoy6hJYS6J7tUGtL4jvqGe",
+      "short": "tL4jvqGe",
+      "pnl": "105.78",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 61
+    },
+    {
+      "did": "did:key:z6MkwTr9s46dp1jTQkeESqkN37YRJ5uxpSoWXVYND9p62AjS",
+      "short": "D9p62AjS",
+      "pnl": "104.11",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 723,
+      "rank": 62
+    },
+    {
+      "did": "did:key:z6MkwR6YFJcakZrsxFxyNKa66aCzWAe5qMiWuWLWxv8WQdeo",
+      "short": "xv8WQdeo",
+      "pnl": "103.65",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 63
+    },
+    {
+      "did": "did:key:z6MkghBRxQ8rZivdvfPyFGxBzyLyLzGcjva8kZvRAkWdTkNc",
+      "short": "AkWdTkNc",
+      "pnl": "103.55",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 64
+    },
+    {
+      "did": "did:key:z6MkfEv1DaQFHEgJmm5SFJH17rLreDKR4ar9vrci6EZ7wjhi",
+      "short": "6EZ7wjhi",
+      "pnl": "103.23",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 65
+    },
+    {
+      "did": "did:key:z6Mkh5o6hLGgpWVnG1FCkEVpCLkz6KP5D91CKmM4hsKqwrXL",
+      "short": "hsKqwrXL",
+      "pnl": "103.23",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 66
+    },
+    {
+      "did": "did:key:z6MkiBgP2xiqXuVknWeRd1sopNNVXvW4a9zJd5Uc1Vj9BG2N",
+      "short": "1Vj9BG2N",
+      "pnl": "103.23",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 67
+    },
+    {
+      "did": "did:key:z6MkeXStzSay2zLnbcPUW7w74esDtbqnAD11mE37SvabDcdL",
+      "short": "SvabDcdL",
+      "pnl": "101.75",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 68
+    },
+    {
+      "did": "did:key:z6MkeywYymRMbtaukXnqshA1MNMm6WqBcWNX2zMXjhbNx6XC",
+      "short": "jhbNx6XC",
+      "pnl": "100.55",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 69
+    },
+    {
+      "did": "did:key:z6Mkeq2XQQzHUBH6CwSkPg6jJVrNz8TJcx8Hkvu6Z4ger7RN",
+      "short": "Z4ger7RN",
+      "pnl": "99.53",
+      "pnl_n": 724,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 724,
+      "rank": 70
+    },
+    {
+      "did": "did:key:z6Mkq38Zv4xKX2YEL9H4WcwpZMLBpXFAVHfUULVj74yPVaJh",
+      "short": "74yPVaJh",
+      "pnl": "98.55",
+      "pnl_n": 681,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 80,
+      "first_seen_n": 536,
+      "rank": 71
+    },
+    {
+      "did": "did:key:z6MktvZPUUeoNsND7eMAD7Pgo4XuRHkESfQxDmoyTxemUdya",
+      "short": "TxemUdya",
+      "pnl": "98.55",
+      "pnl_n": 681,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 80,
+      "first_seen_n": 536,
+      "rank": 72
+    },
+    {
+      "did": "did:key:z6MkpNQp5u6yDuvkPqRSx4V31ikio7czV7oGQQi5QT94VpuK",
+      "short": "QT94VpuK",
+      "pnl": "97.94",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 73
+    },
+    {
+      "did": "did:key:z6MkpeDbuAYF7rDvUcceGkGF8bC72yvzVAG1qAFkY2oTRqJw",
+      "short": "Y2oTRqJw",
+      "pnl": "97.94",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 74
+    },
+    {
+      "did": "did:key:z6MkqiRKcTp7FSwZD62J4CSnhiRapwmQxhJziwd5XzhcfnxG",
+      "short": "XzhcfnxG",
+      "pnl": "97.94",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 75
+    },
+    {
+      "did": "did:key:z6Mkw56YqF7LwDa9G2vNqotqUQehu2Y4hea5QKCxMSQW5Ub5",
+      "short": "MSQW5Ub5",
+      "pnl": "97.94",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 76
+    },
+    {
+      "did": "did:key:z6MkhqADjQrQz9anrgiZ8dsTGx1v8KHyNmTh9DubvnXYEwKt",
+      "short": "vnXYEwKt",
+      "pnl": "97.09",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 77
+    },
+    {
+      "did": "did:key:z6MkpDtEz9KthdVr7BNCvvgLhkZ5r7dQMSLYBWkj74PGQYMH",
+      "short": "74PGQYMH",
+      "pnl": "97.09",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 78
+    },
+    {
+      "did": "did:key:z6MkpnzA5Q76ZgqSMcnpyEEhFe6XLrtWjgvtXv1j4fKNJnN6",
+      "short": "4fKNJnN6",
+      "pnl": "97.09",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 79
+    },
+    {
+      "did": "did:key:z6MkqeWN7uevC6gc6MKtBhMW1cVFkKQwiEWjaaCUGhgKnKpP",
+      "short": "GhgKnKpP",
+      "pnl": "97.09",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 80
+    },
+    {
+      "did": "did:key:z6MkfE2YzzVJf6Gtf6iSJqb5PjCC7rxSLtU3DPx8oKccudcg",
+      "short": "oKccudcg",
+      "pnl": "97.04",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 81
+    },
+    {
+      "did": "did:key:z6MkfhqU7wcLgT1QUTNYW2PMX2knkzFSK5b8ik2dSsXciuvp",
+      "short": "SsXciuvp",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 82
+    },
+    {
+      "did": "did:key:z6MkfpWuFFCfe9s7N9MMvriFaepePJQ8sbnGThWL2kBXd7bi",
+      "short": "2kBXd7bi",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 83
+    },
+    {
+      "did": "did:key:z6MkhLstptgqBxQ2bJHY6HCbBXcN2kUbtox9n91BT1eGmbsV",
+      "short": "T1eGmbsV",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 84
+    },
+    {
+      "did": "did:key:z6MkhnTuKBZJPXj2Set3wwgh9R3heHVywvi6g9NQK7q4wXKA",
+      "short": "K7q4wXKA",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 85
+    },
+    {
+      "did": "did:key:z6Mkhv256nrda1DQ2ZprjmKZaSYY2qPYT28P2E6g8Rb7jLLK",
+      "short": "8Rb7jLLK",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 86
+    },
+    {
+      "did": "did:key:z6MkiVG3u7YMNntFpgWM52LBSw9L1bfNCAYANgn3idcrKaw3",
+      "short": "idcrKaw3",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 87
+    },
+    {
+      "did": "did:key:z6Mkikc69bB8vVLZvXdGtgsYjsgRJ1MkZ9yQHJgcYU86JwZD",
+      "short": "YU86JwZD",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 88
+    },
+    {
+      "did": "did:key:z6MkjGddkRtDALP7TRjAB6ZEJKFcWZiqYUUShxYitUzFxSaU",
+      "short": "tUzFxSaU",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 89
+    },
+    {
+      "did": "did:key:z6Mkjro32VJLSnnasHGF3g2on3nGNierRw6wf7myiQvvtaGw",
+      "short": "iQvvtaGw",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 90
+    },
+    {
+      "did": "did:key:z6MkkSciVy2Whv6k4iYwPM1mdBDAXsrWfhQnHkJnKoKNCPgP",
+      "short": "KoKNCPgP",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 91
+    },
+    {
+      "did": "did:key:z6MkmYw8p6iKqgFnz4125K2hpHY2g3scWhwEToGJoBk9u8tg",
+      "short": "oBk9u8tg",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 92
+    },
+    {
+      "did": "did:key:z6MknDvzeYhuz5RTUHn11TPUP9TucG9TbequrhGzFQFtngCs",
+      "short": "FQFtngCs",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 93
+    },
+    {
+      "did": "did:key:z6MknRSQYBoXvgMDFxPsDRFci54dFiiq8iH99ewkjX2L83vQ",
+      "short": "jX2L83vQ",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 94
+    },
+    {
+      "did": "did:key:z6MknYWj79DeEXUsfJmS6q5NpnxKGaNq4JSvaxxUtjM1DTRW",
+      "short": "tjM1DTRW",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 95
+    },
+    {
+      "did": "did:key:z6MknsqXBsrha3t9ZWqcLw6KQx7RPErPAwemhgKzaVDW32yW",
+      "short": "aVDW32yW",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 44,
+      "first_seen_n": 679,
+      "rank": 96
+    },
+    {
+      "did": "did:key:z6Mkp7ZJai2HaN4PGyMmBEfS8EzKb4N1E8GTeJRXP51cLoVv",
+      "short": "P51cLoVv",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 42,
+      "first_seen_n": 679,
+      "rank": 97
+    },
+    {
+      "did": "did:key:z6MkpQgGHZZz7cB8kUjF2zS8uPj74qmYWNEW4qaTG4vc7TuK",
+      "short": "G4vc7TuK",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 42,
+      "first_seen_n": 679,
+      "rank": 98
+    },
+    {
+      "did": "did:key:z6MkhqdxU6yiLAG3egnKvXKr8CKbYpvfRTeQkRzgNbjCYLa4",
+      "short": "NbjCYLa4",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 43,
+      "first_seen_n": 680,
+      "rank": 99
+    },
+    {
+      "did": "did:key:z6MkjHAsyw3x6s6qLghue3uGNGmS4Xp618Hzbq4hwKwifWiy",
+      "short": "wKwifWiy",
+      "pnl": "96.85",
+      "pnl_n": 722,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 43,
+      "first_seen_n": 680,
+      "rank": 100
+    },
+    {
+      "did": "did:key:z6MkeXrorPbtzaU93RwedSE6TRyV5SnVw7vxatLHbp8vdJV1",
+      "short": "bp8vdJV1",
+      "pnl": "96.28",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 101
+    },
+    {
+      "did": "did:key:z6MkeuhC9DzbVUHtAc5XPV3RDHELkcPfbFeQsodhZXHuepNE",
+      "short": "ZXHuepNE",
+      "pnl": "95.13",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 722,
+      "rank": 102
+    },
+    {
+      "did": "did:key:z6MkvSGD7WbvTG5Vp6TGgWTUFsGbouMtQdjgQo5PBAi2ME7G",
+      "short": "BAi2ME7G",
+      "pnl": "94.45",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 103
+    },
+    {
+      "did": "did:key:z6Mku67NxkSiN9LbDWraiDWX7BmPR3hjAzV9TxAEEuSKDSoG",
+      "short": "EuSKDSoG",
+      "pnl": "93.42",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 721,
+      "rank": 104
+    },
+    {
+      "did": "did:key:z6Mkh3xJ7b69x1jdMFSE4BPFGsf45PxsHK7KkbtbQDt2BX3T",
+      "short": "QDt2BX3T",
+      "pnl": "92.81",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 105
+    },
+    {
+      "did": "did:key:z6Mkq9dMDTsNqJWZNEWF8aAH12c1BEcT6UJBGkjBdiCDFsmF",
+      "short": "diCDFsmF",
+      "pnl": "92.81",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 106
+    },
+    {
+      "did": "did:key:z6Mku8JwayAGPBwMxfKzrQB38G4ydcorRksPCgRXqgkgCZiq",
+      "short": "qgkgCZiq",
+      "pnl": "92.81",
+      "pnl_n": 723,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 723,
+      "rank": 107
+    },
+    {
+      "did": "did:key:z6MkpAGagUcqxJdq1vJecd3nwGVPgj5evxNR3QzKJUHQMR8m",
+      "short": "JUHQMR8m",
+      "pnl": "85.95",
+      "pnl_n": 681,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 49,
+      "first_seen_n": 536,
+      "rank": 108
+    },
+    {
+      "did": "did:key:z6MkuXfNpeX6uiDZ7SFHrBFCB14tXAaPndExUtroXvjNFRCe",
+      "short": "XvjNFRCe",
+      "pnl": "85.95",
+      "pnl_n": 681,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 49,
+      "first_seen_n": 536,
+      "rank": 109
+    },
+    {
+      "did": "did:key:z6MkhjcydAB42SNUjgGWHu2cvhSn3kqiYgLVBgUBpnTu2fEj",
+      "short": "pnTu2fEj",
+      "pnl": "85.90",
+      "pnl_n": 633,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 47,
+      "first_seen_n": 555,
+      "rank": 110
+    },
+    {
+      "did": "did:key:z6MkhkKGz5VvkFchUSpRURnXe3TAxfPAKFQa4Lm9hh2v4oXS",
+      "short": "hh2v4oXS",
+      "pnl": "85.90",
+      "pnl_n": 633,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 47,
+      "first_seen_n": 555,
+      "rank": 111
+    },
+    {
+      "did": "did:key:z6Mkhn51ebeDjWr3uT96cWBQTDAL2e9YVMNEdEu8L6BcAzcj",
+      "short": "L6BcAzcj",
+      "pnl": "85.90",
+      "pnl_n": 633,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 47,
+      "first_seen_n": 555,
+      "rank": 112
+    },
+    {
+      "did": "did:key:z6MkhtLNH1boKRN7hwjjnuwiJ7PCUQQThiDiY4VHcg58pkK3",
+      "short": "cg58pkK3",
+      "pnl": "85.90",
+      "pnl_n": 633,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 47,
+      "first_seen_n": 555,
+      "rank": 113
+    },
+    {
+      "did": "did:key:z6MkfgeJ1W5owZUL8P9CKEQP15jRfwpKUxqz79E8YgtHaB9p",
+      "short": "YgtHaB9p",
+      "pnl": "75.83",
+      "pnl_n": 673,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 131,
+      "first_seen_n": 537,
+      "rank": 114
+    },
+    {
+      "did": "did:key:z6Mkg7L5tA562LdL4nHZjES9aiF2kMDf6VGx3Rtz1NKwEvE9",
+      "short": "1NKwEvE9",
+      "pnl": "75.83",
+      "pnl_n": 673,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 131,
+      "first_seen_n": 537,
+      "rank": 115
+    },
+    {
+      "did": "did:key:z6Mkfsp6hckPuUgRWNjHDW5i3SrgqmDkXMjLqo5xRBpKikte",
+      "short": "RBpKikte",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 116
+    },
+    {
+      "did": "did:key:z6MkkntTFDNg48HrX9aK66QVqDDCgmjvXE5vSSmT68zVXvqw",
+      "short": "68zVXvqw",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 117
+    },
+    {
+      "did": "did:key:z6Mkm4FwULCfgNzA2NDZYDWmZAL7xYetNFSveJJBvck39awe",
+      "short": "vck39awe",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 118
+    },
+    {
+      "did": "did:key:z6MkmyLHTvR3Ymq1KKbhow8bX3EtXrtm56wudFh97CBqPAuM",
+      "short": "7CBqPAuM",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 119
+    },
+    {
+      "did": "did:key:z6Mkr2GtnLa2yDTWRVXyPysMq8r27LJRGTXzgJMEM1kfYmp9",
+      "short": "M1kfYmp9",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 120
+    },
+    {
+      "did": "did:key:z6MksrYGyS4XAHdSxREkVNzK6XNAWcT72TRQTcPexWe7uxXN",
+      "short": "xWe7uxXN",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 121
+    },
+    {
+      "did": "did:key:z6Mkt2cUjxTfsXbkh3huXSz8fYFHB2zeFAy1XgbGrmtkZUvw",
+      "short": "rmtkZUvw",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 122
+    },
+    {
+      "did": "did:key:z6Mkuhk2iM2phSFPWdPKVkkqeGXBW9pWPJyZoV85pmLnDFFb",
+      "short": "pmLnDFFb",
+      "pnl": "73.14",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 123
+    },
+    {
+      "did": "did:key:z6MkekD9ouV79c5zieG3WvtanqCCpx2FGBYCvKVHYjaZf8qd",
+      "short": "YjaZf8qd",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 124
+    },
+    {
+      "did": "did:key:z6MkfgTUXUjtCdU58iUFZXocaqbSmUPaDk9Tob2pkGyFKRCF",
+      "short": "kGyFKRCF",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 125
+    },
+    {
+      "did": "did:key:z6MkfvFEkCXSJ8ECkHHGH7u28PGsbbPZwqZXV2WmQhRQaHbG",
+      "short": "QhRQaHbG",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 126
+    },
+    {
+      "did": "did:key:z6Mkggzf9DYKMCiLUYnZ2TqGyT5iHMGdTiBND855wXzDZQzT",
+      "short": "wXzDZQzT",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 127
+    },
+    {
+      "did": "did:key:z6Mkh76Xd4gAjzWW3c4fC8UVdBkrAbwdD8uNemx2WY4VGAj1",
+      "short": "WY4VGAj1",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 128
+    },
+    {
+      "did": "did:key:z6MkhzvFpiSyvTwMqCCeFUZG77BEMDPSPBRnfAAebWBTDdSA",
+      "short": "bWBTDdSA",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 129
+    },
+    {
+      "did": "did:key:z6MkiLhFsRAh3mxoKvdMLW47Wq3SYyWisWjLufBtjBiGp2ev",
+      "short": "jBiGp2ev",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 130
+    },
+    {
+      "did": "did:key:z6MkiiBSdRuYrigRhkwZfnkVeNUdFSLpfxWZWSdLMvHMxw3a",
+      "short": "MvHMxw3a",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 131
+    },
+    {
+      "did": "did:key:z6MkkWNkarxow5BTFzURvbBu61awbqc6EoRxK6qXavvT5VeX",
+      "short": "avvT5VeX",
+      "pnl": "73.12",
+      "pnl_n": 678,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 678,
+      "rank": 132
+    },
+    {
+      "did": "did:key:z6MkeTcR7He7sY6imuJguhifiNKrWceKNus5HGuajbAwymdK",
+      "short": "jbAwymdK",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 133
+    },
+    {
+      "did": "did:key:z6MkeVj5ofGVVYiBgBL2se7GHN7TkgTPP4vPAJpYB8n5bh3G",
+      "short": "B8n5bh3G",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 134
+    },
+    {
+      "did": "did:key:z6Mkedxe1yacwZyNB1tyyuW71PFvU9Y8YDrFmirDrkZ5hZDY",
+      "short": "rkZ5hZDY",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 135
+    },
+    {
+      "did": "did:key:z6MkeoSLusYXGPJCc85TrHyTkDrePyj1sGdVLZttc5nAKTsP",
+      "short": "c5nAKTsP",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 136
+    },
+    {
+      "did": "did:key:z6Mkew4yojP49HTxtU2r2e95oGzUmkQTZSH9ZKwohXRGy6s8",
+      "short": "hXRGy6s8",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 137
+    },
+    {
+      "did": "did:key:z6Mkezgo62tneqHnXLnkcejgeT6649seLTd12ZPwehqNvMLt",
+      "short": "ehqNvMLt",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 138
+    },
+    {
+      "did": "did:key:z6MkfAgykBeKW5Cvb9pBd3bjmoH135vmk84nXv5Ggzixd8dq",
+      "short": "gzixd8dq",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 139
+    },
+    {
+      "did": "did:key:z6MkfRHaNGkD6yTjFc6CkE4hkdzBqU44xHPXVfxep4bD4yyB",
+      "short": "p4bD4yyB",
+      "pnl": "72.50",
+      "pnl_n": 674,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 132,
+      "first_seen_n": 537,
+      "rank": 140
+    },
+    {
+      "did": "did:key:z6MkgTDg3hEz4pwiFcJCDjRvR3hZbVWwy23oGuqFbFxu7Hne",
+      "short": "bFxu7Hne",
+      "pnl": "71.69",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 140,
+      "first_seen_n": 537,
+      "rank": 141
+    },
+    {
+      "did": "did:key:z6MkejWn3DGLBHch2uYYjKyJpTAJ4syeMcHdTKLSKWG7jvXm",
+      "short": "KWG7jvXm",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 142
+    },
+    {
+      "did": "did:key:z6MkfbdXnaDdq4fX5JsqKMu6jnZho25GNaTFzNfg2qAQVmrn",
+      "short": "2qAQVmrn",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 143
+    },
+    {
+      "did": "did:key:z6MkffFp3CS2SBiE2Ey691eFjKkWrY8sEV4z98oFhRqN4w7x",
+      "short": "hRqN4w7x",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 144
+    },
+    {
+      "did": "did:key:z6MkhwirSPbP77DSqRYyFeHXhPvJGQ62BohfHayFHgfFXyAS",
+      "short": "HgfFXyAS",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 145
+    },
+    {
+      "did": "did:key:z6MkkWjYPBPtyu544uZMzZkTDBYUFK2KuouRQgunuM3cpZmR",
+      "short": "uM3cpZmR",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 146
+    },
+    {
+      "did": "did:key:z6MkpKuLQsHKawnpgZnbetSiQ4KVWdKgLYs9o6g99rUJQN2V",
+      "short": "9rUJQN2V",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 147
+    },
+    {
+      "did": "did:key:z6MkqzEurw5u1oz2kTPeYX86peguQYYEPnsGWNYE7qKcsVn5",
+      "short": "7qKcsVn5",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 148
+    },
+    {
+      "did": "did:key:z6MkvD67gEYrNQPHdiWEc7TBh6F3TXkqZWrvU5FTrKsvSKwY",
+      "short": "rKsvSKwY",
+      "pnl": "68.20",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 8,
+      "first_seen_n": 536,
+      "rank": 149
+    },
+    {
+      "did": "did:key:z6MkfGu3it6EQ8bs1dQ1zy1fimiD7MtLGg2gPD3Ac4P9LYzK",
+      "short": "c4P9LYzK",
+      "pnl": "66.48",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 4,
+      "first_seen_n": 536,
+      "rank": 150
+    },
+    {
+      "did": "did:key:z6Mkhv9Bg9kk35CRgrJPDRvAefd9FYbFuyR1R9MuAcfgeRNb",
+      "short": "AcfgeRNb",
+      "pnl": "66.48",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 151
+    },
+    {
+      "did": "did:key:z6MksCUU3UTTNW51HE4ew6YTT6wYfCeTduDAT2r4EYueRE21",
+      "short": "EYueRE21",
+      "pnl": "66.48",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 152
+    },
+    {
+      "did": "did:key:z6MksYPAi4UScfMXRhCVAsKtEVnDEM2W5w8F3qNhfhpvJFoL",
+      "short": "fhpvJFoL",
+      "pnl": "66.48",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 153
+    },
+    {
+      "did": "did:key:z6MkfcrvgEyig8GdEUf2ZdaYQfbT6LPHLuJwZyi4ygu5S7ez",
+      "short": "ygu5S7ez",
+      "pnl": "66.06",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 154
+    },
+    {
+      "did": "did:key:z6MkpagdAy36K9un5zg8iFMVEVcr3QTBmcy5pg8TpYjh1QH7",
+      "short": "pYjh1QH7",
+      "pnl": "66.06",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 155
+    },
+    {
+      "did": "did:key:z6MkwQVwub8vLtSwk5rnn9o7g5yP3RLbZoqi83skaoLPxUTa",
+      "short": "aoLPxUTa",
+      "pnl": "66.06",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 156
+    },
+    {
+      "did": "did:key:z6MkvXFU4N3wEUarWSQHDRNFuieRDYJ9Kg4MdknaxnZrgDcN",
+      "short": "xnZrgDcN",
+      "pnl": "65.52",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 157
+    },
+    {
+      "did": "did:key:z6MkgtBegzAEeszKXkcGUNkaL2zJ1HnKYzYSeo4SUBEcZTfy",
+      "short": "UBEcZTfy",
+      "pnl": "65.21",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 3,
+      "first_seen_n": 654,
+      "rank": 158
+    },
+    {
+      "did": "did:key:z6MkmaDamCaWFAmoJvix1EAWx9VSrJzbMdn4twfTjmKy7ZNx",
+      "short": "jmKy7ZNx",
+      "pnl": "65.21",
+      "pnl_n": 675,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 1,
+      "first_seen_n": 675,
+      "rank": 159
+    },
+    {
+      "did": "did:key:z6MkebF8R8wyw7JNcWReBVnpTrWnhzjKTUkGF6f1SS6bLjbT",
+      "short": "SS6bLjbT",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 160
+    },
+    {
+      "did": "did:key:z6Mkith9sEH8kEmLsKSfUY36Hifq4YeWDw6wKYjRGSbNbJGH",
+      "short": "GSbNbJGH",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 161
+    },
+    {
+      "did": "did:key:z6MkjbNFmy2L854SA7hkMqMAP3cfX8u68ftoiNtpyA7xeY6W",
+      "short": "yA7xeY6W",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 162
+    },
+    {
+      "did": "did:key:z6MkoLsMb2cGWxAapoE3PsQenmZHC58LNACaPbo1B2MV4BT5",
+      "short": "B2MV4BT5",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 163
+    },
+    {
+      "did": "did:key:z6MkqorH3Y2bAapc9Xrev7xoJBVzQDR7Nk1GcNohcapUezYL",
+      "short": "capUezYL",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 164
+    },
+    {
+      "did": "did:key:z6Mkr7NBNaTK8wxB4JJNiTsK45YNCvmNmb3z7v4u7x1RDTs8",
+      "short": "7x1RDTs8",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 165
+    },
+    {
+      "did": "did:key:z6Mkuu6zudrg6aDFsGHKeKPwvXea3DLeJbbmMAo9Qa3bYz7X",
+      "short": "Qa3bYz7X",
+      "pnl": "65.10",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 6,
+      "first_seen_n": 671,
+      "rank": 166
+    },
+    {
+      "did": "did:key:z6MkhVJHqVd4vrovgoZTwAZc3ArxrWJPb4yNDGvMHT6tJoiL",
+      "short": "HT6tJoiL",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 167
+    },
+    {
+      "did": "did:key:z6MkiqfofUdzB7UNyFH2p1V8r1Y8ztXCaet9Yj29sf4KLwgu",
+      "short": "sf4KLwgu",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 168
+    },
+    {
+      "did": "did:key:z6Mkji7dK73k7tkMarhimzXNisBtbNhbJXtTRNKgaYzwwhJV",
+      "short": "aYzwwhJV",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 169
+    },
+    {
+      "did": "did:key:z6Mko11MJJ44azAeCstTJa9URUcnPYExnNEUrhi4sVESCATc",
+      "short": "sVESCATc",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 170
+    },
+    {
+      "did": "did:key:z6MktGrhPcirKkaYnnff9UEEBASDAnGkGnfXUJ7FxFyTghcP",
+      "short": "xFyTghcP",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 171
+    },
+    {
+      "did": "did:key:z6MktWA6KTReSBd7ueLKy64EKE7mCQWVzqBrdLfqrptrmWZ3",
+      "short": "rptrmWZ3",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 172
+    },
+    {
+      "did": "did:key:z6Mkvag35eypfT1tSuUF4UYLfMrpjRDN9hZkeLkEobbmXCw3",
+      "short": "obbmXCw3",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 173
+    },
+    {
+      "did": "did:key:z6Mkw7X5nNvCpJhCfHxMmLnRaQvtQrPp2aA4Yr2XRPZytvcz",
+      "short": "RPZytvcz",
+      "pnl": "63.80",
+      "pnl_n": 677,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 2,
+      "first_seen_n": 676,
+      "rank": 174
+    },
+    {
+      "did": "did:key:z6MkgPithuyKY2RbuzHWZFmZ2a8rtvfxMxxMjtUefQcJ1sWk",
+      "short": "fQcJ1sWk",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 175
+    },
+    {
+      "did": "did:key:z6MkiATcJzXZzmAQrGq22a3XCcH8grgaZqQKruS8KtUHuxCr",
+      "short": "KtUHuxCr",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 176
+    },
+    {
+      "did": "did:key:z6MkogeRnuKznsvaYYqeUphDupRcTBjujngbx5QAFJ6dfi1e",
+      "short": "FJ6dfi1e",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 177
+    },
+    {
+      "did": "did:key:z6Mkqusx5Qsu12gy38gNDHicpXppsvmZ23s4EELySjp9x8GS",
+      "short": "Sjp9x8GS",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 178
+    },
+    {
+      "did": "did:key:z6MksAMZMUsSKQvf8Mrybt5qqsx96BaJCqWgFwZ5eU3WAVRp",
+      "short": "eU3WAVRp",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 179
+    },
+    {
+      "did": "did:key:z6MksPE4ZmPabW2ePG2T5VL4SRt8J8qMxBpLEAiDnikEV53h",
+      "short": "nikEV53h",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 180
+    },
+    {
+      "did": "did:key:z6MktChbrERvf7KPpwCxBKLfDiYf5X31qZ5DAYQdhmEepF4f",
+      "short": "hmEepF4f",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 181
+    },
+    {
+      "did": "did:key:z6MkwNnNcmt7E18gP6u7fJ3mPpHknjuSFUnzQgeMcAngPKrp",
+      "short": "cAngPKrp",
+      "pnl": "62.80",
+      "pnl_n": 560,
+      "fresh": false,
+      "status": "last_seen_in_published_top",
+      "appearances": 5,
+      "first_seen_n": 536,
+      "rank": 182
+    },
+    {
+      "did": "did:key:z6MkesHqZ7WiWMjmd6v6GPyAjCEoE4dovGpQsTYJSSVqAXhP",
+      "short": "SSVqAXhP",
+      "name": "oblikhan-2046",
+      "pnl": "6.58",
+      "pnl_n": null,
+      "fresh": false,
+      "status": "reconstructed_mtm",
+      "appearances": 0,
+      "note": "not in published top",
+      "mtm_basis": "known settled fills only; pending omitted from tip",
+      "pos": "-2.00",
+      "rank": 183
+    }
+  ],
+  "coverage": {
+    "official_top_n": 25,
+    "merged_known_traders": 183,
+    "ever_in_published_top": 182,
+    "positions_top_only": 15,
+    "sweeps_merged": 200,
+    "sweep_n_first": 536,
+    "sweep_n_last": 735,
+    "owners_minted": 5674928,
+    "note": "Official referee pnl posts only ~25 names per sweep. field[] merges every DID ever seen in published tops across retained sweeps (536..735), plus our reconstructed MTM when absent. Stale rows keep last published PnL (not live). Full sweep archive behind each post's file hash is not publicly resolvable (technocore.chat/kv rejects hex; IPFS gateways flaky/unknown CID mapping). Not the ~millions of mint-only owners.",
+    "archive_blocker": "Referee posts include file=<sha256> for the full sweep record \"kept by the archive\", but no public resolution URL is documented in close-call-game.md, contest package, or ufuknode/technocore-close-call-desk. Probed kv/blob/file/ipfs/CID paths \u2014 no hit."
+  },
   "ours": {
     "did": "did:key:z6MkesHqZ7WiWMjmd6v6GPyAjCEoE4dovGpQsTYJSSVqAXhP",
     "name": "oblikhan-2046",
@@ -247,19 +2302,18 @@
     "pnl_source": "reconstructed_mtm",
     "note": "not in published top",
     "mtm_basis": "known settled fills only; pending omitted from tip",
-    "mtm_mark": "225.28",
-    "state_path": "/workspace/close1/scan-0837/state.json"
+    "mtm_mark": "225.28"
   },
   "sources": {
-    "pnl": "https://technocore.chat/r/d-close1-pnl?format=json&limit=5",
-    "positions": "https://technocore.chat/r/d-close1-positions?format=json&limit=5",
-    "price": "https://technocore.chat/r/d-close1-price?format=json&limit=3",
-    "state": "https://technocore.chat/r/d-close1-state?format=json&limit=3",
+    "pnl": "https://technocore.chat/r/d-close1-pnl?format=json&limit=200",
+    "positions": "https://technocore.chat/r/d-close1-positions?format=json&limit=200",
+    "price": "https://technocore.chat/r/d-close1-price?format=json&limit=5",
+    "state": "https://technocore.chat/r/d-close1-state?format=json&limit=5",
     "rules": "https://github.com/flop-labs/technocore-close-call-challenge",
     "main_room": "https://technocore.chat/r/close1",
-    "pnl_ts": "2026-09-28T01:06:32.731805Z",
-    "price_ts": "2026-09-28T01:06:32.476303Z",
-    "state_ts": "2026-09-28T01:06:32.814301Z"
+    "pnl_ts": "2026-09-28T01:16:06.159949Z",
+    "price_ts": "2026-09-28T01:16:05.903960Z",
+    "state_ts": "2026-09-28T01:16:06.239298Z"
   },
-  "note": "Official top comes from the Close Call referee; full field is not published. This page mirrors the public top (~25)."
+  "note": "Official top (~25) from referee; field[] is the largest honest trader board we can build without the unpublished full sweep archive. Auto-refreshed snapshot."
 }
